@@ -1,6 +1,7 @@
 #set workingdirectory
 #seleccionar workingdirectory
 setwd("C:/Users/user/Desktop/DataExploration")
+library(ggplot2)
 #cargar las proyecciones de poblacion del 2017
 dataPoblacionMunicipios<-read.csv(file="proyeccionesMunicipios2017.csv",sep=",")
 colnames(dataPoblacionMunicipios)
@@ -69,7 +70,23 @@ dataHurtoPersonas$MPXDP <-paste(dataHurtoPersonas$Municipio, dataHurtoPersonas$D
 #numero de articulos robados por hurto
 mytable <- table(dataHurtoPersonas$Cantidad)
 mytable
-
+#histograma cantidad no tiene sentido todo esta inclinado hacia el 1
+ggplot(dataHurtoPersonas, aes( x=Cantidad)) + geom_histogram()
+#numero de robos por dia de la semana
+mytable <- table(dataHurtoPersonas$Dia)
+mytable
+#diagrama de barras dia
+ggplot(dataHurtoPersonas, aes(x=Dia)) + geom_histogram(stat = "count")
+#movil del agresor
+mytable <- table(dataHurtoPersonas$MovilAgresor)
+mytable
+#diagrama de barras movil del agresor
+ggplot(dataHurtoPersonas, aes(x=MovilAgresor)) + geom_histogram(stat = "count")
+#movil del victima
+mytable <- table(dataHurtoPersonas$MovilVictima)
+mytable
+#diagrama de barras movil del victima
+ggplot(dataHurtoPersonas, aes(x=MovilVictima)) + geom_histogram(stat = "count")
 #una tabla para sacar numero de robos por municipio
 #mytable <- table(c(dataHurtoPersonas$MUNICIPIO,dataHurtoPersonas$DEPARTAMENTO))
 mytable <- table((dataHurtoPersonas$MPXDP))
@@ -126,7 +143,7 @@ datapoblacionhurto  %>%  filter(MPXDP == "CHIQUIZA BOYACA")
 plot(datapoblacionhurto$INDICE,datapoblacionhurto$MPXDP)
 #graficas no nos dicen mucho así 
 
-library(ggplot2)
+
 #histograma de distribucion del indice
 ggplot(datapoblacionhurto, aes( x=INDICE)) + geom_histogram()
 
@@ -157,6 +174,7 @@ Municipios<-dataHurtoPersonas %>% select(Municipio)  %>%  filter(Municipio == "M
 
 summary(Municipios)
 detach(dataHurtoPersonas)
+
 dataCaracteristicasGenerales<-read.csv(file="CaracteristicasGenerales.txt",sep=" ")
 head(dataCaracteristicasGenerales)
 colnames(dataCaracteristicasGenerales)
