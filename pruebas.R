@@ -65,15 +65,17 @@ summary(dataHurtoXMunicipio$HURTOS)
 sd(dataHurtoXMunicipio$HURTOS)
 #plot basico  demasiados municipios
 plot(dataHurtoXMunicipio)
-library(dplyr)
-
-
+#join con poblacion municipio
+datapoblacionhurto<-merge(dataHurtoXMunicipio,dataPoblacionMunicipios,by.x = 'MPIO',by.y = 'MPIO')
+#Calculamos el indice de robos por cada 100 000 habitantes
+datapoblacionhurto$INDICE <- (datapoblacionhurto$HURTOS/ datapoblacionhurto$X2017)*100000
+#graficas no nos dicen mucho así 
 
 library(ggplot2)
-ggplot(dataHurtoXMunicipio, aes(x=MPIO)) + geom_histogram()
+ggplot(datapoblacionhurto, aes(x=INDICE)) + geom_histogram()
 
 
-ggplot(head(dataHurtoXMunicipio,3), aes(x=MPIO, y=HURTOS)) + 
+ggplot(head(datapoblacionhurto,3), aes(x=MPIO, y=INDICE)) + 
   geom_boxplot()
 
 
@@ -81,7 +83,7 @@ ggplot(head(dataHurtoXMunicipio,3), aes(x=MPIO, y=HURTOS)) +
 ## este comando tumba R dataHurtoPersonas[ ,c(dataHurtoPersonas$CÃ³digo.DANE,dataHurtoPersonas$Cantidad)] <- list(NULL)
 ## Tambien me desconecto de la red aunque no estoy seguro de como
 
-#Esto elimina multiples columnas con nombre
+#Esto elimina multiples columnas por nombre
 dataHurtoPersonas[ ,c('Codigo.DANE','Cantidad')] <- list(NULL)
 summary(dataHurtoPersonas$Barrio)
 summary(dataHurtoPersonas$Municipio)
