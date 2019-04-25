@@ -110,18 +110,29 @@ setdiff(datapoblacionhurto$MPXDP,dataHurtoXMunicipio$MPXDP)
 #Calculamos el indice de robos por cada 100 000 habitantes
 datapoblacionhurto$INDICE <- (datapoblacionhurto$HURTOS/ datapoblacionhurto$X2017)*100000
 
-datapoblacionhurto$INDICE[which.max(datapoblacionhurto$INDICE)]
+summary(datapoblacionhurto$INDICE)
+sd(datapoblacionhurto$INDICE)
+#calculamos el indice maximo y el minimo
+tempHurtos<-setNames(as.list(datapoblacionhurto$INDICE), datapoblacionhurto$MPXDP)
+tempHurtos[which.max(tempHurtos)]
+tempHurtos[which.min(tempHurtos)]
+
+library(dplyr)
+
+datapoblacionhurto  %>%  filter(MPXDP == "GALERAS SUCRE")
+datapoblacionhurto  %>%  filter(MPXDP == "CHIQUIZA BOYACA")
+
 
 plot(datapoblacionhurto$INDICE,datapoblacionhurto$MPXDP)
 #graficas no nos dicen mucho así 
 
 library(ggplot2)
+#histograma de distribucion del indice
 ggplot(datapoblacionhurto, aes( x=INDICE)) + geom_histogram()
 
-
+#boxplot por departamento
 ggplot(datapoblacionhurto, aes(x=DPNOM, y=INDICE)) + 
   geom_boxplot()
-
 
 
 #dataHurtoPersonas<-dataHurtoPersonas[,-c(dataHurtoPersonas$Codigo.DANE,dataHurtoPersonas$Cantidad)]
@@ -133,7 +144,7 @@ dataHurtoPersonas[ ,c('Codigo.DANE','Cantidad')] <- list(NULL)
 
 summary(dataHurtoPersonas$Barrio)
 summary(dataHurtoPersonas$Municipio)
-library(dplyr)
+
 ?select
 attach(dataHurtoPersonas)
 dataHurtoPersonas[1,]
