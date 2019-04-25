@@ -180,7 +180,7 @@ head(dataCaracteristicasGenerales)
 colnames(dataCaracteristicasGenerales)
 summary(dataCaracteristicasGenerales$SECUENCIA_ENCUESTA)
 sapply(dataCaracteristicasGenerales, class)
-
+ 
 dataVivienda<-read.csv(file="DatosVivienda.txt",sep=" ")
 head(dataVivienda)
 colnames(dataVivienda)
