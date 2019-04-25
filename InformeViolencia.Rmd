@@ -68,6 +68,87 @@ dataProyMunFinal<-dataProyMunFinal[-c(1123),]
 kable(tail(dataProyMunFinal))
 ```
 
+<font size="3"><ul><li>Eliminamos las tildes para estandarizar los nombres y no tener problemas de merge después.</li>
+<li>Eliminamos los espacios y la puntuación.</li>
+<li>Convertimos todo a mayúsculas.</li>
+<li>Convertimos BOGOTADC a CUNDINAMARCA puesto que el DANE toma a Bogotá como un departamento diferente y para el merge con otros datasets deben ser el mismo.</li>
+<li>Eliminamos abreviaturas dentro de paréntesis que salen al lado de los nombres. Ejemplo: (CD).</li></ul></font>
+
+```{r Estandarizar registros del Dataset 1}
+dataProyMunStand<-dataProyMunFinal
+#Eliminar tildes
+dataProyMunStand$DPNOM<-iconv(dataProyMunStand$DPNOM,from="UTF-8", to="ASCII//TRANSLIT")
+dataProyMunStand$MPIO<-iconv(dataProyMunStand$MPIO,from="UTF-8", to="ASCII//TRANSLIT")
+#Eliminar espacios y puntuación
+dataProyMunStand$DPNOM<-gsub("\\s|\\.|\\,", '', dataProyMunStand$DPNOM)
+dataProyMunStand$MPIO<-gsub("\\s|\\.|\\,", '', dataProyMunStand$MPIO)
+#Convertir todo a mayúsculas
+dataProyMunStand$DPNOM<-toupper(dataProyMunStand$DPNOM)
+dataProyMunStand$MPIO<-toupper(dataProyMunStand$MPIO)
+#El DANE toma a Bogotá como otro departamento diferente a Cundinamarca y para efectos de nuestro análisis y el merge con otros datasets deben ser el mismo.
+dataProyMunStand$DPNOM<-gsub("BOGOTADC", 'CUNDINAMARCA', dataProyMunStand$DPNOM)
+#Eliminar abreviaturas dentro de paréntesis que salen al lado de los nombres. Ejemplo: (CD)
+dataProyMunStand$MPIO<-gsub("[:(:]CD[:):]|\\s|[:(:]1[:):]|[:(:]3[:):]|\\.|\\,|[:(:]2[:):]", '', dataProyMunStand$MPIO)
+
+kable(tail(dataProyMunStand))
+```
+
+## Limpieza del Dataset HurtoANSI
+
+<font size="3">Obtenemos un dataset con la información de hurtos del año 2017 en Colombia.
+
+El dataset se puede encontrar en la siguiente ruta:
+<https://www.datos.gov.co/Seguridad-y-Defensa/Hurto-a-personas-2017/cwdd-8tiq>
+
+Los datos se ven así:</font>
+```{r Cargue de Datos Dataset 2,include=FALSE}
+dataHurtoPersonas<-read.csv(file="HurtoANSI.csv",sep=",")
+```
+```{r Datos Dataset 2}
+kable(head(dataHurtoPersonas[,1:10],n = 3))
+```
+
+<font size="3">Eliminamos los puntos y las tildes de los nombres de las columnas para que sea más fácil trabajar con ellas</font>
+
+```{r Primer ajuste Dataset 2}
+##Esto quita puntos de los nombres de las columnas
+colnames(dataHurtoPersonas) <- gsub("\\.", "", colnames(dataHurtoPersonas))
+##Esto quita las tildes
+colnames(dataHurtoPersonas) <- iconv(colnames(dataHurtoPersonas),to="ASCII//TRANSLIT")
+kable(head(dataHurtoPersonas[,1:10],n = 3))
+```
+
+<font size="3"><ul><li>Eliminamos abreviaturas dentro de paréntesis que salen al lado de los nombres. Ejemplo: (CT).</li>
+<li>Unificamos nombres de municipios y departamentos que están diferentes entre los datasets.</li>
+<li>Eliminamos las tildes.</li>
+<li>Eliminamos espacios y signos de puntuación.</li>
+</ul></font>
+
+```{r Segundo ajuste Dataset 2}
+##Esto quita el CT y espacios del nombre del municipio
+dataHurtoPersonas$Municipio<-gsub("\\s|[:(:]CT[:):]|\\.|\\,", '', dataHurtoPersonas$Municipio)
+##Esto quita los signos de puntuación y espacios
+dataHurtoPersonas$Departamento<-gsub("\\s|\\.|\\,", '', dataHurtoPersonas$Departamento)
+
+##Esto unifica nombres de municipios
+dataHurtoPersonas$Municipio<-gsub("PUERTOLEGUIZAMO", 'LEGUIZAMO', dataHurtoPersonas$Municipio)
+dataHurtoPersonas$Municipio<-gsub("CHIBOLO", 'CHIVOLO', dataHurtoPersonas$Municipio)
+
+##Esto quita las tildes
+dataHurtoPersonas$Municipio<-iconv(dataHurtoPersonas$Municipio,to="ASCII//TRANSLIT")
+dataHurtoPersonas$Departamento<-iconv(dataHurtoPersonas$Departamento,to="ASCII//TRANSLIT")
+
+#Esto pone en mayuscula
+dataHurtoPersonas$Departamento<-toupper(dataHurtoPersonas$Departamento)
+dataHurtoPersonas$Municipio<-toupper(dataHurtoPersonas$Municipio)
+
+##Esto unifica nombres de departamentos
+dataHurtoPersonas$Departamento<-gsub("VALLE", 'VALLEDELCAUCA', dataHurtoPersonas$Departamento)
+dataHurtoPersonas$Departamento<-gsub("GUAJIRA", 'LAGUAJIRA', dataHurtoPersonas$Departamento)
+dataHurtoPersonas$Departamento<-gsub("SANANDRES", 'ARCHIPIELAGODESANANDRES', dataHurtoPersonas$Departamento)
+kable(head(dataHurtoPersonas[,1:10],n = 3))
+```
+
 ## Including Plots
 
 You can also embed plots, for example:
@@ -76,10 +157,8 @@ You can also embed plots, for example:
 plot(pressure)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
 Bibliografía
-proyecccion población Dane
+Proyecccion población Dane
 https://www.dane.gov.co/files/investigaciones/poblacion/proyepobla06_20/ProyeccionMunicipios2005_2020.xls
-encuesta violencia en colombia
+Encuesta violencia en colombia
 http://microdatos.dane.gov.co/index.php/catalog/451/datafile/F1
