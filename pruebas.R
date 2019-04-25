@@ -7,19 +7,26 @@ colnames(dataPoblacionMunicipios)
 sapply(dataPoblacionMunicipios, class)
 head(dataPoblacionMunicipios)
 tail(dataPoblacionMunicipios)
+#Eliminar registros inexistentes
+dataPoblacionMunicipios <- dataPoblacionMunicipios[!apply(is.na(dataPoblacionMunicipios) | dataPoblacionMunicipios == "", 1, all),]
+##Esto quita las tildes
+dataPoblacionMunicipios$DPNOM<-iconv(dataPoblacionMunicipios$DPNOM,to="ASCII//TRANSLIT")
+#Esto pone en mayuscula
+dataPoblacionMunicipios$DPNOM<-toupper(dataPoblacionMunicipios$DPNOM)
 ##Esto quita las tildes
 dataPoblacionMunicipios$MPIO<-iconv(dataPoblacionMunicipios$MPIO,to="ASCII//TRANSLIT")
 #Esto pone en mayuscula
 dataPoblacionMunicipios$MPIO<-toupper(dataPoblacionMunicipios$MPIO)
+##Esto quita el CD, espacios,(1) y (3) del nombre del municipio
+dataPoblacionMunicipios$MPIO<-gsub("[:(:]CD[:):]|\\s|[:(:]1[:):]|[:(:]3[:):]", '', dataPoblacionMunicipios$MPIO)
 #Esto quita la coma
 dataPoblacionMunicipios$X2017<-gsub(",", '', dataPoblacionMunicipios$X2017)
 #transformar la variable poblacion a numerica
 dataPoblacionMunicipios$X2017<-as.numeric(dataPoblacionMunicipios$X2017)
 sapply(dataPoblacionMunicipios, class)
-##Esto quita el CD, espacios,(1) y (3) del nombre del municipio
-dataPoblacionMunicipios$MPIO<-gsub("[:(:]CD[:):]|\\s|[:(:]1[:):]|[:(:]3[:):]", '', dataPoblacionMunicipios$MPIO)
-#Eliminar registros inexistentes
-dataPoblacionMunicipios <- dataPoblacionMunicipios[!apply(is.na(dataPoblacionMunicipios) | dataPoblacionMunicipios == "", 1, all),]
+#estadisticas descriptivas
+summary(dataPoblacionMunicipios$X2017)
+sd(dataPoblacionMunicipios$X2017)
 #cargar la informacion de hurto a personas de la sijin
 dataHurtoPersonas<-read.csv(file="HurtoANSI.csv",sep=",")
 head(dataHurtoPersonas)
@@ -35,6 +42,40 @@ dataHurtoPersonas$Municipio<-gsub("\\s|[:(:]CT[:):]", '', dataHurtoPersonas$Muni
 ##Esto quita las tildes
 dataHurtoPersonas$Municipio<-iconv(dataHurtoPersonas$Municipio,to="ASCII//TRANSLIT")
 
+#Asumiendo con el diccionario de variables inexistente que cantidad se refiere al numero de objetos
+#determinamos cada instancia como un robo en el departamento
+
+#numero de articulos robados por hurto
+mytable <- table(dataHurtoPersonas$Cantidad)
+mytable
+
+#una tabla para sacar numero de robos por municipio
+mytable <- table(dataHurtoPersonas$Municipio)
+summary(mytable)
+mytable[names(mytable)=="MEDELLIN"]
+#convertimos la tabla en dataframe
+dataHurtoXMunicipio <- data.frame(unlist(mytable))
+colnames(dataHurtoXMunicipio)<-c('MPIO','HURTOS')
+#Verificamos que todo esta bien
+sapply(dataHurtoXMunicipio, class)
+head(dataHurtoXMunicipio)
+tail(dataHurtoXMunicipio)
+#Aplicamos estadistica descriptiva al Hurto
+summary(dataHurtoXMunicipio$HURTOS)
+sd(dataHurtoXMunicipio$HURTOS)
+#plot basico  demasiados municipios
+plot(dataHurtoXMunicipio)
+library(dplyr)
+
+
+
+library(ggplot2)
+ggplot(dataHurtoXMunicipio, aes(x=MPIO)) + geom_histogram()
+
+
+ggplot(head(dataHurtoXMunicipio,3), aes(x=MPIO, y=HURTOS)) + 
+  geom_boxplot()
+
 
 #dataHurtoPersonas<-dataHurtoPersonas[,-c(dataHurtoPersonas$Codigo.DANE,dataHurtoPersonas$Cantidad)]
 ## este comando tumba R dataHurtoPersonas[ ,c(dataHurtoPersonas$Código.DANE,dataHurtoPersonas$Cantidad)] <- list(NULL)
@@ -49,8 +90,7 @@ library(dplyr)
 attach(dataHurtoPersonas)
 dataHurtoPersonas[1,]
 
-a <- table(dataHurtoPersonas$Municipio)
-a[names(a)=="MEDELLiN (CT)"]
+
 
 ?gsub
 
