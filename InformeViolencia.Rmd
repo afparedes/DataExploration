@@ -1,22 +1,71 @@
 ---
-title: "Analisis de Violencia en Colombia"
-author: "JohnSebastianMarin-AndresParedes"
+title: "Análisis de Violencia en Colombia"
+author: 
+- "J. Sebastián M. Benítez"
+- "Andrés Paredes"
 date: "April 17, 2019"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
+library(knitr)
 ```
 
-## R Markdown
+## Limpieza del Dataset ProyeccionMunicipios2005_2020
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+<font size="3">Primero buscamos un dataset con la cantidad total proyectada de habitantes por municipio. La información de este dataset será usada para calcular nuestro índice de violencia.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+El dataset se puede encontrar en la siguiente ruta:
+<https://www.dane.gov.co/files/investigaciones/poblacion/proyepobla06_20/ProyeccionMunicipios2005_2020.xls>
 
-```{r cars}
-summary(cars)
+Los datos se ven así:</font>
+
+```{r Cargue de Datos Dataset 1,include=FALSE}
+dataProyMun<-readxl::read_xls("ProyeccionMunicipios2005_2020.xls")
+```
+```{r Datos Dataset 1}
+kable(dataProyMun[c(1:10),c(1:8)])
+```
+
+<font size="3">Eliminamos la información irrelevante del header y ajustamos el nombre de las columnas</font>
+
+```{r Primer ajuste Dataset 1}
+dataProyMun2<-dataProyMun[-c(1,2,3),]
+#head(dataProyMun2)
+colnames(dataProyMun2)<-dataProyMun2[1,]
+#head(dataProyMun2)
+dataProyMun2<-dataProyMun2[-1,]
+kable(head(dataProyMun2[,c(1:12)]))
+```
+
+<font size="3">Eliminamos las columnas que no necesitamos. En este caso usaremos solo el año 2017 debido a que la información del dataset de hurtos solo está disponible para el 2017.</font>
+
+```{r Segundo ajuste Dataset 1}
+dataProyMun3<-dataProyMun2[,-which(colnames(dataProyMun2) %in% c("DP","DPMP"))]
+#head(dataProyMun3)
+#which(as.numeric(colnames(dataProyMun3))<"2017")
+dataProyMun3<-dataProyMun3[,-which(as.numeric(colnames(dataProyMun3))<2017)]
+#head(dataProyMun3)
+dataProyMun3<-dataProyMun3[,-which(as.numeric(colnames(dataProyMun3))>2017)]
+#head(dataProyMun3)
+dataProyMunFinal<-dataProyMun3[,-c(4,5)]
+kable(head(dataProyMunFinal))
+```
+
+<font size="3">Los últimos datos del dataset se ven así:</font>
+
+```{r Tail Dataset 1}
+kable(tail(dataProyMunFinal,n = 15))##1124
+```
+
+<font size="3">Eliminamos las filas innecesarias</font>
+
+```{r Tercer ajuste Dataset 1}
+dataProyMunFinal<-dataProyMunFinal[-c(1124:1135),]
+#kable(tail(dataProyMunFinal))
+dataProyMunFinal<-dataProyMunFinal[-c(1123),]
+kable(tail(dataProyMunFinal))
 ```
 
 ## Including Plots
