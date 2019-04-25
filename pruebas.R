@@ -35,6 +35,8 @@ dataPoblacionMunicipios <- dataPoblacionMunicipios[-nrow(dataPoblacionMunicipios
 summary(dataPoblacionMunicipios$X2017)
 sd(dataPoblacionMunicipios$X2017)
 dataPoblacionMunicipios$MPXDP <-paste(dataPoblacionMunicipios$MPIO, dataPoblacionMunicipios$DPNOM)
+
+
 #cargar la informacion de hurto a personas de la sijin
 dataHurtoPersonas<-read.csv(file="HurtoANSI.csv",sep=",")
 head(dataHurtoPersonas)
@@ -107,14 +109,19 @@ setdiff(datapoblacionhurto$MPXDP,dataHurtoXMunicipio$MPXDP)
 ?merge
 #Calculamos el indice de robos por cada 100 000 habitantes
 datapoblacionhurto$INDICE <- (datapoblacionhurto$HURTOS/ datapoblacionhurto$X2017)*100000
+
+datapoblacionhurto$INDICE[which.max(datapoblacionhurto$INDICE)]
+
+plot(datapoblacionhurto$INDICE,datapoblacionhurto$MPXDP)
 #graficas no nos dicen mucho así 
 
 library(ggplot2)
-ggplot(datapoblacionhurto, aes(x=INDICE)) + geom_histogram()
+ggplot(datapoblacionhurto, aes( x=INDICE)) + geom_histogram()
 
 
-ggplot(head(datapoblacionhurto,3), aes(x=MPIO, y=INDICE)) + 
+ggplot(datapoblacionhurto, aes(x=DPNOM, y=INDICE)) + 
   geom_boxplot()
+
 
 
 #dataHurtoPersonas<-dataHurtoPersonas[,-c(dataHurtoPersonas$Codigo.DANE,dataHurtoPersonas$Cantidad)]
@@ -123,6 +130,7 @@ ggplot(head(datapoblacionhurto,3), aes(x=MPIO, y=INDICE)) +
 
 #Esto elimina multiples columnas por nombre
 dataHurtoPersonas[ ,c('Codigo.DANE','Cantidad')] <- list(NULL)
+
 summary(dataHurtoPersonas$Barrio)
 summary(dataHurtoPersonas$Municipio)
 library(dplyr)
