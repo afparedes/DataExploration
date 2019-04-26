@@ -44,6 +44,7 @@ head(dataHurtoPersonas)
 colnames(dataHurtoPersonas)
 summary(dataHurtoPersonas$Municipio)
 sapply(dataHurtoPersonas, class)
+dataHurtoPersonas$CodigoDANE= substr(dataHurtoPersonas$CodigoDANE,1,nchar(dataHurtoPersonas$CodigoDANE)-3)
 ##Esto quita puntos de los nombres de las columnas
 colnames(dataHurtoPersonas) <- gsub("\\.", "", colnames(dataHurtoPersonas))
 ##Esto quita las tildes
@@ -133,15 +134,18 @@ mytable[names(mytable)=="BOGOTADC CUNDINAMARCA"]
 mytable[names(mytable)=="PROVIDENCIA ARCHIPIELAGODESANANDRES"]
 mytable[names(mytable)=="RIOSUCIO CHOCO"]
 mytable[names(mytable)=="LEGUIZAMO PUTUMAYO"]
+
+
 #obtenemos el departamento con menos crimenes 
 unlist(mytable)[which.min(unlist(mytable))]
 #ACHI Bolivar EXISTE
 #obtenemos el departamento con más crimenes 
 unlist(mytable)[which.max(unlist(mytable))]
 #BOGOTADC
-#convertimos la tabla en dataframe
+#convertimos la tabla CON CODIGO DANE
+mytable <- table((dataHurtoPersonas$CodigoDANE))
 dataHurtoXMunicipio <- data.frame(unlist(mytable))
-colnames(dataHurtoXMunicipio)<-c('MPXDP','HURTOS')
+colnames(dataHurtoXMunicipio)<-c('CODIGO','HURTOS')
 #Verificamos que todo esta bien
 sapply(dataHurtoXMunicipio, class)
 head(dataHurtoXMunicipio)
@@ -152,8 +156,8 @@ sd(dataHurtoXMunicipio$HURTOS)
 #plot basico  demasiados municipios
 plot(dataHurtoXMunicipio)
 #join con poblacion municipio
-datapoblacionhurto<-merge(dataHurtoXMunicipio,dataPoblacionMunicipios,by.x = 'MPXDP',by.y = 'MPXDP')
-datapoblacionhurto<-merge(dataHurtoXMunicipio,dataPoblacionMunicipios,by.x = 'MPXDP',by.y = 'MPXDP',all.x = TRUE)
+datapoblacionhurto<-merge(dataHurtoXMunicipio,dataPoblacionMunicipios,by.x = 'CODIGO',by.y = 'DPMP')
+#datapoblacionhurto<-merge(dataHurtoXMunicipio,dataPoblacionMunicipios,by.x = 'MPXDP',by.y = 'MPXDP',all.x = TRUE)
 #datapoblacionhurto <- datapoblacionhurto[!apply(is.na(datapoblacionhurto$HURTOS) | datapoblacionhurto == "", 1, all),]
 datapoblacionhurto$MPXDP[duplicated(datapoblacionhurto$MPXDP)]
 mapply(setdiff,datapoblacionhurto$MPXDP,dataHurtoXMunicipio$MPXDP)
@@ -186,6 +190,27 @@ ggplot(datapoblacionhurto, aes( x=INDICE)) + geom_histogram()
 ggplot(datapoblacionhurto, aes(x=DPNOM, y=INDICE)) + 
   geom_boxplot()
 
+
+datapoblacionhurto$INDICELOG <- log10(datapoblacionhurto$INDICE )
+
+summary(datapoblacionhurto$INDICELOG)
+sd(datapoblacionhurto$INDICELOG)
+
+tempHurtosLOG<-setNames(as.list(datapoblacionhurto$INDICELOG), datapoblacionhurto$MPXDP)
+tempHurtosLOG[which.max(tempHurtosLOG)]
+tempHurtosLOG[which.min(tempHurtosLOG)]
+
+
+plot(datapoblacionhurto$INDICELOG,datapoblacionhurto$MPXDP)
+#graficas no nos dicen mucho así 
+
+
+#histograma de distribucion del indice
+ggplot(datapoblacionhurto, aes( x=INDICELOG)) + geom_histogram()
+
+#boxplot por departamento
+ggplot(datapoblacionhurto, aes(x=DPNOM, y=INDICELOG)) + 
+  geom_boxplot()
 
 #dataHurtoPersonas<-dataHurtoPersonas[,-c(dataHurtoPersonas$Codigo.DANE,dataHurtoPersonas$Cantidad)]
 ## este comando tumba R dataHurtoPersonas[ ,c(dataHurtoPersonas$CÃ³digo.DANE,dataHurtoPersonas$Cantidad)] <- list(NULL)
@@ -224,3 +249,13 @@ head(dataMerged1)
 dataMerged2 = merge(dataMerged1,dataPercepSeg, by.x=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"),
                     by.y=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"))
 head(dataMerged2)
+
+tradcTipoVivienda <- data.frame("cod" = 1:4, "tipo_vivienda" = c("Casa" ,"Apartamento", "Cuarto","Otravivienda"))
+dataVivienda= merge(dataVivienda,tradcTipoVivienda,by.x="P5747",by.y="cod")
+#dataVivienda[ ,c('P5747','cod')] <- list(NULL)  
+mytable3 <- table(dataVivienda$tipo_vivienda)
+mytable3
+mytable3 <- table(paste(dataVivienda$tipo_vivienda,dataVivienda$DEPMUNI))
+mytable3
+dataviviendaMuni <- data.frame(unlist(mytable3))
+colnames(dataHurtoXMunicipio)<-c('vivxcod','HURTOS')
