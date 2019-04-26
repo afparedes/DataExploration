@@ -67,6 +67,8 @@ dataHurtoPersonas$Departamento<-gsub("SANANDRES", 'ARCHIPIELAGODESANANDRES', dat
 
 head(dataProyMunStand)
 sapply(dataProyMunStand,class)
+dataProyMunStand$DPNOM<-as.factor(dataProyMunStand$DPNOM)
+dataProyMunStand$MPIO<-as.factor(dataProyMunStand$MPIO)
 summary(dataProyMunStand)
 
 head(dataHurtoPersonas)
@@ -82,8 +84,21 @@ dataHurtoPersonas2$Departamento <- as.factor(dataHurtoPersonas2$Departamento)
 dataHurtoPersonas2$Municipio<- as.factor(dataHurtoPersonas2$Municipio)
 dataHurtoPersonas2$CodigoDANE <- as.factor(dataHurtoPersonas2$CodigoDANE)
 dataHurtoPersonas2$Hora <- as.factor(substr(dataHurtoPersonas2$Hora,11,22))
-table(dataHurtoPersonas2$Hora)
+summary(dataHurtoPersonas2)
 View(dataHurtoPersonas2)
+
+head(dataMerged2)
+View(dataMerged2)
+sapply(dataMerged2,class)
+str(dataMerged3)
+dataMerged3 <- dataMerged2
+dataMerged3[,6:44]<-lapply(dataMerged3[,6:44],as.factor)
+dataMerged3[,"P5785"]<-as.integer(dataMerged3[,"P5785"])
+#DEPMUNI debe ser Factor
+#P5785 Numeric Edad
+#Todo Factor
+
+
 #Asumiendo con el diccionario de variables inexistente que cantidad se refiere al numero de objetos
 #determinamos cada instancia como un robo en el departamento
 dataHurtoPersonas$MPXDP <-paste(dataHurtoPersonas$Municipio, dataHurtoPersonas$Departamento)
