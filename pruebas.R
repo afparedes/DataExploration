@@ -64,6 +64,26 @@ dataHurtoPersonas$Departamento<-toupper(dataHurtoPersonas$Departamento)
 dataHurtoPersonas$Departamento<-gsub("VALLE", 'VALLEDELCAUCA', dataHurtoPersonas$Departamento)
 dataHurtoPersonas$Departamento<-gsub("GUAJIRA", 'LAGUAJIRA', dataHurtoPersonas$Departamento)
 dataHurtoPersonas$Departamento<-gsub("SANANDRES", 'ARCHIPIELAGODESANANDRES', dataHurtoPersonas$Departamento)
+
+head(dataProyMunStand)
+sapply(dataProyMunStand,class)
+summary(dataProyMunStand)
+
+head(dataHurtoPersonas)
+View(dataHurtoPersonas)
+sapply(dataHurtoPersonas,class)
+dataHurtoPersonas2 <- dataHurtoPersonas
+#Fecha está como Factor y debe ser Date
+dataHurtoPersonas2$Fecha<-as.Date(dataHurtoPersonas2$Fecha,"%m/%d/%Y")
+head(dataHurtoPersonas2[185099,])
+sapply(dataHurtoPersonas2,class)
+#Departamento y Municipio son character y deben ser factor
+dataHurtoPersonas2$Departamento <- as.factor(dataHurtoPersonas2$Departamento)
+dataHurtoPersonas2$Municipio<- as.factor(dataHurtoPersonas2$Municipio)
+dataHurtoPersonas2$CodigoDANE <- as.factor(dataHurtoPersonas2$CodigoDANE)
+dataHurtoPersonas2$Hora <- as.factor(substr(dataHurtoPersonas2$Hora,11,22))
+table(dataHurtoPersonas2$Hora)
+View(dataHurtoPersonas2)
 #Asumiendo con el diccionario de variables inexistente que cantidad se refiere al numero de objetos
 #determinamos cada instancia como un robo en el departamento
 dataHurtoPersonas$MPXDP <-paste(dataHurtoPersonas$Municipio, dataHurtoPersonas$Departamento)
@@ -175,18 +195,17 @@ Municipios<-dataHurtoPersonas %>% select(Municipio)  %>%  filter(Municipio == "M
 summary(Municipios)
 detach(dataHurtoPersonas)
 
-dataCaracteristicasGenerales<-read.csv(file="CaracteristicasGenerales.txt",sep=" ")
-head(dataCaracteristicasGenerales)
-colnames(dataCaracteristicasGenerales)
-summary(dataCaracteristicasGenerales$SECUENCIA_ENCUESTA)
-sapply(dataCaracteristicasGenerales, class)
- 
-dataVivienda<-read.csv(file="DatosVivienda.txt",sep=" ")
+dataCaracGen <- read.delim("CaracteristicasGenerales.txt", sep = " ")
+head(dataCaracGen)
+dataVivienda <- read.delim("DatosVivienda.txt",sep = " ")
 head(dataVivienda)
-colnames(dataVivienda)
-summary(dataVivienda$SECUENCIA_ENCUESTA)
-sapply(dataVivienda, class)
-?merge
-datacompleta<-merge(dataVivienda,dataCaracteristicasGenerales)
-datacompleta<-merge(dataVivienda,dataCaracteristicasGenerales,by= intersect(dataCaracteristicasGenerales$SECUENCIA_ENCUESTA,dataVivienda$SECUENCIA_ENCUESTA))
-datacompleta<-merge(dataVivienda,dataCaracteristicasGenerales,by.x = 'SECUENCIA_ENCUESTA',by.y = 'SECUENCIA_ENCUESTA')
+dataPercepSeg <- read.delim("PercepcionSeguridad.txt",sep = "\t")
+#El separador de este era \t en vez de espacio.
+head(dataPercepSeg)
+dataMerged1 = merge(dataCaracGen, dataVivienda, by.x=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"), 
+                    by.y=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"))
+head(dataMerged1)
+
+dataMerged2 = merge(dataMerged1,dataPercepSeg, by.x=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"),
+                    by.y=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"))
+head(dataMerged2)

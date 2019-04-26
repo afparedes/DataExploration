@@ -149,6 +149,36 @@ dataHurtoPersonas$Departamento<-gsub("SANANDRES", 'ARCHIPIELAGODESANANDRES', dat
 kable(head(dataHurtoPersonas[,1:10],n = 3))
 ```
 
+## Construcción de la tabla de datos generales
+
+<font size="3">Obtenemos 3 datasets de la Encuesta de Convivencia y Seguridad Ciudadana realizada entre 2016 y 2017. Estos son:
+
+<ul><li>Datos de la vivienda</li>
+<li>Percepción de seguridad en el hogar</li>
+<li>Características generales de las personas</li></ul>
+
+Hay que tener en cuenta que uno de los 3 datasets está separado por tabulación en vez de espacio.
+
+Después los unimos para que sean un solo dataset.</font>
+
+```{r Creación del Dataset 3}
+dataCaracGen <- read.delim("CaracteristicasGenerales.txt", sep = " ")
+#head(dataCaracGen)
+dataVivienda <- read.delim("DatosVivienda.txt",sep = " ")
+#head(dataVivienda)
+dataPercepSeg <- read.delim("PercepcionSeguridad.txt",sep = "\t")
+#El separador de este era \t en vez de espacio.
+#head(dataPercepSeg)
+dataMerged1 = merge(dataCaracGen, dataVivienda, by.x=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"), 
+                    by.y=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"))
+#head(dataMerged1)
+
+dataMerged2 = merge(dataMerged1,dataPercepSeg, by.x=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"),
+                    by.y=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"))
+kable(head(dataMerged2[,1:10]))
+```
+
+
 ## Including Plots
 
 You can also embed plots, for example:
