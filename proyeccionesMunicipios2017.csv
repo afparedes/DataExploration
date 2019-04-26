@@ -1,1124 +1,1138 @@
-DPNOM,MPIO,2017
-Antioquia,Medellín,"2,479,990"
-Antioquia,Abejorral,"6,765"
-Antioquia,Abriaquí,724
-Antioquia,Alejandría,"1,804"
-Antioquia,Amagá,"17,174"
-Antioquia,Amalfi,"12,477"
-Antioquia,Andes,"23,365"
-Antioquia,Angelópolis,"5,461"
-Antioquia,Angostura,"1,775"
-Antioquia,Anorí,"7,042"
-Antioquia,Santafé de Antioquia,"15,974"
-Antioquia,Anza,"1,275"
-Antioquia,Apartadó,"164,190"
-Antioquia,Arboletes,"17,889"
-Antioquia,Argelia,"2,472"
-Antioquia,Armenia,"1,536"
-Antioquia,Barbosa,"23,857"
-Antioquia,Belmira,"1,978"
-Antioquia,Bello,"467,444"
-Antioquia,Betania,"3,853"
-Antioquia,Betulia,"5,915"
-Antioquia,Ciudad Bolívar,"16,177"
-Antioquia,Briceño,"2,588"
-Antioquia,Buriticá,"1,587"
-Antioquia,Cáceres,"9,204"
-Antioquia,Caicedo,"1,657"
-Antioquia,Caldas,"63,051"
-Antioquia,Campamento,"2,904"
-Antioquia,Cañasgordas,"6,915"
-Antioquia,Caracolí,"3,164"
-Antioquia,Caramanta,"3,045"
-Antioquia,Carepa,"45,619"
-Antioquia,El Carmen de Viboral,"31,675"
-Antioquia,Carolina,"2,910"
-Antioquia,Caucasia,"97,386"
-Antioquia,Chigorodó,"70,264"
-Antioquia,Cisneros,"7,519"
-Antioquia,Cocorná,"3,967"
-Antioquia,Concepción,"1,414"
-Antioquia,Concordia,"8,642"
-Antioquia,Copacabana,"62,881"
-Antioquia,Dabeiba,"8,966"
-Antioquia,Don Matías,"15,311"
-Antioquia,Ebéjico,"2,242"
-Antioquia,El Bagre,"26,065"
-Antioquia,Entrerrios,"5,377"
-Antioquia,Envigado,"225,266"
-Antioquia,Fredonia,"8,575"
-Antioquia,Frontino,"6,774"
-Antioquia,Giraldo,"1,309"
-Antioquia,Girardota,"34,056"
-Antioquia,Gómez Plata,"6,088"
-Antioquia,Granada,"3,633"
-Antioquia,Guadalupe,"2,131"
-Antioquia,Guarne,"18,464"
-Antioquia,Guatapé,"4,135"
-Antioquia,Heliconia,"3,054"
-Antioquia,Hispania,"3,249"
-Antioquia,Itagui,"250,967"
-Antioquia,Ituango,"5,808"
-Antioquia,Jardín,"7,221"
-Antioquia,Jericó,"8,573"
-Antioquia,La Ceja,"47,101"
-Antioquia,La Estrella,"37,000"
-Antioquia,La Pintada,"5,729"
-Antioquia,La Unión,"10,943"
-Antioquia,Liborina,"1,750"
-Antioquia,Maceo,"2,828"
-Antioquia,Marinilla,"43,570"
-Antioquia,Montebello,"2,011"
-Antioquia,Murindó,954
-Antioquia,Mutatá,"5,781"
-Antioquia,Nariño,"2,505"
-Antioquia,Necoclí,"16,274"
-Antioquia,Nechí,"14,912"
-Antioquia,Olaya,262
-Antioquia,Peñol,"9,264"
-Antioquia,Peque,"2,128"
-Antioquia,Pueblorrico,"3,503"
-Antioquia,Puerto Berrío,"43,736"
-Antioquia,Puerto Nare,"8,261"
-Antioquia,Puerto Triunfo,"6,453"
-Antioquia,Remedios,"11,206"
-Antioquia,Retiro,"10,330"
-Antioquia,Rionegro,"81,591"
-Antioquia,Sabanalarga,"2,954"
-Antioquia,Sabaneta,"42,519"
-Antioquia,Salgar,"8,960"
-Antioquia,San Andrés de Cuerquía,"2,532"
-Antioquia,San Carlos,"6,023"
-Antioquia,San Francisco,"2,458"
-Antioquia,San Jerónimo,"4,185"
-Antioquia,San José de La Montaña,"2,226"
-Antioquia,San Juan de Urabá,"8,390"
-Antioquia,San Luis,"4,697"
-Antioquia,San Pedro,"14,611"
-Antioquia,San Pedro de Uraba,"14,547"
-Antioquia,San Rafael,"6,251"
-Antioquia,San Roque,"6,341"
-Antioquia,San Vicente,"7,405"
-Antioquia,Santa Bárbara,"10,274"
-Antioquia,Santa Rosa de Osos,"19,375"
-Antioquia,Santo Domingo,"1,943"
-Antioquia,El Santuario,"23,472"
-Antioquia,Segovia,"32,697"
-Antioquia,Sonson,"14,988"
-Antioquia,Sopetrán,"7,101"
-Antioquia,Támesis,"6,494"
-Antioquia,Tarazá,"28,835"
-Antioquia,Tarso,"4,015"
-Antioquia,Titiribí,"8,290"
-Antioquia,Toledo,"1,016"
-Antioquia,Turbo,"67,148"
-Antioquia,Uramita,"2,613"
-Antioquia,Urrao,"17,893"
-Antioquia,Valdivia,"6,908"
-Antioquia,Valparaíso,"3,374"
-Antioquia,Vegachí,"5,515"
-Antioquia,Venecia,"6,910"
-Antioquia,Vigía del Fuerte,"2,105"
-Antioquia,Yalí,"3,260"
-Antioquia,Yarumal,"31,286"
-Antioquia,Yolombó,"7,438"
-Antioquia,Yondó,"9,834"
-Antioquia,Zaragoza,"14,291"
-Atlántico,Barranquilla,"1,224,374"
-Atlántico,Baranoa,"49,604"
-Atlántico,Campo de La Cruz,"13,593"
-Atlántico,Candelaria,"9,657"
-Atlántico,Galapa,"40,928"
-Atlántico,Juan de Acosta,"11,794"
-Atlántico,Luruaco,"13,899"
-Atlántico,Malambo,"118,070"
-Atlántico,Manatí,"14,559"
-Atlántico,Palmar de Varela,"24,995"
-Atlántico,Piojó,"2,459"
-Atlántico,Polonuevo,"12,763"
-Atlántico,Ponedera,"11,547"
-Atlántico,Puerto Colombia,"22,583"
-Atlántico,Repelón,"18,211"
-Atlántico,Sabanagrande,"31,965"
-Atlántico,Sabanalarga,"82,757"
-Atlántico,Santa Lucía,"10,997"
-Atlántico,Santo Tomás,"24,692"
-Atlántico,Soledad,"648,373"
-Atlántico,Suan,"8,257"
-Atlántico,Tubará,"6,556"
-Atlántico,Usiacurí,"8,457"
-"Bogotá, D.C.","Bogotá, D.C.","8,063,991"
-Bolívar,Cartagena,"983,629"
-Bolívar,Achí,"4,280"
-Bolívar,Altos del Rosario,"8,648"
-Bolívar,Arenal,"5,460"
-Bolívar,Arjona,"59,175"
-Bolívar,Arroyohondo,"6,912"
-Bolívar,Barranco de Loba,"6,449"
-Bolívar,Calamar,"13,577"
-Bolívar,Cantagallo,"4,606"
-Bolívar,Cicuco,"7,641"
-Bolívar,Córdoba,"3,069"
-Bolívar,Clemencia,"10,799"
-Bolívar,El Carmen de Bolívar,"61,785"
-Bolívar,El Guamo,"4,394"
-Bolívar,El Peñón,"4,124"
-Bolívar,Hatillo de Loba,"3,566"
-Bolívar,Magangué,"86,210"
-Bolívar,Mahates,"10,123"
-Bolívar,Margarita,"1,777"
-Bolívar,María La Baja,"21,873"
-Bolívar,Montecristo,"11,789"
-Bolívar,Mompós,"26,468"
-Bolívar,Morales,"6,048"
-Bolívar,Norosí (1),"2,137"
-Bolívar,Pinillos,"2,747"
-Bolívar,Regidor,"4,699"
-Bolívar,Río Viejo (1)(3),"10,049"
-Bolívar,San Cristóbal,"5,686"
-Bolívar,San Estanislao,"12,178"
-Bolívar,San Fernando,"2,979"
-Bolívar,San Jacinto,"20,975"
-Bolívar,San Jacinto del Cauca,"4,014"
-Bolívar,San Juan Nepomuceno,"26,934"
-Bolívar,San Martín de Loba,"7,759"
-Bolívar,San Pablo,"31,075"
-Bolívar,Santa Catalina,"4,849"
-Bolívar,Santa Rosa,"15,156"
-Bolívar,Santa Rosa del Sur,"24,553"
-Bolívar,Simití,"10,588"
-Bolívar,Soplaviento,"8,308"
-Bolívar,Talaigua Nuevo,"5,443"
-Bolívar,Tiquisio,"6,431"
-Bolívar,Turbaco,"68,957"
-Bolívar,Turbaná,"14,114"
-Bolívar,Villanueva,"18,721"
-Bolívar,Zambrano,"10,757"
-Boyacá,Tunja,"187,689"
-Boyacá,Almeida,266
-Boyacá,Aquitania,"6,372"
-Boyacá,Arcabuco,"1,983"
-Boyacá,Belén,"3,643"
-Boyacá,Berbeo,546
-Boyacá,Betéitiva,381
-Boyacá,Boavita,"2,931"
-Boyacá,Boyacá,397
-Boyacá,Briceño,541
-Boyacá,Buenavista,842
-Boyacá,Busbanzá,475
-Boyacá,Caldas,247
-Boyacá,Campohermoso,970
-Boyacá,Cerinza,"1,544"
-Boyacá,Chinavita,"1,221"
-Boyacá,Chiquinquirá,"57,742"
-Boyacá,Chiscas,881
-Boyacá,Chita,"2,038"
-Boyacá,Chitaraque,"1,126"
-Boyacá,Chivatá,"2,741"
-Boyacá,Ciénega,"1,327"
-Boyacá,Cómbita,"1,157"
-Boyacá,Coper,766
-Boyacá,Corrales,"1,548"
-Boyacá,Covarachía,517
-Boyacá,Cubará,"2,027"
-Boyacá,Cucaita,"1,941"
-Boyacá,Cuítiva,217
-Boyacá,Chíquiza,92
-Boyacá,Chivor,502
-Boyacá,Duitama,"103,552"
-Boyacá,El Cocuy,"2,773"
-Boyacá,El Espino,"1,326"
-Boyacá,Firavitoba,"2,122"
-Boyacá,Floresta,"1,822"
-Boyacá,Gachantivá,358
-Boyacá,Gameza,"1,557"
-Boyacá,Garagoa,"13,850"
-Boyacá,Guacamayas,484
-Boyacá,Guateque,"7,179"
-Boyacá,Guayatá,"1,283"
-Boyacá,Güicán,"1,714"
-Boyacá,Iza,"1,049"
-Boyacá,Jenesano,"2,026"
-Boyacá,Jericó,641
-Boyacá,Labranzagrande,"1,167"
-Boyacá,La Capilla,955
-Boyacá,La Victoria,880
-Boyacá,La Uvita,972
-Boyacá,Villa de Leyva,"10,611"
-Boyacá,Macanal,"1,130"
-Boyacá,Maripí,973
-Boyacá,Miraflores,"5,782"
-Boyacá,Mongua,"1,600"
-Boyacá,Monguí,"2,822"
-Boyacá,Moniquirá,"10,631"
-Boyacá,Motavita,928
-Boyacá,Muzo,"5,319"
-Boyacá,Nobsa,"6,552"
-Boyacá,Nuevo Colón,"1,341"
-Boyacá,Oicatá,306
-Boyacá,Otanche,"4,197"
-Boyacá,Pachavita,383
-Boyacá,Páez,"1,170"
-Boyacá,Paipa,"19,587"
-Boyacá,Pajarito,687
-Boyacá,Panqueba,594
-Boyacá,Pauna,"2,629"
-Boyacá,Paya,592
-Boyacá,Paz de Río,"2,892"
-Boyacá,Pesca,"1,967"
-Boyacá,Pisba,395
-Boyacá,Puerto Boyacá,"38,324"
-Boyacá,Quípama,"1,591"
-Boyacá,Ramiriquí,"5,024"
-Boyacá,Ráquira,"3,591"
-Boyacá,Rondón,547
-Boyacá,Saboyá,788
-Boyacá,Sáchica,"1,902"
-Boyacá,Samacá,"6,085"
-Boyacá,San Eduardo,845
-Boyacá,San José de Pare,"1,076"
-Boyacá,San Luis de Gaceno,"1,747"
-Boyacá,San Mateo,"1,478"
-Boyacá,San Miguel de Sema,488
-Boyacá,San Pablo de Borbur,"1,296"
-Boyacá,Santana,"2,357"
-Boyacá,Santa María,"2,253"
-Boyacá,Santa Rosa de Viterbo,"7,156"
-Boyacá,Santa Sofía,708
-Boyacá,Sativanorte,517
-Boyacá,Sativasur,259
-Boyacá,Siachoque,"1,597"
-Boyacá,Soatá,"5,217"
-Boyacá,Socotá,"1,034"
-Boyacá,Socha,"3,860"
-Boyacá,Sogamoso,"98,411"
-Boyacá,Somondoco,793
-Boyacá,Sora,503
-Boyacá,Sotaquirá,714
-Boyacá,Soracá,748
-Boyacá,Susacón,969
-Boyacá,Sutamarchán,"1,356"
-Boyacá,Sutatenza,773
-Boyacá,Tasco,"1,912"
-Boyacá,Tenza,"1,231"
-Boyacá,Tibaná,"1,604"
-Boyacá,Tibasosa,"4,860"
-Boyacá,Tinjacá,459
-Boyacá,Tipacoque,844
-Boyacá,Toca,"3,645"
-Boyacá,Togüí,763
-Boyacá,Tópaga,"1,422"
-Boyacá,Tota,555
-Boyacá,Tununguá,394
-Boyacá,Turmequé,"2,554"
-Boyacá,Tuta,"2,741"
-Boyacá,Tutazá,195
-Boyacá,Umbita,"1,864"
-Boyacá,Ventaquemada,"2,460"
-Boyacá,Viracachá,373
-Boyacá,Zetaquira,"1,053"
-Caldas,Manizales,"371,345"
-Caldas,Aguadas,"11,669"
-Caldas,Anserma,"21,715"
-Caldas,Aranzazu,"6,581"
-Caldas,Belalcázar,"5,062"
-Caldas,Chinchiná,"45,926"
-Caldas,Filadelfia,"4,179"
-Caldas,La Dorada,"69,764"
-Caldas,La Merced,"2,230"
-Caldas,Manzanares,"9,978"
-Caldas,Marmato,"1,043"
-Caldas,Marquetalia,"6,534"
-Caldas,Marulanda,"1,301"
-Caldas,Neira,"16,665"
-Caldas,Norcasia,"4,286"
-Caldas,Pácora,"5,472"
-Caldas,Palestina,"6,848"
-Caldas,Pensilvania,"8,489"
-Caldas,Riosucio,"19,770"
-Caldas,Risaralda,"4,638"
-Caldas,Salamina,"9,782"
-Caldas,Samaná,"5,161"
-Caldas,San José,"1,869"
-Caldas,Supía,"13,198"
-Caldas,Victoria,"3,644"
-Caldas,Villamaría,"48,625"
-Caldas,Viterbo,"10,282"
-Caquetá,Florencia,"157,038"
-Caquetá,Albania,"2,479"
-Caquetá,Belén de Los Andaquies,"6,669"
-Caquetá,Cartagena del Chairá,"12,746"
-Caquetá,Curillo,"6,201"
-Caquetá,El Doncello,"14,546"
-Caquetá,El Paujil,"10,994"
-Caquetá,La Montañita,"5,047"
-Caquetá,Milán,"1,878"
-Caquetá,Morelia,"1,954"
-Caquetá,Puerto Rico,"14,436"
-Caquetá,San José del Fragua,"6,380"
-Caquetá,San Vicente del Caguán,"44,375"
-Caquetá,Solano,"1,951"
-Caquetá,Solita,"4,150"
-Caquetá,Valparaíso,"3,892"
-Cauca,Popayán,"252,570"
-Cauca,Almaguer,"1,598"
-Cauca,Argelia,"4,066"
-Cauca,Balboa,"7,698"
-Cauca,Bolívar,"5,289"
-Cauca,Buenos Aires,"2,561"
-Cauca,Cajibío,"1,755"
-Cauca,Caldono,"1,477"
-Cauca,Caloto(1)(3),"4,639"
-Cauca,Corinto,"13,148"
-Cauca,El Tambo,"7,014"
-Cauca,Florencia,"1,409"
-Cauca,Guachené (1) ,"5,129"
-Cauca,Guapi,"18,277"
-Cauca,Inzá,"2,297"
-Cauca,Jambaló,"1,252"
-Cauca,La Sierra,"1,508"
-Cauca,La Vega,"3,340"
-Cauca,López,"5,973"
-Cauca,Mercaderes,"5,200"
-Cauca,Miranda,"29,899"
-Cauca,Morales,"1,560"
-Cauca,Padilla,"4,115"
-Cauca,Paez,"2,713"
-Cauca,Patía,"13,816"
-Cauca,Piamonte,643
-Cauca,Piendamó,"15,191"
-Cauca,Puerto Tejada,"40,590"
-Cauca,Puracé,"1,701"
-Cauca,Rosas,"1,751"
-Cauca,San Sebastián,"1,301"
-Cauca,Santander de Quilichao,"55,729"
-Cauca,Santa Rosa,"1,958"
-Cauca,Silvia,"4,344"
-Cauca,Sotara,348
-Cauca,Suárez,"3,043"
-Cauca,Sucre,"1,472"
-Cauca,Timbío,"13,709"
-Cauca,Timbiquí,"4,399"
-Cauca,Toribio,"1,761"
-Cauca,Totoró,"1,971"
-Cauca,Villa Rica,"13,061"
-Cesar,Valledupar,"405,004"
-Cesar,Aguachica,"82,976"
-Cesar,Agustín Codazzi,"38,619"
-Cesar,Astrea,"10,071"
-Cesar,Becerril,"10,390"
-Cesar,Bosconia,"35,051"
-Cesar,Chimichagua,"11,731"
-Cesar,Chiriguaná,"14,647"
-Cesar,Curumaní,"19,177"
-Cesar,El Copey,"20,850"
-Cesar,El Paso,"4,006"
-Cesar,Gamarra,"9,693"
-Cesar,González,"1,314"
-Cesar,La Gloria,"6,256"
-Cesar,La Jagua de Ibirico,"19,136"
-Cesar,Manaure,"9,792"
-Cesar,Pailitas,"13,510"
-Cesar,Pelaya,"12,255"
-Cesar,Pueblo Bello,"5,719"
-Cesar,Río de Oro,"6,164"
-Cesar,La Paz,"15,089"
-Cesar,San Alberto,"19,078"
-Cesar,San Diego,"7,456"
-Cesar,San Martín,"9,223"
-Cesar,Tamalameque,"5,655"
-Córdoba,Montería,"352,388"
-Córdoba,Ayapel,"27,679"
-Córdoba,Buenavista,"8,586"
-Córdoba,Canalete,"4,361"
-Córdoba,Cereté,"53,796"
-Córdoba,Chimá,"3,227"
-Córdoba,Chinú,"24,657"
-Córdoba,Ciénaga de Oro,"26,795"
-Córdoba,Cotorra,"4,073"
-Córdoba,La Apartada,"13,573"
-Córdoba,Lorica,"56,275"
-Córdoba,Los Córdobas,"4,919"
-Córdoba,Momil,"9,649"
-Córdoba,Montelíbano(1)(3),"67,224"
-Córdoba,Moñitos,"7,101"
-Córdoba,Planeta Rica,"43,258"
-Córdoba,Pueblo Nuevo,"15,760"
-Córdoba,Puerto Escondido,"5,201"
-Córdoba,Puerto Libertador,"20,964"
-Córdoba,Purísima,"6,462"
-Córdoba,Sahagún,"48,608"
-Córdoba,San Andrés Sotavento (1) (3),"13,362"
-Córdoba,San Antero,"18,190"
-Córdoba,San Bernardo del Viento,"9,401"
-Córdoba,San Carlos,"5,887"
-Córdoba,San José de Uré(1),"5,763"
-Córdoba,San Pelayo,"8,446"
-Córdoba,Tierralta,"46,375"
-Córdoba,Tuchín (1),"6,456"
-Córdoba,Valencia,"16,335"
-Cundinamarca,Agua de Dios,"8,340"
-Cundinamarca,Albán,"1,613"
-Cundinamarca,Anapoima,"5,892"
-Cundinamarca,Anolaima,"3,642"
-Cundinamarca,Arbeláez,"5,365"
-Cundinamarca,Beltrán,449
-Cundinamarca,Bituima,446
-Cundinamarca,Bojacá,"9,764"
-Cundinamarca,Cabrera,"1,050"
-Cundinamarca,Cachipay,"3,138"
-Cundinamarca,Cajicá,"37,365"
-Cundinamarca,Caparrapí,"2,762"
-Cundinamarca,Caqueza,"7,482"
-Cundinamarca,Carmen de Carupa,"2,545"
-Cundinamarca,Chaguaní,744
-Cundinamarca,Chía,"104,214"
-Cundinamarca,Chipaque,"2,550"
-Cundinamarca,Choachí,"3,628"
-Cundinamarca,Chocontá,"13,618"
-Cundinamarca,Cogua,"7,264"
-Cundinamarca,Cota,"15,034"
-Cundinamarca,Cucunubá,"1,431"
-Cundinamarca,El Colegio,"8,449"
-Cundinamarca,El Peñón,445
-Cundinamarca,El Rosal,"12,974"
-Cundinamarca,Facatativá,"123,931"
-Cundinamarca,Fomeque,"4,758"
-Cundinamarca,Fosca,"2,002"
-Cundinamarca,Funza,"73,309"
-Cundinamarca,Fúquene,269
-Cundinamarca,Fusagasugá,"112,616"
-Cundinamarca,Gachala,"2,034"
-Cundinamarca,Gachancipá,"8,863"
-Cundinamarca,Gachetá,"3,792"
-Cundinamarca,Gama,877
-Cundinamarca,Girardot,"102,806"
-Cundinamarca,Granada,"2,128"
-Cundinamarca,Guachetá,"3,769"
-Cundinamarca,Guaduas,"20,311"
-Cundinamarca,Guasca,"5,426"
-Cundinamarca,Guataquí,"1,390"
-Cundinamarca,Guatavita,"1,990"
-Cundinamarca,Guayabal de Siquima,871
-Cundinamarca,Guayabetal,"1,538"
-Cundinamarca,Gutiérrez,"1,160"
-Cundinamarca,Jerusalén,585
-Cundinamarca,Junín,"1,021"
-Cundinamarca,La Calera,"12,248"
-Cundinamarca,La Mesa,"18,159"
-Cundinamarca,La Palma,"4,129"
-Cundinamarca,La Peña,995
-Cundinamarca,La Vega,"5,381"
-Cundinamarca,Lenguazaque,"2,310"
-Cundinamarca,Macheta,"1,495"
-Cundinamarca,Madrid,"70,203"
-Cundinamarca,Manta,"1,308"
-Cundinamarca,Medina,"3,933"
-Cundinamarca,Mosquera,"83,520"
-Cundinamarca,Nariño,"1,470"
-Cundinamarca,Nemocón,"5,817"
-Cundinamarca,Nilo,"5,002"
-Cundinamarca,Nimaima,"3,025"
-Cundinamarca,Nocaima,"1,911"
-Cundinamarca,Venecia,"1,125"
-Cundinamarca,Pacho,"15,763"
-Cundinamarca,Paime,454
-Cundinamarca,Pandi,"1,075"
-Cundinamarca,Paratebueno,"2,443"
-Cundinamarca,Pasca,"2,895"
-Cundinamarca,Puerto Salgar,"14,630"
-Cundinamarca,Pulí,674
-Cundinamarca,Quebradanegra,390
-Cundinamarca,Quetame,"1,648"
-Cundinamarca,Quipile,675
-Cundinamarca,Apulo,"3,151"
-Cundinamarca,Ricaurte,"4,537"
-Cundinamarca,San Antonio del Tequendama,"1,040"
-Cundinamarca,San Bernardo,"4,198"
-Cundinamarca,San Cayetano,743
-Cundinamarca,San Francisco,"3,492"
-Cundinamarca,San Juan de Río Seco,"2,931"
-Cundinamarca,Sasaima,"2,466"
-Cundinamarca,Sesquilé,"3,720"
-Cundinamarca,Sibaté,"26,877"
-Cundinamarca,Silvania,"6,335"
-Cundinamarca,Simijaca,"7,583"
-Cundinamarca,Soacha,"527,644"
-Cundinamarca,Sopó,"17,988"
-Cundinamarca,Subachoque,"6,293"
-Cundinamarca,Suesca,"8,941"
-Cundinamarca,Supatá,"1,531"
-Cundinamarca,Susa,"6,614"
-Cundinamarca,Sutatausa,"1,811"
-Cundinamarca,Tabio,"13,873"
-Cundinamarca,Tausa,"1,099"
-Cundinamarca,Tena,863
-Cundinamarca,Tenjo,"9,605"
-Cundinamarca,Tibacuy,527
-Cundinamarca,Tibirita,494
-Cundinamarca,Tocaima,"11,073"
-Cundinamarca,Tocancipá,"14,449"
-Cundinamarca,Topaipí,821
-Cundinamarca,Ubalá,"1,283"
-Cundinamarca,Ubaque,879
-Cundinamarca,Villa de San Diego de Ubate,"25,532"
-Cundinamarca,Une,"4,718"
-Cundinamarca,Útica,"2,750"
-Cundinamarca,Vergara,"1,565"
-Cundinamarca,Vianí,"1,349"
-Cundinamarca,Villagómez,627
-Cundinamarca,Villapinzón,"6,759"
-Cundinamarca,Villeta,"16,403"
-Cundinamarca,Viotá,"4,389"
-Cundinamarca,Yacopí,"4,046"
-Cundinamarca,Zipacón,"2,156"
-Cundinamarca,Zipaquirá,"111,025"
-Chocó,Quibdó,"108,622"
-Chocó,Acandí,"5,269"
-Chocó,Alto Baudo,"10,192"
-Chocó,Atrato,"3,717"
-Chocó,Bagadó,"2,340"
-Chocó,Bahía Solano,"4,948"
-Chocó,Bajo Baudó,"3,313"
-Chocó,Bojaya,"5,142"
-Chocó,El Cantón del San Pablo,"3,690"
-Chocó,Carmen del Darien,"1,358"
-Chocó,Cértegui,"6,429"
-Chocó,Condoto,"10,577"
-Chocó,El Carmen de Atrato,"7,122"
-Chocó,El Litoral del San Juan,"1,410"
-Chocó,Istmina,"20,448"
-Chocó,Juradó,"1,603"
-Chocó,Lloró,"3,505"
-Chocó,Medio Atrato,"1,174"
-Chocó,Medio Baudó,654
-Chocó,Medio San Juan,"6,168"
-Chocó,Nóvita,"3,259"
-Chocó,Nuquí,"3,870"
-Chocó,Río Iro,"1,657"
-Chocó,Río Quito,"2,666"
-Chocó,Riosucio(2),"8,592"
-Chocó,San José del Palmar,"1,125"
-Chocó,Sipí,358
-Chocó,Tadó,"12,414"
-Chocó,Unguía,"4,784"
-Chocó,Unión Panamericana,"4,409"
-Huila,Neiva,"326,263"
-Huila,Acevedo,"6,691"
-Huila,Agrado,"5,421"
-Huila,Aipe,"17,492"
-Huila,Algeciras,"15,643"
-Huila,Altamira,"3,012"
-Huila,Baraya,"5,134"
-Huila,Campoalegre,"26,289"
-Huila,Colombia,"2,582"
-Huila,Elías,"1,282"
-Huila,Garzón,"44,344"
-Huila,Gigante,"18,681"
-Huila,Guadalupe,"5,181"
-Huila,Hobo,"5,397"
-Huila,Iquira,"2,393"
-Huila,Isnos,"6,062"
-Huila,La Argentina,"5,069"
-Huila,La Plata,"27,146"
-Huila,Nátaga,"2,242"
-Huila,Oporapa,"4,083"
-Huila,Paicol,"2,505"
-Huila,Palermo,"16,378"
-Huila,Palestina,"2,146"
-Huila,Pital,"5,220"
-Huila,Pitalito,"77,504"
-Huila,Rivera,"10,973"
-Huila,Saladoblanco,"2,873"
-Huila,San Agustín,"11,626"
-Huila,Santa María,"3,283"
-Huila,Suaza,"4,589"
-Huila,Tarqui,"5,160"
-Huila,Tesalia,"5,459"
-Huila,Tello,"6,803"
-Huila,Teruel,"4,428"
-Huila,Timaná,"7,432"
-Huila,Villavieja,"2,460"
-Huila,Yaguará,"7,781"
-La Guajira,Riohacha,"236,927"
-La Guajira,Albania,"13,737"
-La Guajira,Barrancas,"18,562"
-La Guajira,Dibulla,"5,753"
-La Guajira,Distracción,"5,551"
-La Guajira,El Molino,"6,158"
-La Guajira,Fonseca,"22,282"
-La Guajira,Hatonuevo,"15,116"
-La Guajira,La Jagua del Pilar,"2,336"
-La Guajira,Maicao,"111,150"
-La Guajira,Manaure,"48,602"
-La Guajira,San Juan del Cesar,"25,355"
-La Guajira,Uribia,"13,389"
-La Guajira,Urumita,"11,082"
-La Guajira,Villanueva,"19,655"
-Magdalena,Santa Marta,"482,721"
-Magdalena,Algarrobo,"8,547"
-Magdalena,Aracataca,"28,680"
-Magdalena,Ariguaní,"20,237"
-Magdalena,Cerro San Antonio,"4,395"
-Magdalena,Chivolo,"10,816"
-Magdalena,Ciénaga,"100,171"
-Magdalena,Concordia,"4,236"
-Magdalena,El Banco,"35,743"
-Magdalena,El Piñon,"6,197"
-Magdalena,El Retén,"16,813"
-Magdalena,Fundación,"55,842"
-Magdalena,Guamal,"7,932"
-Magdalena,Nueva Granada,"8,606"
-Magdalena,Pedraza,"2,517"
-Magdalena,Pijiño del Carmen,"8,284"
-Magdalena,Pivijay,"19,219"
-Magdalena,Plato,"46,384"
-Magdalena,Puebloviejo,"12,754"
-Magdalena,Remolino,"5,582"
-Magdalena,Sabanas de San Angel,"4,313"
-Magdalena,Salamina,"4,344"
-Magdalena,San Sebastián de Buenavista,"5,857"
-Magdalena,San Zenón,"2,085"
-Magdalena,Santa Ana,"13,257"
-Magdalena,Santa Bárbara de Pinto,"7,589"
-Magdalena,Sitionuevo,"16,001"
-Magdalena,Tenerife,"6,265"
-Magdalena,Zapayán,"3,671"
-Magdalena,Zona Bananera,"5,063"
-Meta,Villavicencio,"482,045"
-Meta,Acacías,"60,918"
-Meta,Barranca de Upía,"2,991"
-Meta,Cabuyaro,"1,777"
-Meta,Castilla la Nueva,"5,191"
-Meta,Cubarral,"4,053"
-Meta,Cumaral,"12,487"
-Meta,El Calvario,806
-Meta,El Castillo,"2,101"
-Meta,El Dorado,"1,486"
-Meta,Fuente de Oro,"7,604"
-Meta,Granada,"54,418"
-Meta,Guamal,"6,906"
-Meta,Mapiripán,"1,410"
-Meta,Mesetas,"3,830"
-Meta,La Macarena,"4,582"
-Meta,Uribe,"4,082"
-Meta,Lejanías,"4,447"
-Meta,Puerto Concordia,"10,828"
-Meta,Puerto Gaitán,"7,911"
-Meta,Puerto López,"22,790"
-Meta,Puerto Lleras,"2,947"
-Meta,Puerto Rico,"5,138"
-Meta,Restrepo,"7,520"
-Meta,San Carlos de Guaroa,"4,942"
-Meta,San Juan de Arama,"3,933"
-Meta,San Juanito,830
-Meta,San Martín,"22,609"
-Meta,Vistahermosa,"9,545"
-Nariño,Pasto,"376,456"
-Nariño,Albán,"8,357"
-Nariño,Aldana,"1,278"
-Nariño,Ancuyá,"1,635"
-Nariño,Arboleda,"1,142"
-Nariño,Barbacoas,"17,002"
-Nariño,Belén,"2,989"
-Nariño,Buesaco,"6,374"
-Nariño,Colón,"1,641"
-Nariño,Consaca,"1,812"
-Nariño,Contadero,"2,386"
-Nariño,Córdoba,"2,375"
-Nariño,Cuaspud,"2,405"
-Nariño,Cumbal,"8,792"
-Nariño,Cumbitara,"1,880"
-Nariño,Chachagüí,"7,285"
-Nariño,El Charco,"10,852"
-Nariño,El Peñol,"1,046"
-Nariño,El Rosario,"3,338"
-Nariño,El Tablón de Gómez,910
-Nariño,El Tambo,"5,304"
-Nariño,Funes,"1,977"
-Nariño,Guachucal,"2,973"
-Nariño,Guaitarilla,"4,253"
-Nariño,Gualmatán,"2,245"
-Nariño,Iles,"1,982"
-Nariño,Imués,564
-Nariño,Ipiales,"105,875"
-Nariño,La Cruz,"6,656"
-Nariño,La Florida,"1,808"
-Nariño,La Llanada,"1,817"
-Nariño,La Tola,"10,240"
-Nariño,La Unión,"10,786"
-Nariño,Leiva,"4,612"
-Nariño,Linares,"2,421"
-Nariño,Los Andes,"8,068"
-Nariño,Magüi,"4,932"
-Nariño,Mallama,"1,196"
-Nariño,Mosquera,"6,195"
-Nariño,Nariño,"3,792"
-Nariño,Olaya Herrera,"10,082"
-Nariño,Ospina,"2,534"
-Nariño,Francisco Pizarro,"8,129"
-Nariño,Policarpa,"3,143"
-Nariño,Potosí,"2,152"
-Nariño,Providencia,"5,661"
-Nariño,Puerres,"3,066"
-Nariño,Pupiales,"6,105"
-Nariño,Ricaurte,"2,603"
-Nariño,Roberto Payán,"1,311"
-Nariño,Samaniego,"18,740"
-Nariño,Sandoná,"12,021"
-Nariño,San Bernardo,"4,410"
-Nariño,San Lorenzo,"2,886"
-Nariño,San Pablo,"4,037"
-Nariño,San Pedro de Cartago,739
-Nariño,Santa Bárbara,"3,000"
-Nariño,Santacruz,"6,984"
-Nariño,Sapuyes,"1,386"
-Nariño,Taminango,"5,287"
-Nariño,Tangua,"2,343"
-Nariño,San Andres de Tumaco,"117,529"
-Nariño,Túquerres,"17,584"
-Nariño,Yacuanquer,"2,886"
-Norte de Santander,Cúcuta,"640,462"
-Norte de Santander,Abrego,"17,568"
-Norte de Santander,Arboledas,"2,516"
-Norte de Santander,Bochalema,"2,537"
-Norte de Santander,Bucarasica,599
-Norte de Santander,Cácota,531
-Norte de Santander,Cachirá,"1,730"
-Norte de Santander,Chinácota,"11,403"
-Norte de Santander,Chitagá,"3,684"
-Norte de Santander,Convención,"4,999"
-Norte de Santander,Cucutilla,"1,213"
-Norte de Santander,Durania,"1,781"
-Norte de Santander,El Carmen,"2,283"
-Norte de Santander,El Tarra,"4,542"
-Norte de Santander,El Zulia,"14,154"
-Norte de Santander,Gramalote,"2,689"
-Norte de Santander,Hacarí,"1,244"
-Norte de Santander,Herrán,"1,018"
-Norte de Santander,Labateca,"1,458"
-Norte de Santander,La Esperanza,"1,773"
-Norte de Santander,La Playa,639
-Norte de Santander,Los Patios,"76,140"
-Norte de Santander,Lourdes,"1,221"
-Norte de Santander,Mutiscua,525
-Norte de Santander,Ocaña,"90,620"
-Norte de Santander,Pamplona,"55,366"
-Norte de Santander,Pamplonita,912
-Norte de Santander,Puerto Santander,"9,837"
-Norte de Santander,Ragonvalia,"2,911"
-Norte de Santander,Salazar,"3,756"
-Norte de Santander,San Calixto,"2,217"
-Norte de Santander,San Cayetano,"2,195"
-Norte de Santander,Santiago,"1,391"
-Norte de Santander,Sardinata,"9,255"
-Norte de Santander,Silos,990
-Norte de Santander,Teorama,"2,806"
-Norte de Santander,Tibú,"13,955"
-Norte de Santander,Toledo,"4,509"
-Norte de Santander,Villa Caro,"1,986"
-Norte de Santander,Villa del Rosario,"88,649"
-Quindio,Armenia,"291,692"
-Quindio,Buenavista,"1,187"
-Quindio,Calarca,"60,343"
-Quindio,Circasia,"22,980"
-Quindio,Córdoba,"2,997"
-Quindio,Filandia,"7,262"
-Quindio,Génova,"3,872"
-Quindio,La Tebaida,"41,515"
-Quindio,Montenegro,"34,100"
-Quindio,Pijao,"3,654"
-Quindio,Quimbaya,"29,407"
-Quindio,Salento,"3,810"
-Risaralda,Pereira,"401,241"
-Risaralda,Apía,"8,435"
-Risaralda,Balboa,"1,854"
-Risaralda,Belén de Umbría,"13,173"
-Risaralda,Dosquebradas,"194,380"
-Risaralda,Guática,"3,981"
-Risaralda,La Celia,"3,438"
-Risaralda,La Virginia,"31,665"
-Risaralda,Marsella,"13,725"
-Risaralda,Mistrató,"4,323"
-Risaralda,Pueblo Rico,"3,468"
-Risaralda,Quinchía,"8,271"
-Risaralda,Santa Rosa de Cabal,"60,917"
-Risaralda,Santuario,"7,336"
-Santander,Bucaramanga,"522,224"
-Santander,Aguada,220
-Santander,Albania,627
-Santander,Aratoca,"2,458"
-Santander,Barbosa,"23,550"
-Santander,Barichara,"2,617"
-Santander,Barrancabermeja,"173,380"
-Santander,Betulia,"1,109"
-Santander,Bolívar,"1,300"
-Santander,Cabrera,668
-Santander,California,"1,098"
-Santander,Capitanejo,"3,080"
-Santander,Carcasí,663
-Santander,Cepitá,529
-Santander,Cerrito,"2,598"
-Santander,Charalá,"5,753"
-Santander,Charta,594
-Santander,Chima,864
-Santander,Chipatá,697
-Santander,Cimitarra,"18,994"
-Santander,Concepción,"2,558"
-Santander,Confines,406
-Santander,Contratación,"2,645"
-Santander,Coromoro,"1,069"
-Santander,Curití,"3,624"
-Santander,El Carmen de Chucurí,"6,012"
-Santander,El Guacamayo,426
-Santander,El Peñón,898
-Santander,El Playón,"5,622"
-Santander,Encino,463
-Santander,Enciso,642
-Santander,Florián,"1,498"
-Santander,Floridablanca,"257,318"
-Santander,Galán,589
-Santander,Gambita,386
-Santander,Girón,"170,872"
-Santander,Guaca,"2,211"
-Santander,Guadalupe,"1,505"
-Santander,Guapotá,540
-Santander,Guavatá,722
-Santander,Güepsa,"1,908"
-Santander,Hato,824
-Santander,Jesús María,868
-Santander,Jordán,54
-Santander,La Belleza,"1,935"
-Santander,Landázuri,"3,734"
-Santander,La Paz,838
-Santander,Lebríja,"19,683"
-Santander,Los Santos,"1,956"
-Santander,Macaravita,288
-Santander,Málaga,"15,407"
-Santander,Matanza,"1,086"
-Santander,Mogotes,"3,891"
-Santander,Molagavita,768
-Santander,Ocamonte,670
-Santander,Oiba,"5,714"
-Santander,Onzaga,"1,236"
-Santander,Palmar,"1,016"
-Santander,Palmas del Socorro,692
-Santander,Páramo,"1,433"
-Santander,Piedecuesta,"128,223"
-Santander,Pinchote,"1,590"
-Santander,Puente Nacional,"5,658"
-Santander,Puerto Parra,"3,781"
-Santander,Puerto Wilches,"16,953"
-Santander,Rionegro,"6,836"
-Santander,Sabana de Torres,"12,283"
-Santander,San Andrés,"2,586"
-Santander,San Benito,479
-Santander,San Gil,"40,766"
-Santander,San Joaquín,645
-Santander,San José de Miranda,874
-Santander,San Miguel,381
-Santander,San Vicente de Chucurí,"13,779"
-Santander,Santa Bárbara,405
-Santander,Santa Helena del Opón,617
-Santander,Simacota,"2,500"
-Santander,Socorro,"25,451"
-Santander,Suaita,"1,824"
-Santander,Sucre,400
-Santander,Suratá,688
-Santander,Tona,567
-Santander,Valle de San José,"1,966"
-Santander,Vélez,"10,281"
-Santander,Vetas,"1,343"
-Santander,Villanueva,"3,628"
-Santander,Zapatoca,"5,661"
-Sucre,Sincelejo,"265,350"
-Sucre,Buenavista,"8,235"
-Sucre,Caimito,"3,426"
-Sucre,Coloso,"3,043"
-Sucre,Corozal,"52,060"
-Sucre,Coveñas,"3,964"
-Sucre,Chalán,"2,747"
-Sucre,El Roble,"4,514"
-Sucre,Galeras,"12,794"
-Sucre,Guaranda,"6,772"
-Sucre,La Unión,"6,210"
-Sucre,Los Palmitos,"9,050"
-Sucre,Majagual,"11,232"
-Sucre,Morroa,"6,818"
-Sucre,Ovejas,"12,016"
-Sucre,Palmito,"5,556"
-Sucre,Sampués,"21,303"
-Sucre,San Benito Abad,"5,305"
-Sucre,San Juan de Betulia,"6,549"
-Sucre,San Marcos,"34,502"
-Sucre,San Onofre,"26,876"
-Sucre,San Pedro,"11,146"
-Sucre,San Luis de Sincé,"26,218"
-Sucre,Sucre,"8,312"
-Sucre,Santiago de Tolú,"28,405"
-Sucre,Tolú Viejo,"5,460"
-Tolima,Ibagué,"533,361"
-Tolima,Alpujarra,"1,867"
-Tolima,Alvarado,"3,396"
-Tolima,Ambalema,"5,120"
-Tolima,Anzoátegui,"2,113"
-Tolima,Armero,"8,314"
-Tolima,Ataco,"5,339"
-Tolima,Cajamarca,"10,021"
-Tolima,Carmen de Apicalá,"6,948"
-Tolima,Casabianca,"1,458"
-Tolima,Chaparral,"26,800"
-Tolima,Coello,"1,918"
-Tolima,Coyaima,"4,856"
-Tolima,Cunday,"2,256"
-Tolima,Dolores,"3,197"
-Tolima,Espinal,"58,494"
-Tolima,Falan,"1,641"
-Tolima,Flandes,"25,273"
-Tolima,Fresno,"14,901"
-Tolima,Guamo,"16,747"
-Tolima,Herveo,"2,019"
-Tolima,Honda,"23,575"
-Tolima,Icononzo,"3,446"
-Tolima,Lérida,"14,061"
-Tolima,Líbano,"24,967"
-Tolima,Mariquita,"24,312"
-Tolima,Melgar,"30,338"
-Tolima,Murillo,"1,479"
-Tolima,Natagaima,"15,156"
-Tolima,Ortega,"8,142"
-Tolima,Palocabildo,"2,852"
-Tolima,Piedras,"1,799"
-Tolima,Planadas,"7,679"
-Tolima,Prado,"3,218"
-Tolima,Purificación,"17,984"
-Tolima,Rioblanco,"4,694"
-Tolima,Roncesvalles,"1,428"
-Tolima,Rovira,"9,923"
-Tolima,Saldaña,"8,659"
-Tolima,San Antonio,"4,183"
-Tolima,San Luis,"3,704"
-Tolima,Santa Isabel,"2,286"
-Tolima,Suárez,"2,184"
-Tolima,Valle de San Juan,"2,957"
-Tolima,Venadillo,"14,436"
-Tolima,Villahermosa,"3,696"
-Tolima,Villarrica,"2,156"
-Valle del Cauca,Cali,"2,383,392"
-Valle del Cauca,Alcalá,"11,937"
-Valle del Cauca,Andalucía,"14,710"
-Valle del Cauca,Ansermanuevo,"13,249"
-Valle del Cauca,Argelia,"3,106"
-Valle del Cauca,Bolívar,"3,377"
-Valle del Cauca,Buenaventura,"381,746"
-Valle del Cauca,Guadalajara de Buga,"98,910"
-Valle del Cauca,Bugalagrande,"11,918"
-Valle del Cauca,Caicedonia,"24,471"
-Valle del Cauca,Calima,"9,400"
-Valle del Cauca,Candelaria,"23,426"
-Valle del Cauca,Cartago,"131,748"
-Valle del Cauca,Dagua,"8,105"
-Valle del Cauca,El Águila,"2,742"
-Valle del Cauca,El Cairo,"2,804"
-Valle del Cauca,El Cerrito,"35,909"
-Valle del Cauca,El Dovio,"4,975"
-Valle del Cauca,Florida,"43,323"
-Valle del Cauca,Ginebra,"10,491"
-Valle del Cauca,Guacarí,"21,057"
-Valle del Cauca,Jamundí,"84,976"
-Valle del Cauca,La Cumbre,"2,541"
-Valle del Cauca,La Unión,"30,756"
-Valle del Cauca,La Victoria,"9,431"
-Valle del Cauca,Obando,"11,315"
-Valle del Cauca,Palmira,"247,541"
-Valle del Cauca,Pradera,"49,382"
-Valle del Cauca,Restrepo,"9,184"
-Valle del Cauca,Riofrío,"4,810"
-Valle del Cauca,Roldanillo,"24,763"
-Valle del Cauca,San Pedro,"7,496"
-Valle del Cauca,Sevilla,"34,357"
-Valle del Cauca,Toro,"9,295"
-Valle del Cauca,Trujillo,"8,235"
-Valle del Cauca,Tuluá,"187,121"
-Valle del Cauca,Ulloa,"2,683"
-Valle del Cauca,Versalles,"2,865"
-Valle del Cauca,Vijes,"7,380"
-Valle del Cauca,Yotoco,"8,445"
-Valle del Cauca,Yumbo,"107,757"
-Valle del Cauca,Zarzal,"32,623"
-Arauca,Arauca,"78,913"
-Arauca,Arauquita,"19,489"
-Arauca,Cravo Norte,"2,303"
-Arauca,Fortul,"13,738"
-Arauca,Puerto Rondón,"2,867"
-Arauca,Saravena,"32,703"
-Arauca,Tame,"20,292"
-Casanare,Yopal,"130,923"
-Casanare,Aguazul,"31,017"
-Casanare,Chameza,"1,701"
-Casanare,Hato Corozal,"5,608"
-Casanare,La Salina,633
-Casanare,Maní,"7,543"
-Casanare,Monterrey,"12,877"
-Casanare,Nunchía,"2,165"
-Casanare,Orocué,"5,355"
-Casanare,Paz de Ariporo,"19,306"
-Casanare,Pore,"3,990"
-Casanare,Recetor,"1,623"
-Casanare,Sabanalarga,"1,480"
-Casanare,Sácama,"1,479"
-Casanare,San Luis de Palenque,"2,358"
-Casanare,Támara,"2,340"
-Casanare,Tauramena,"15,698"
-Casanare,Trinidad,"8,875"
-Casanare,Villanueva,"20,973"
-Putumayo,Mocoa,"36,052"
-Putumayo,Colón,"3,358"
-Putumayo,Orito,"25,170"
-Putumayo,Puerto Asís,"34,061"
-Putumayo,Puerto Caicedo,"5,337"
-Putumayo,Puerto Guzmán,"4,928"
-Putumayo,Leguízamo,"9,476"
-Putumayo,Sibundoy,"10,452"
-Putumayo,San Francisco,"4,230"
-Putumayo,San Miguel,"6,070"
-Putumayo,Santiago,"4,469"
-Putumayo,Valle del Guamuez,"20,771"
-Putumayo,Villagarzón,"11,232"
-Archipiélago de San Andrés,San Andrés,"53,691"
-Archipiélago de San Andrés,Providencia,"2,303"
-Amazonas,Leticia,"26,604"
-Amazonas,El Encanto (CD),0
-Amazonas,La Chorrera (CD),0
-Amazonas,La Pedrera (CD),0
-Amazonas,La Victoria (CD),0
-Amazonas,Miriti - Paraná (CD),0
-Amazonas,Puerto Alegría (CD),0
-Amazonas,Puerto Arica (CD),0
-Amazonas,Puerto Nariño,"2,208"
-Amazonas,Puerto Santander (CD),0
-Amazonas,Tarapacá (CD),0
-Guainía,Inírida,"12,961"
-Guainía,Barranco Minas (CD),0
-Guainía,Mapiripana (CD),0
-Guainía,San Felipe (CD),0
-Guainía,Puerto Colombia (CD),0
-Guainía,La Guadalupe (CD),0
-Guainía,Cacahual (CD),0
-Guainía,Pana Pana (CD),0
-Guainía,Morichal (CD),0
-Guaviare,San José del Guaviare,"46,736"
-Guaviare,Calamar,"5,321"
-Guaviare,El Retorno,"12,463"
-Guaviare,Miraflores,"3,661"
-Vaupés,Mitú,"16,574"
-Vaupés,Caruru,687
-Vaupés,Pacoa (CD),0
-Vaupés,Taraira,142
-Vaupés,Papunaua (CD),0
-Vaupés,Yavaraté (CD),0
-Vichada,Puerto Carreño,"13,735"
-Vichada,La Primavera,"9,319"
-Vichada,Santa Rosalía,"2,750"
-Vichada,Cumaribo,"7,384"
-Total Nacional,Total Nacional,"37,816,261"
+DPNOM,MPIO,2017,DPMP
+Antioquia,Medellín,"2,479,990",05001
+Antioquia,Abejorral,"6,765",05002
+Antioquia,Abriaquí,724,05004
+Antioquia,Alejandría,"1,804",05021
+Antioquia,Amagá,"17,174",05030
+Antioquia,Amalfi,"12,477",05031
+Antioquia,Andes,"23,365",05034
+Antioquia,Angelópolis,"5,461",05036
+Antioquia,Angostura,"1,775",05038
+Antioquia,Anorí,"7,042",05040
+Antioquia,Santafé de Antioquia,"15,974",05042
+Antioquia,Anza,"1,275",05044
+Antioquia,Apartadó,"164,190",05045
+Antioquia,Arboletes,"17,889",05051
+Antioquia,Argelia,"2,472",05055
+Antioquia,Armenia,"1,536",05059
+Antioquia,Barbosa,"23,857",05079
+Antioquia,Belmira,"1,978",05086
+Antioquia,Bello,"467,444",05088
+Antioquia,Betania,"3,853",05091
+Antioquia,Betulia,"5,915",05093
+Antioquia,Ciudad Bolívar,"16,177",05101
+Antioquia,Briceño,"2,588",05107
+Antioquia,Buriticá,"1,587",05113
+Antioquia,Cáceres,"9,204",05120
+Antioquia,Caicedo,"1,657",05125
+Antioquia,Caldas,"63,051",05129
+Antioquia,Campamento,"2,904",05134
+Antioquia,Cañasgordas,"6,915",05138
+Antioquia,Caracolí,"3,164",05142
+Antioquia,Caramanta,"3,045",05145
+Antioquia,Carepa,"45,619",05147
+Antioquia,El Carmen de Viboral,"31,675",05148
+Antioquia,Carolina,"2,910",05150
+Antioquia,Caucasia,"97,386",05154
+Antioquia,Chigorodó,"70,264",05172
+Antioquia,Cisneros,"7,519",05190
+Antioquia,Cocorná,"3,967",05197
+Antioquia,Concepción,"1,414",05206
+Antioquia,Concordia,"8,642",05209
+Antioquia,Copacabana,"62,881",05212
+Antioquia,Dabeiba,"8,966",05234
+Antioquia,Don Matías,"15,311",05237
+Antioquia,Ebéjico,"2,242",05240
+Antioquia,El Bagre,"26,065",05250
+Antioquia,Entrerrios,"5,377",05264
+Antioquia,Envigado,"225,266",05266
+Antioquia,Fredonia,"8,575",05282
+Antioquia,Frontino,"6,774",05284
+Antioquia,Giraldo,"1,309",05306
+Antioquia,Girardota,"34,056",05308
+Antioquia,Gómez Plata,"6,088",05310
+Antioquia,Granada,"3,633",05313
+Antioquia,Guadalupe,"2,131",05315
+Antioquia,Guarne,"18,464",05318
+Antioquia,Guatapé,"4,135",05321
+Antioquia,Heliconia,"3,054",05347
+Antioquia,Hispania,"3,249",05353
+Antioquia,Itagui,"250,967",05360
+Antioquia,Ituango,"5,808",05361
+Antioquia,Jardín,"7,221",05364
+Antioquia,Jericó,"8,573",05368
+Antioquia,La Ceja,"47,101",05376
+Antioquia,La Estrella,"37,000",05380
+Antioquia,La Pintada,"5,729",05390
+Antioquia,La Unión,"10,943",05400
+Antioquia,Liborina,"1,750",05411
+Antioquia,Maceo,"2,828",05425
+Antioquia,Marinilla,"43,570",05440
+Antioquia,Montebello,"2,011",05467
+Antioquia,Murindó,954,05475
+Antioquia,Mutatá,"5,781",05480
+Antioquia,Nariño,"2,505",05483
+Antioquia,Necoclí,"16,274",05490
+Antioquia,Nechí,"14,912",05495
+Antioquia,Olaya,262,05501
+Antioquia,Peñol,"9,264",05541
+Antioquia,Peque,"2,128",05543
+Antioquia,Pueblorrico,"3,503",05576
+Antioquia,Puerto Berrío,"43,736",05579
+Antioquia,Puerto Nare,"8,261",05585
+Antioquia,Puerto Triunfo,"6,453",05591
+Antioquia,Remedios,"11,206",05604
+Antioquia,Retiro,"10,330",05607
+Antioquia,Rionegro,"81,591",05615
+Antioquia,Sabanalarga,"2,954",05628
+Antioquia,Sabaneta,"42,519",05631
+Antioquia,Salgar,"8,960",05642
+Antioquia,San Andrés de Cuerquía,"2,532",05647
+Antioquia,San Carlos,"6,023",05649
+Antioquia,San Francisco,"2,458",05652
+Antioquia,San Jerónimo,"4,185",05656
+Antioquia,San José de La Montaña,"2,226",05658
+Antioquia,San Juan de Urabá,"8,390",05659
+Antioquia,San Luis,"4,697",05660
+Antioquia,San Pedro,"14,611",05664
+Antioquia,San Pedro de Uraba,"14,547",05665
+Antioquia,San Rafael,"6,251",05667
+Antioquia,San Roque,"6,341",05670
+Antioquia,San Vicente,"7,405",05674
+Antioquia,Santa Bárbara,"10,274",05679
+Antioquia,Santa Rosa de Osos,"19,375",05686
+Antioquia,Santo Domingo,"1,943",05690
+Antioquia,El Santuario,"23,472",05697
+Antioquia,Segovia,"32,697",05736
+Antioquia,Sonson,"14,988",05756
+Antioquia,Sopetrán,"7,101",05761
+Antioquia,Támesis,"6,494",05789
+Antioquia,Tarazá,"28,835",05790
+Antioquia,Tarso,"4,015",05792
+Antioquia,Titiribí,"8,290",05809
+Antioquia,Toledo,"1,016",05819
+Antioquia,Turbo,"67,148",05837
+Antioquia,Uramita,"2,613",05842
+Antioquia,Urrao,"17,893",05847
+Antioquia,Valdivia,"6,908",05854
+Antioquia,Valparaíso,"3,374",05856
+Antioquia,Vegachí,"5,515",05858
+Antioquia,Venecia,"6,910",05861
+Antioquia,Vigía del Fuerte,"2,105",05873
+Antioquia,Yalí,"3,260",05885
+Antioquia,Yarumal,"31,286",05887
+Antioquia,Yolombó,"7,438",05890
+Antioquia,Yondó,"9,834",05893
+Antioquia,Zaragoza,"14,291",05895
+Atlántico,Barranquilla,"1,224,374",08001
+Atlántico,Baranoa,"49,604",08078
+Atlántico,Campo de La Cruz,"13,593",08137
+Atlántico,Candelaria,"9,657",08141
+Atlántico,Galapa,"40,928",08296
+Atlántico,Juan de Acosta,"11,794",08372
+Atlántico,Luruaco,"13,899",08421
+Atlántico,Malambo,"118,070",08433
+Atlántico,Manatí,"14,559",08436
+Atlántico,Palmar de Varela,"24,995",08520
+Atlántico,Piojó,"2,459",08549
+Atlántico,Polonuevo,"12,763",08558
+Atlántico,Ponedera,"11,547",08560
+Atlántico,Puerto Colombia,"22,583",08573
+Atlántico,Repelón,"18,211",08606
+Atlántico,Sabanagrande,"31,965",08634
+Atlántico,Sabanalarga,"82,757",08638
+Atlántico,Santa Lucía,"10,997",08675
+Atlántico,Santo Tomás,"24,692",08685
+Atlántico,Soledad,"648,373",08758
+Atlántico,Suan,"8,257",08770
+Atlántico,Tubará,"6,556",08832
+Atlántico,Usiacurí,"8,457",08849
+"Bogotá, D.C.","Bogotá, D.C.","8,063,991",11001
+Bolívar,Cartagena,"983,629",13001
+Bolívar,Achí,"4,280",13006
+Bolívar,Altos del Rosario,"8,648",13030
+Bolívar,Arenal,"5,460",13042
+Bolívar,Arjona,"59,175",13052
+Bolívar,Arroyohondo,"6,912",13062
+Bolívar,Barranco de Loba,"6,449",13074
+Bolívar,Calamar,"13,577",13140
+Bolívar,Cantagallo,"4,606",13160
+Bolívar,Cicuco,"7,641",13188
+Bolívar,Córdoba,"3,069",13212
+Bolívar,Clemencia,"10,799",13222
+Bolívar,El Carmen de Bolívar,"61,785",13244
+Bolívar,El Guamo,"4,394",13248
+Bolívar,El Peñón,"4,124",13268
+Bolívar,Hatillo de Loba,"3,566",13300
+Bolívar,Magangué,"86,210",13430
+Bolívar,Mahates,"10,123",13433
+Bolívar,Margarita,"1,777",13440
+Bolívar,María La Baja,"21,873",13442
+Bolívar,Montecristo,"11,789",13458
+Bolívar,Mompós,"26,468",13468
+Bolívar,Morales,"6,048",13473
+Bolívar,Norosí (1),"2,137",13490
+Bolívar,Pinillos,"2,747",13549
+Bolívar,Regidor,"4,699",13580
+Bolívar,Río Viejo (1)(3),"10,049",13600
+Bolívar,San Cristóbal,"5,686",13620
+Bolívar,San Estanislao,"12,178",13647
+Bolívar,San Fernando,"2,979",13650
+Bolívar,San Jacinto,"20,975",13654
+Bolívar,San Jacinto del Cauca,"4,014",13655
+Bolívar,San Juan Nepomuceno,"26,934",13657
+Bolívar,San Martín de Loba,"7,759",13667
+Bolívar,San Pablo,"31,075",13670
+Bolívar,Santa Catalina,"4,849",13673
+Bolívar,Santa Rosa,"15,156",13683
+Bolívar,Santa Rosa del Sur,"24,553",13688
+Bolívar,Simití,"10,588",13744
+Bolívar,Soplaviento,"8,308",13760
+Bolívar,Talaigua Nuevo,"5,443",13780
+Bolívar,Tiquisio,"6,431",13810
+Bolívar,Turbaco,"68,957",13836
+Bolívar,Turbaná,"14,114",13838
+Bolívar,Villanueva,"18,721",13873
+Bolívar,Zambrano,"10,757",13894
+Boyacá,Tunja,"187,689",15001
+Boyacá,Almeida,266,15022
+Boyacá,Aquitania,"6,372",15047
+Boyacá,Arcabuco,"1,983",15051
+Boyacá,Belén,"3,643",15087
+Boyacá,Berbeo,546,15090
+Boyacá,Betéitiva,381,15092
+Boyacá,Boavita,"2,931",15097
+Boyacá,Boyacá,397,15104
+Boyacá,Briceño,541,15106
+Boyacá,Buenavista,842,15109
+Boyacá,Busbanzá,475,15114
+Boyacá,Caldas,247,15131
+Boyacá,Campohermoso,970,15135
+Boyacá,Cerinza,"1,544",15162
+Boyacá,Chinavita,"1,221",15172
+Boyacá,Chiquinquirá,"57,742",15176
+Boyacá,Chiscas,881,15180
+Boyacá,Chita,"2,038",15183
+Boyacá,Chitaraque,"1,126",15185
+Boyacá,Chivatá,"2,741",15187
+Boyacá,Ciénega,"1,327",15189
+Boyacá,Cómbita,"1,157",15204
+Boyacá,Coper,766,15212
+Boyacá,Corrales,"1,548",15215
+Boyacá,Covarachía,517,15218
+Boyacá,Cubará,"2,027",15223
+Boyacá,Cucaita,"1,941",15224
+Boyacá,Cuítiva,217,15226
+Boyacá,Chíquiza,92,15232
+Boyacá,Chivor,502,15236
+Boyacá,Duitama,"103,552",15238
+Boyacá,El Cocuy,"2,773",15244
+Boyacá,El Espino,"1,326",15248
+Boyacá,Firavitoba,"2,122",15272
+Boyacá,Floresta,"1,822",15276
+Boyacá,Gachantivá,358,15293
+Boyacá,Gameza,"1,557",15296
+Boyacá,Garagoa,"13,850",15299
+Boyacá,Guacamayas,484,15317
+Boyacá,Guateque,"7,179",15322
+Boyacá,Guayatá,"1,283",15325
+Boyacá,Güicán,"1,714",15332
+Boyacá,Iza,"1,049",15362
+Boyacá,Jenesano,"2,026",15367
+Boyacá,Jericó,641,15368
+Boyacá,Labranzagrande,"1,167",15377
+Boyacá,La Capilla,955,15380
+Boyacá,La Victoria,880,15401
+Boyacá,La Uvita,972,15403
+Boyacá,Villa de Leyva,"10,611",15407
+Boyacá,Macanal,"1,130",15425
+Boyacá,Maripí,973,15442
+Boyacá,Miraflores,"5,782",15455
+Boyacá,Mongua,"1,600",15464
+Boyacá,Monguí,"2,822",15466
+Boyacá,Moniquirá,"10,631",15469
+Boyacá,Motavita,928,15476
+Boyacá,Muzo,"5,319",15480
+Boyacá,Nobsa,"6,552",15491
+Boyacá,Nuevo Colón,"1,341",15494
+Boyacá,Oicatá,306,15500
+Boyacá,Otanche,"4,197",15507
+Boyacá,Pachavita,383,15511
+Boyacá,Páez,"1,170",15514
+Boyacá,Paipa,"19,587",15516
+Boyacá,Pajarito,687,15518
+Boyacá,Panqueba,594,15522
+Boyacá,Pauna,"2,629",15531
+Boyacá,Paya,592,15533
+Boyacá,Paz de Río,"2,892",15537
+Boyacá,Pesca,"1,967",15542
+Boyacá,Pisba,395,15550
+Boyacá,Puerto Boyacá,"38,324",15572
+Boyacá,Quípama,"1,591",15580
+Boyacá,Ramiriquí,"5,024",15599
+Boyacá,Ráquira,"3,591",15600
+Boyacá,Rondón,547,15621
+Boyacá,Saboyá,788,15632
+Boyacá,Sáchica,"1,902",15638
+Boyacá,Samacá,"6,085",15646
+Boyacá,San Eduardo,845,15660
+Boyacá,San José de Pare,"1,076",15664
+Boyacá,San Luis de Gaceno,"1,747",15667
+Boyacá,San Mateo,"1,478",15673
+Boyacá,San Miguel de Sema,488,15676
+Boyacá,San Pablo de Borbur,"1,296",15681
+Boyacá,Santana,"2,357",15686
+Boyacá,Santa María,"2,253",15690
+Boyacá,Santa Rosa de Viterbo,"7,156",15693
+Boyacá,Santa Sofía,708,15696
+Boyacá,Sativanorte,517,15720
+Boyacá,Sativasur,259,15723
+Boyacá,Siachoque,"1,597",15740
+Boyacá,Soatá,"5,217",15753
+Boyacá,Socotá,"1,034",15755
+Boyacá,Socha,"3,860",15757
+Boyacá,Sogamoso,"98,411",15759
+Boyacá,Somondoco,793,15761
+Boyacá,Sora,503,15762
+Boyacá,Sotaquirá,714,15763
+Boyacá,Soracá,748,15764
+Boyacá,Susacón,969,15774
+Boyacá,Sutamarchán,"1,356",15776
+Boyacá,Sutatenza,773,15778
+Boyacá,Tasco,"1,912",15790
+Boyacá,Tenza,"1,231",15798
+Boyacá,Tibaná,"1,604",15804
+Boyacá,Tibasosa,"4,860",15806
+Boyacá,Tinjacá,459,15808
+Boyacá,Tipacoque,844,15810
+Boyacá,Toca,"3,645",15814
+Boyacá,Togüí,763,15816
+Boyacá,Tópaga,"1,422",15820
+Boyacá,Tota,555,15822
+Boyacá,Tununguá,394,15832
+Boyacá,Turmequé,"2,554",15835
+Boyacá,Tuta,"2,741",15837
+Boyacá,Tutazá,195,15839
+Boyacá,Umbita,"1,864",15842
+Boyacá,Ventaquemada,"2,460",15861
+Boyacá,Viracachá,373,15879
+Boyacá,Zetaquira,"1,053",15897
+Caldas,Manizales,"371,345",17001
+Caldas,Aguadas,"11,669",17013
+Caldas,Anserma,"21,715",17042
+Caldas,Aranzazu,"6,581",17050
+Caldas,Belalcázar,"5,062",17088
+Caldas,Chinchiná,"45,926",17174
+Caldas,Filadelfia,"4,179",17272
+Caldas,La Dorada,"69,764",17380
+Caldas,La Merced,"2,230",17388
+Caldas,Manzanares,"9,978",17433
+Caldas,Marmato,"1,043",17442
+Caldas,Marquetalia,"6,534",17444
+Caldas,Marulanda,"1,301",17446
+Caldas,Neira,"16,665",17486
+Caldas,Norcasia,"4,286",17495
+Caldas,Pácora,"5,472",17513
+Caldas,Palestina,"6,848",17524
+Caldas,Pensilvania,"8,489",17541
+Caldas,Riosucio,"19,770",17614
+Caldas,Risaralda,"4,638",17616
+Caldas,Salamina,"9,782",17653
+Caldas,Samaná,"5,161",17662
+Caldas,San José,"1,869",17665
+Caldas,Supía,"13,198",17777
+Caldas,Victoria,"3,644",17867
+Caldas,Villamaría,"48,625",17873
+Caldas,Viterbo,"10,282",17877
+Caquetá,Florencia,"157,038",18001
+Caquetá,Albania,"2,479",18029
+Caquetá,Belén de Los Andaquies,"6,669",18094
+Caquetá,Cartagena del Chairá,"12,746",18150
+Caquetá,Curillo,"6,201",18205
+Caquetá,El Doncello,"14,546",18247
+Caquetá,El Paujil,"10,994",18256
+Caquetá,La Montañita,"5,047",18410
+Caquetá,Milán,"1,878",18460
+Caquetá,Morelia,"1,954",18479
+Caquetá,Puerto Rico,"14,436",18592
+Caquetá,San José del Fragua,"6,380",18610
+Caquetá,San Vicente del Caguán,"44,375",18753
+Caquetá,Solano,"1,951",18756
+Caquetá,Solita,"4,150",18785
+Caquetá,Valparaíso,"3,892",18860
+Cauca,Popayán,"252,570",19001
+Cauca,Almaguer,"1,598",19022
+Cauca,Argelia,"4,066",19050
+Cauca,Balboa,"7,698",19075
+Cauca,Bolívar,"5,289",19100
+Cauca,Buenos Aires,"2,561",19110
+Cauca,Cajibío,"1,755",19130
+Cauca,Caldono,"1,477",19137
+Cauca,Caloto(1)(3),"4,639",19142
+Cauca,Corinto,"13,148",19212
+Cauca,El Tambo,"7,014",19256
+Cauca,Florencia,"1,409",19290
+Cauca,Guachené (1) ,"5,129",19300
+Cauca,Guapi,"18,277",19318
+Cauca,Inzá,"2,297",19355
+Cauca,Jambaló,"1,252",19364
+Cauca,La Sierra,"1,508",19392
+Cauca,La Vega,"3,340",19397
+Cauca,López,"5,973",19418
+Cauca,Mercaderes,"5,200",19450
+Cauca,Miranda,"29,899",19455
+Cauca,Morales,"1,560",19473
+Cauca,Padilla,"4,115",19513
+Cauca,Paez,"2,713",19517
+Cauca,Patía,"13,816",19532
+Cauca,Piamonte,643,19533
+Cauca,Piendamó,"15,191",19548
+Cauca,Puerto Tejada,"40,590",19573
+Cauca,Puracé,"1,701",19585
+Cauca,Rosas,"1,751",19622
+Cauca,San Sebastián,"1,301",19693
+Cauca,Santander de Quilichao,"55,729",19698
+Cauca,Santa Rosa,"1,958",19701
+Cauca,Silvia,"4,344",19743
+Cauca,Sotara,348,19760
+Cauca,Suárez,"3,043",19780
+Cauca,Sucre,"1,472",19785
+Cauca,Timbío,"13,709",19807
+Cauca,Timbiquí,"4,399",19809
+Cauca,Toribio,"1,761",19821
+Cauca,Totoró,"1,971",19824
+Cauca,Villa Rica,"13,061",19845
+Cesar,Valledupar,"405,004",20001
+Cesar,Aguachica,"82,976",20011
+Cesar,Agustín Codazzi,"38,619",20013
+Cesar,Astrea,"10,071",20032
+Cesar,Becerril,"10,390",20045
+Cesar,Bosconia,"35,051",20060
+Cesar,Chimichagua,"11,731",20175
+Cesar,Chiriguaná,"14,647",20178
+Cesar,Curumaní,"19,177",20228
+Cesar,El Copey,"20,850",20238
+Cesar,El Paso,"4,006",20250
+Cesar,Gamarra,"9,693",20295
+Cesar,González,"1,314",20310
+Cesar,La Gloria,"6,256",20383
+Cesar,La Jagua de Ibirico,"19,136",20400
+Cesar,Manaure,"9,792",20443
+Cesar,Pailitas,"13,510",20517
+Cesar,Pelaya,"12,255",20550
+Cesar,Pueblo Bello,"5,719",20570
+Cesar,Río de Oro,"6,164",20614
+Cesar,La Paz,"15,089",20621
+Cesar,San Alberto,"19,078",20710
+Cesar,San Diego,"7,456",20750
+Cesar,San Martín,"9,223",20770
+Cesar,Tamalameque,"5,655",20787
+Córdoba,Montería,"352,388",23001
+Córdoba,Ayapel,"27,679",23068
+Córdoba,Buenavista,"8,586",23079
+Córdoba,Canalete,"4,361",23090
+Córdoba,Cereté,"53,796",23162
+Córdoba,Chimá,"3,227",23168
+Córdoba,Chinú,"24,657",23182
+Córdoba,Ciénaga de Oro,"26,795",23189
+Córdoba,Cotorra,"4,073",23300
+Córdoba,La Apartada,"13,573",23350
+Córdoba,Lorica,"56,275",23417
+Córdoba,Los Córdobas,"4,919",23419
+Córdoba,Momil,"9,649",23464
+Córdoba,Montelíbano(1)(3),"67,224",23466
+Córdoba,Moñitos,"7,101",23500
+Córdoba,Planeta Rica,"43,258",23555
+Córdoba,Pueblo Nuevo,"15,760",23570
+Córdoba,Puerto Escondido,"5,201",23574
+Córdoba,Puerto Libertador,"20,964",23580
+Córdoba,Purísima,"6,462",23586
+Córdoba,Sahagún,"48,608",23660
+Córdoba,San Andrés Sotavento (1) (3),"13,362",23670
+Córdoba,San Antero,"18,190",23672
+Córdoba,San Bernardo del Viento,"9,401",23675
+Córdoba,San Carlos,"5,887",23678
+Córdoba,San José de Uré(1),"5,763",23682
+Córdoba,San Pelayo,"8,446",23686
+Córdoba,Tierralta,"46,375",23807
+Córdoba,Tuchín (1),"6,456",23815
+Córdoba,Valencia,"16,335",23855
+Cundinamarca,Agua de Dios,"8,340",25001
+Cundinamarca,Albán,"1,613",25019
+Cundinamarca,Anapoima,"5,892",25035
+Cundinamarca,Anolaima,"3,642",25040
+Cundinamarca,Arbeláez,"5,365",25053
+Cundinamarca,Beltrán,449,25086
+Cundinamarca,Bituima,446,25095
+Cundinamarca,Bojacá,"9,764",25099
+Cundinamarca,Cabrera,"1,050",25120
+Cundinamarca,Cachipay,"3,138",25123
+Cundinamarca,Cajicá,"37,365",25126
+Cundinamarca,Caparrapí,"2,762",25148
+Cundinamarca,Caqueza,"7,482",25151
+Cundinamarca,Carmen de Carupa,"2,545",25154
+Cundinamarca,Chaguaní,744,25168
+Cundinamarca,Chía,"104,214",25175
+Cundinamarca,Chipaque,"2,550",25178
+Cundinamarca,Choachí,"3,628",25181
+Cundinamarca,Chocontá,"13,618",25183
+Cundinamarca,Cogua,"7,264",25200
+Cundinamarca,Cota,"15,034",25214
+Cundinamarca,Cucunubá,"1,431",25224
+Cundinamarca,El Colegio,"8,449",25245
+Cundinamarca,El Peñón,445,25258
+Cundinamarca,El Rosal,"12,974",25260
+Cundinamarca,Facatativá,"123,931",25269
+Cundinamarca,Fomeque,"4,758",25279
+Cundinamarca,Fosca,"2,002",25281
+Cundinamarca,Funza,"73,309",25286
+Cundinamarca,Fúquene,269,25288
+Cundinamarca,Fusagasugá,"112,616",25290
+Cundinamarca,Gachala,"2,034",25293
+Cundinamarca,Gachancipá,"8,863",25295
+Cundinamarca,Gachetá,"3,792",25297
+Cundinamarca,Gama,877,25299
+Cundinamarca,Girardot,"102,806",25307
+Cundinamarca,Granada,"2,128",25312
+Cundinamarca,Guachetá,"3,769",25317
+Cundinamarca,Guaduas,"20,311",25320
+Cundinamarca,Guasca,"5,426",25322
+Cundinamarca,Guataquí,"1,390",25324
+Cundinamarca,Guatavita,"1,990",25326
+Cundinamarca,Guayabal de Siquima,871,25328
+Cundinamarca,Guayabetal,"1,538",25335
+Cundinamarca,Gutiérrez,"1,160",25339
+Cundinamarca,Jerusalén,585,25368
+Cundinamarca,Junín,"1,021",25372
+Cundinamarca,La Calera,"12,248",25377
+Cundinamarca,La Mesa,"18,159",25386
+Cundinamarca,La Palma,"4,129",25394
+Cundinamarca,La Peña,995,25398
+Cundinamarca,La Vega,"5,381",25402
+Cundinamarca,Lenguazaque,"2,310",25407
+Cundinamarca,Macheta,"1,495",25426
+Cundinamarca,Madrid,"70,203",25430
+Cundinamarca,Manta,"1,308",25436
+Cundinamarca,Medina,"3,933",25438
+Cundinamarca,Mosquera,"83,520",25473
+Cundinamarca,Nariño,"1,470",25483
+Cundinamarca,Nemocón,"5,817",25486
+Cundinamarca,Nilo,"5,002",25488
+Cundinamarca,Nimaima,"3,025",25489
+Cundinamarca,Nocaima,"1,911",25491
+Cundinamarca,Venecia,"1,125",25506
+Cundinamarca,Pacho,"15,763",25513
+Cundinamarca,Paime,454,25518
+Cundinamarca,Pandi,"1,075",25524
+Cundinamarca,Paratebueno,"2,443",25530
+Cundinamarca,Pasca,"2,895",25535
+Cundinamarca,Puerto Salgar,"14,630",25572
+Cundinamarca,Pulí,674,25580
+Cundinamarca,Quebradanegra,390,25592
+Cundinamarca,Quetame,"1,648",25594
+Cundinamarca,Quipile,675,25596
+Cundinamarca,Apulo,"3,151",25599
+Cundinamarca,Ricaurte,"4,537",25612
+Cundinamarca,San Antonio del Tequendama,"1,040",25645
+Cundinamarca,San Bernardo,"4,198",25649
+Cundinamarca,San Cayetano,743,25653
+Cundinamarca,San Francisco,"3,492",25658
+Cundinamarca,San Juan de Río Seco,"2,931",25662
+Cundinamarca,Sasaima,"2,466",25718
+Cundinamarca,Sesquilé,"3,720",25736
+Cundinamarca,Sibaté,"26,877",25740
+Cundinamarca,Silvania,"6,335",25743
+Cundinamarca,Simijaca,"7,583",25745
+Cundinamarca,Soacha,"527,644",25754
+Cundinamarca,Sopó,"17,988",25758
+Cundinamarca,Subachoque,"6,293",25769
+Cundinamarca,Suesca,"8,941",25772
+Cundinamarca,Supatá,"1,531",25777
+Cundinamarca,Susa,"6,614",25779
+Cundinamarca,Sutatausa,"1,811",25781
+Cundinamarca,Tabio,"13,873",25785
+Cundinamarca,Tausa,"1,099",25793
+Cundinamarca,Tena,863,25797
+Cundinamarca,Tenjo,"9,605",25799
+Cundinamarca,Tibacuy,527,25805
+Cundinamarca,Tibirita,494,25807
+Cundinamarca,Tocaima,"11,073",25815
+Cundinamarca,Tocancipá,"14,449",25817
+Cundinamarca,Topaipí,821,25823
+Cundinamarca,Ubalá,"1,283",25839
+Cundinamarca,Ubaque,879,25841
+Cundinamarca,Villa de San Diego de Ubate,"25,532",25843
+Cundinamarca,Une,"4,718",25845
+Cundinamarca,Útica,"2,750",25851
+Cundinamarca,Vergara,"1,565",25862
+Cundinamarca,Vianí,"1,349",25867
+Cundinamarca,Villagómez,627,25871
+Cundinamarca,Villapinzón,"6,759",25873
+Cundinamarca,Villeta,"16,403",25875
+Cundinamarca,Viotá,"4,389",25878
+Cundinamarca,Yacopí,"4,046",25885
+Cundinamarca,Zipacón,"2,156",25898
+Cundinamarca,Zipaquirá,"111,025",25899
+Chocó,Quibdó,"108,622",27001
+Chocó,Acandí,"5,269",27006
+Chocó,Alto Baudo,"10,192",27025
+Chocó,Atrato,"3,717",27050
+Chocó,Bagadó,"2,340",27073
+Chocó,Bahía Solano,"4,948",27075
+Chocó,Bajo Baudó,"3,313",27077
+Chocó,Bojaya,"5,142",27099
+Chocó,El Cantón del San Pablo,"3,690",27135
+Chocó,Carmen del Darien,"1,358",27150
+Chocó,Cértegui,"6,429",27160
+Chocó,Condoto,"10,577",27205
+Chocó,El Carmen de Atrato,"7,122",27245
+Chocó,El Litoral del San Juan,"1,410",27250
+Chocó,Istmina,"20,448",27361
+Chocó,Juradó,"1,603",27372
+Chocó,Lloró,"3,505",27413
+Chocó,Medio Atrato,"1,174",27425
+Chocó,Medio Baudó,654,27430
+Chocó,Medio San Juan,"6,168",27450
+Chocó,Nóvita,"3,259",27491
+Chocó,Nuquí,"3,870",27495
+Chocó,Río Iro,"1,657",27580
+Chocó,Río Quito,"2,666",27600
+Chocó,Riosucio(2),"8,592",27615
+Chocó,San José del Palmar,"1,125",27660
+Chocó,Sipí,358,27745
+Chocó,Tadó,"12,414",27787
+Chocó,Unguía,"4,784",27800
+Chocó,Unión Panamericana,"4,409",27810
+Huila,Neiva,"326,263",41001
+Huila,Acevedo,"6,691",41006
+Huila,Agrado,"5,421",41013
+Huila,Aipe,"17,492",41016
+Huila,Algeciras,"15,643",41020
+Huila,Altamira,"3,012",41026
+Huila,Baraya,"5,134",41078
+Huila,Campoalegre,"26,289",41132
+Huila,Colombia,"2,582",41206
+Huila,Elías,"1,282",41244
+Huila,Garzón,"44,344",41298
+Huila,Gigante,"18,681",41306
+Huila,Guadalupe,"5,181",41319
+Huila,Hobo,"5,397",41349
+Huila,Iquira,"2,393",41357
+Huila,Isnos,"6,062",41359
+Huila,La Argentina,"5,069",41378
+Huila,La Plata,"27,146",41396
+Huila,Nátaga,"2,242",41483
+Huila,Oporapa,"4,083",41503
+Huila,Paicol,"2,505",41518
+Huila,Palermo,"16,378",41524
+Huila,Palestina,"2,146",41530
+Huila,Pital,"5,220",41548
+Huila,Pitalito,"77,504",41551
+Huila,Rivera,"10,973",41615
+Huila,Saladoblanco,"2,873",41660
+Huila,San Agustín,"11,626",41668
+Huila,Santa María,"3,283",41676
+Huila,Suaza,"4,589",41770
+Huila,Tarqui,"5,160",41791
+Huila,Tesalia,"5,459",41797
+Huila,Tello,"6,803",41799
+Huila,Teruel,"4,428",41801
+Huila,Timaná,"7,432",41807
+Huila,Villavieja,"2,460",41872
+Huila,Yaguará,"7,781",41885
+La Guajira,Riohacha,"236,927",44001
+La Guajira,Albania,"13,737",44035
+La Guajira,Barrancas,"18,562",44078
+La Guajira,Dibulla,"5,753",44090
+La Guajira,Distracción,"5,551",44098
+La Guajira,El Molino,"6,158",44110
+La Guajira,Fonseca,"22,282",44279
+La Guajira,Hatonuevo,"15,116",44378
+La Guajira,La Jagua del Pilar,"2,336",44420
+La Guajira,Maicao,"111,150",44430
+La Guajira,Manaure,"48,602",44560
+La Guajira,San Juan del Cesar,"25,355",44650
+La Guajira,Uribia,"13,389",44847
+La Guajira,Urumita,"11,082",44855
+La Guajira,Villanueva,"19,655",44874
+Magdalena,Santa Marta,"482,721",47001
+Magdalena,Algarrobo,"8,547",47030
+Magdalena,Aracataca,"28,680",47053
+Magdalena,Ariguaní,"20,237",47058
+Magdalena,Cerro San Antonio,"4,395",47161
+Magdalena,Chivolo,"10,816",47170
+Magdalena,Ciénaga,"100,171",47189
+Magdalena,Concordia,"4,236",47205
+Magdalena,El Banco,"35,743",47245
+Magdalena,El Piñon,"6,197",47258
+Magdalena,El Retén,"16,813",47268
+Magdalena,Fundación,"55,842",47288
+Magdalena,Guamal,"7,932",47318
+Magdalena,Nueva Granada,"8,606",47460
+Magdalena,Pedraza,"2,517",47541
+Magdalena,Pijiño del Carmen,"8,284",47545
+Magdalena,Pivijay,"19,219",47551
+Magdalena,Plato,"46,384",47555
+Magdalena,Puebloviejo,"12,754",47570
+Magdalena,Remolino,"5,582",47605
+Magdalena,Sabanas de San Angel,"4,313",47660
+Magdalena,Salamina,"4,344",47675
+Magdalena,San Sebastián de Buenavista,"5,857",47692
+Magdalena,San Zenón,"2,085",47703
+Magdalena,Santa Ana,"13,257",47707
+Magdalena,Santa Bárbara de Pinto,"7,589",47720
+Magdalena,Sitionuevo,"16,001",47745
+Magdalena,Tenerife,"6,265",47798
+Magdalena,Zapayán,"3,671",47960
+Magdalena,Zona Bananera,"5,063",47980
+Meta,Villavicencio,"482,045",50001
+Meta,Acacías,"60,918",50006
+Meta,Barranca de Upía,"2,991",50110
+Meta,Cabuyaro,"1,777",50124
+Meta,Castilla la Nueva,"5,191",50150
+Meta,Cubarral,"4,053",50223
+Meta,Cumaral,"12,487",50226
+Meta,El Calvario,806,50245
+Meta,El Castillo,"2,101",50251
+Meta,El Dorado,"1,486",50270
+Meta,Fuente de Oro,"7,604",50287
+Meta,Granada,"54,418",50313
+Meta,Guamal,"6,906",50318
+Meta,Mapiripán,"1,410",50325
+Meta,Mesetas,"3,830",50330
+Meta,La Macarena,"4,582",50350
+Meta,Uribe,"4,082",50370
+Meta,Lejanías,"4,447",50400
+Meta,Puerto Concordia,"10,828",50450
+Meta,Puerto Gaitán,"7,911",50568
+Meta,Puerto López,"22,790",50573
+Meta,Puerto Lleras,"2,947",50577
+Meta,Puerto Rico,"5,138",50590
+Meta,Restrepo,"7,520",50606
+Meta,San Carlos de Guaroa,"4,942",50680
+Meta,San Juan de Arama,"3,933",50683
+Meta,San Juanito,830,50686
+Meta,San Martín,"22,609",50689
+Meta,Vistahermosa,"9,545",50711
+Nariño,Pasto,"376,456",52001
+Nariño,Albán,"8,357",52019
+Nariño,Aldana,"1,278",52022
+Nariño,Ancuyá,"1,635",52036
+Nariño,Arboleda,"1,142",52051
+Nariño,Barbacoas,"17,002",52079
+Nariño,Belén,"2,989",52083
+Nariño,Buesaco,"6,374",52110
+Nariño,Colón,"1,641",52203
+Nariño,Consaca,"1,812",52207
+Nariño,Contadero,"2,386",52210
+Nariño,Córdoba,"2,375",52215
+Nariño,Cuaspud,"2,405",52224
+Nariño,Cumbal,"8,792",52227
+Nariño,Cumbitara,"1,880",52233
+Nariño,Chachagüí,"7,285",52240
+Nariño,El Charco,"10,852",52250
+Nariño,El Peñol,"1,046",52254
+Nariño,El Rosario,"3,338",52256
+Nariño,El Tablón de Gómez,910,52258
+Nariño,El Tambo,"5,304",52260
+Nariño,Funes,"1,977",52287
+Nariño,Guachucal,"2,973",52317
+Nariño,Guaitarilla,"4,253",52320
+Nariño,Gualmatán,"2,245",52323
+Nariño,Iles,"1,982",52352
+Nariño,Imués,564,52354
+Nariño,Ipiales,"105,875",52356
+Nariño,La Cruz,"6,656",52378
+Nariño,La Florida,"1,808",52381
+Nariño,La Llanada,"1,817",52385
+Nariño,La Tola,"10,240",52390
+Nariño,La Unión,"10,786",52399
+Nariño,Leiva,"4,612",52405
+Nariño,Linares,"2,421",52411
+Nariño,Los Andes,"8,068",52418
+Nariño,Magüi,"4,932",52427
+Nariño,Mallama,"1,196",52435
+Nariño,Mosquera,"6,195",52473
+Nariño,Nariño,"3,792",52480
+Nariño,Olaya Herrera,"10,082",52490
+Nariño,Ospina,"2,534",52506
+Nariño,Francisco Pizarro,"8,129",52520
+Nariño,Policarpa,"3,143",52540
+Nariño,Potosí,"2,152",52560
+Nariño,Providencia,"5,661",52565
+Nariño,Puerres,"3,066",52573
+Nariño,Pupiales,"6,105",52585
+Nariño,Ricaurte,"2,603",52612
+Nariño,Roberto Payán,"1,311",52621
+Nariño,Samaniego,"18,740",52678
+Nariño,Sandoná,"12,021",52683
+Nariño,San Bernardo,"4,410",52685
+Nariño,San Lorenzo,"2,886",52687
+Nariño,San Pablo,"4,037",52693
+Nariño,San Pedro de Cartago,739,52694
+Nariño,Santa Bárbara,"3,000",52696
+Nariño,Santacruz,"6,984",52699
+Nariño,Sapuyes,"1,386",52720
+Nariño,Taminango,"5,287",52786
+Nariño,Tangua,"2,343",52788
+Nariño,San Andres de Tumaco,"117,529",52835
+Nariño,Túquerres,"17,584",52838
+Nariño,Yacuanquer,"2,886",52885
+Norte de Santander,Cúcuta,"640,462",54001
+Norte de Santander,Abrego,"17,568",54003
+Norte de Santander,Arboledas,"2,516",54051
+Norte de Santander,Bochalema,"2,537",54099
+Norte de Santander,Bucarasica,599,54109
+Norte de Santander,Cácota,531,54125
+Norte de Santander,Cachirá,"1,730",54128
+Norte de Santander,Chinácota,"11,403",54172
+Norte de Santander,Chitagá,"3,684",54174
+Norte de Santander,Convención,"4,999",54206
+Norte de Santander,Cucutilla,"1,213",54223
+Norte de Santander,Durania,"1,781",54239
+Norte de Santander,El Carmen,"2,283",54245
+Norte de Santander,El Tarra,"4,542",54250
+Norte de Santander,El Zulia,"14,154",54261
+Norte de Santander,Gramalote,"2,689",54313
+Norte de Santander,Hacarí,"1,244",54344
+Norte de Santander,Herrán,"1,018",54347
+Norte de Santander,Labateca,"1,458",54377
+Norte de Santander,La Esperanza,"1,773",54385
+Norte de Santander,La Playa,639,54398
+Norte de Santander,Los Patios,"76,140",54405
+Norte de Santander,Lourdes,"1,221",54418
+Norte de Santander,Mutiscua,525,54480
+Norte de Santander,Ocaña,"90,620",54498
+Norte de Santander,Pamplona,"55,366",54518
+Norte de Santander,Pamplonita,912,54520
+Norte de Santander,Puerto Santander,"9,837",54553
+Norte de Santander,Ragonvalia,"2,911",54599
+Norte de Santander,Salazar,"3,756",54660
+Norte de Santander,San Calixto,"2,217",54670
+Norte de Santander,San Cayetano,"2,195",54673
+Norte de Santander,Santiago,"1,391",54680
+Norte de Santander,Sardinata,"9,255",54720
+Norte de Santander,Silos,990,54743
+Norte de Santander,Teorama,"2,806",54800
+Norte de Santander,Tibú,"13,955",54810
+Norte de Santander,Toledo,"4,509",54820
+Norte de Santander,Villa Caro,"1,986",54871
+Norte de Santander,Villa del Rosario,"88,649",54874
+Quindio,Armenia,"291,692",63001
+Quindio,Buenavista,"1,187",63111
+Quindio,Calarca,"60,343",63130
+Quindio,Circasia,"22,980",63190
+Quindio,Córdoba,"2,997",63212
+Quindio,Filandia,"7,262",63272
+Quindio,Génova,"3,872",63302
+Quindio,La Tebaida,"41,515",63401
+Quindio,Montenegro,"34,100",63470
+Quindio,Pijao,"3,654",63548
+Quindio,Quimbaya,"29,407",63594
+Quindio,Salento,"3,810",63690
+Risaralda,Pereira,"401,241",66001
+Risaralda,Apía,"8,435",66045
+Risaralda,Balboa,"1,854",66075
+Risaralda,Belén de Umbría,"13,173",66088
+Risaralda,Dosquebradas,"194,380",66170
+Risaralda,Guática,"3,981",66318
+Risaralda,La Celia,"3,438",66383
+Risaralda,La Virginia,"31,665",66400
+Risaralda,Marsella,"13,725",66440
+Risaralda,Mistrató,"4,323",66456
+Risaralda,Pueblo Rico,"3,468",66572
+Risaralda,Quinchía,"8,271",66594
+Risaralda,Santa Rosa de Cabal,"60,917",66682
+Risaralda,Santuario,"7,336",66687
+Santander,Bucaramanga,"522,224",68001
+Santander,Aguada,220,68013
+Santander,Albania,627,68020
+Santander,Aratoca,"2,458",68051
+Santander,Barbosa,"23,550",68077
+Santander,Barichara,"2,617",68079
+Santander,Barrancabermeja,"173,380",68081
+Santander,Betulia,"1,109",68092
+Santander,Bolívar,"1,300",68101
+Santander,Cabrera,668,68121
+Santander,California,"1,098",68132
+Santander,Capitanejo,"3,080",68147
+Santander,Carcasí,663,68152
+Santander,Cepitá,529,68160
+Santander,Cerrito,"2,598",68162
+Santander,Charalá,"5,753",68167
+Santander,Charta,594,68169
+Santander,Chima,864,68176
+Santander,Chipatá,697,68179
+Santander,Cimitarra,"18,994",68190
+Santander,Concepción,"2,558",68207
+Santander,Confines,406,68209
+Santander,Contratación,"2,645",68211
+Santander,Coromoro,"1,069",68217
+Santander,Curití,"3,624",68229
+Santander,El Carmen de Chucurí,"6,012",68235
+Santander,El Guacamayo,426,68245
+Santander,El Peñón,898,68250
+Santander,El Playón,"5,622",68255
+Santander,Encino,463,68264
+Santander,Enciso,642,68266
+Santander,Florián,"1,498",68271
+Santander,Floridablanca,"257,318",68276
+Santander,Galán,589,68296
+Santander,Gambita,386,68298
+Santander,Girón,"170,872",68307
+Santander,Guaca,"2,211",68318
+Santander,Guadalupe,"1,505",68320
+Santander,Guapotá,540,68322
+Santander,Guavatá,722,68324
+Santander,Güepsa,"1,908",68327
+Santander,Hato,824,68344
+Santander,Jesús María,868,68368
+Santander,Jordán,54,68370
+Santander,La Belleza,"1,935",68377
+Santander,Landázuri,"3,734",68385
+Santander,La Paz,838,68397
+Santander,Lebríja,"19,683",68406
+Santander,Los Santos,"1,956",68418
+Santander,Macaravita,288,68425
+Santander,Málaga,"15,407",68432
+Santander,Matanza,"1,086",68444
+Santander,Mogotes,"3,891",68464
+Santander,Molagavita,768,68468
+Santander,Ocamonte,670,68498
+Santander,Oiba,"5,714",68500
+Santander,Onzaga,"1,236",68502
+Santander,Palmar,"1,016",68522
+Santander,Palmas del Socorro,692,68524
+Santander,Páramo,"1,433",68533
+Santander,Piedecuesta,"128,223",68547
+Santander,Pinchote,"1,590",68549
+Santander,Puente Nacional,"5,658",68572
+Santander,Puerto Parra,"3,781",68573
+Santander,Puerto Wilches,"16,953",68575
+Santander,Rionegro,"6,836",68615
+Santander,Sabana de Torres,"12,283",68655
+Santander,San Andrés,"2,586",68669
+Santander,San Benito,479,68673
+Santander,San Gil,"40,766",68679
+Santander,San Joaquín,645,68682
+Santander,San José de Miranda,874,68684
+Santander,San Miguel,381,68686
+Santander,San Vicente de Chucurí,"13,779",68689
+Santander,Santa Bárbara,405,68705
+Santander,Santa Helena del Opón,617,68720
+Santander,Simacota,"2,500",68745
+Santander,Socorro,"25,451",68755
+Santander,Suaita,"1,824",68770
+Santander,Sucre,400,68773
+Santander,Suratá,688,68780
+Santander,Tona,567,68820
+Santander,Valle de San José,"1,966",68855
+Santander,Vélez,"10,281",68861
+Santander,Vetas,"1,343",68867
+Santander,Villanueva,"3,628",68872
+Santander,Zapatoca,"5,661",68895
+Sucre,Sincelejo,"265,350",70001
+Sucre,Buenavista,"8,235",70110
+Sucre,Caimito,"3,426",70124
+Sucre,Coloso,"3,043",70204
+Sucre,Corozal,"52,060",70215
+Sucre,Coveñas,"3,964",70221
+Sucre,Chalán,"2,747",70230
+Sucre,El Roble,"4,514",70233
+Sucre,Galeras,"12,794",70235
+Sucre,Guaranda,"6,772",70265
+Sucre,La Unión,"6,210",70400
+Sucre,Los Palmitos,"9,050",70418
+Sucre,Majagual,"11,232",70429
+Sucre,Morroa,"6,818",70473
+Sucre,Ovejas,"12,016",70508
+Sucre,Palmito,"5,556",70523
+Sucre,Sampués,"21,303",70670
+Sucre,San Benito Abad,"5,305",70678
+Sucre,San Juan de Betulia,"6,549",70702
+Sucre,San Marcos,"34,502",70708
+Sucre,San Onofre,"26,876",70713
+Sucre,San Pedro,"11,146",70717
+Sucre,San Luis de Sincé,"26,218",70742
+Sucre,Sucre,"8,312",70771
+Sucre,Santiago de Tolú,"28,405",70820
+Sucre,Tolú Viejo,"5,460",70823
+Tolima,Ibagué,"533,361",73001
+Tolima,Alpujarra,"1,867",73024
+Tolima,Alvarado,"3,396",73026
+Tolima,Ambalema,"5,120",73030
+Tolima,Anzoátegui,"2,113",73043
+Tolima,Armero,"8,314",73055
+Tolima,Ataco,"5,339",73067
+Tolima,Cajamarca,"10,021",73124
+Tolima,Carmen de Apicalá,"6,948",73148
+Tolima,Casabianca,"1,458",73152
+Tolima,Chaparral,"26,800",73168
+Tolima,Coello,"1,918",73200
+Tolima,Coyaima,"4,856",73217
+Tolima,Cunday,"2,256",73226
+Tolima,Dolores,"3,197",73236
+Tolima,Espinal,"58,494",73268
+Tolima,Falan,"1,641",73270
+Tolima,Flandes,"25,273",73275
+Tolima,Fresno,"14,901",73283
+Tolima,Guamo,"16,747",73319
+Tolima,Herveo,"2,019",73347
+Tolima,Honda,"23,575",73349
+Tolima,Icononzo,"3,446",73352
+Tolima,Lérida,"14,061",73408
+Tolima,Líbano,"24,967",73411
+Tolima,Mariquita,"24,312",73443
+Tolima,Melgar,"30,338",73449
+Tolima,Murillo,"1,479",73461
+Tolima,Natagaima,"15,156",73483
+Tolima,Ortega,"8,142",73504
+Tolima,Palocabildo,"2,852",73520
+Tolima,Piedras,"1,799",73547
+Tolima,Planadas,"7,679",73555
+Tolima,Prado,"3,218",73563
+Tolima,Purificación,"17,984",73585
+Tolima,Rioblanco,"4,694",73616
+Tolima,Roncesvalles,"1,428",73622
+Tolima,Rovira,"9,923",73624
+Tolima,Saldaña,"8,659",73671
+Tolima,San Antonio,"4,183",73675
+Tolima,San Luis,"3,704",73678
+Tolima,Santa Isabel,"2,286",73686
+Tolima,Suárez,"2,184",73770
+Tolima,Valle de San Juan,"2,957",73854
+Tolima,Venadillo,"14,436",73861
+Tolima,Villahermosa,"3,696",73870
+Tolima,Villarrica,"2,156",73873
+Valle del Cauca,Cali,"2,383,392",76001
+Valle del Cauca,Alcalá,"11,937",76020
+Valle del Cauca,Andalucía,"14,710",76036
+Valle del Cauca,Ansermanuevo,"13,249",76041
+Valle del Cauca,Argelia,"3,106",76054
+Valle del Cauca,Bolívar,"3,377",76100
+Valle del Cauca,Buenaventura,"381,746",76109
+Valle del Cauca,Guadalajara de Buga,"98,910",76111
+Valle del Cauca,Bugalagrande,"11,918",76113
+Valle del Cauca,Caicedonia,"24,471",76122
+Valle del Cauca,Calima,"9,400",76126
+Valle del Cauca,Candelaria,"23,426",76130
+Valle del Cauca,Cartago,"131,748",76147
+Valle del Cauca,Dagua,"8,105",76233
+Valle del Cauca,El Águila,"2,742",76243
+Valle del Cauca,El Cairo,"2,804",76246
+Valle del Cauca,El Cerrito,"35,909",76248
+Valle del Cauca,El Dovio,"4,975",76250
+Valle del Cauca,Florida,"43,323",76275
+Valle del Cauca,Ginebra,"10,491",76306
+Valle del Cauca,Guacarí,"21,057",76318
+Valle del Cauca,Jamundí,"84,976",76364
+Valle del Cauca,La Cumbre,"2,541",76377
+Valle del Cauca,La Unión,"30,756",76400
+Valle del Cauca,La Victoria,"9,431",76403
+Valle del Cauca,Obando,"11,315",76497
+Valle del Cauca,Palmira,"247,541",76520
+Valle del Cauca,Pradera,"49,382",76563
+Valle del Cauca,Restrepo,"9,184",76606
+Valle del Cauca,Riofrío,"4,810",76616
+Valle del Cauca,Roldanillo,"24,763",76622
+Valle del Cauca,San Pedro,"7,496",76670
+Valle del Cauca,Sevilla,"34,357",76736
+Valle del Cauca,Toro,"9,295",76823
+Valle del Cauca,Trujillo,"8,235",76828
+Valle del Cauca,Tuluá,"187,121",76834
+Valle del Cauca,Ulloa,"2,683",76845
+Valle del Cauca,Versalles,"2,865",76863
+Valle del Cauca,Vijes,"7,380",76869
+Valle del Cauca,Yotoco,"8,445",76890
+Valle del Cauca,Yumbo,"107,757",76892
+Valle del Cauca,Zarzal,"32,623",76895
+Arauca,Arauca,"78,913",81001
+Arauca,Arauquita,"19,489",81065
+Arauca,Cravo Norte,"2,303",81220
+Arauca,Fortul,"13,738",81300
+Arauca,Puerto Rondón,"2,867",81591
+Arauca,Saravena,"32,703",81736
+Arauca,Tame,"20,292",81794
+Casanare,Yopal,"130,923",85001
+Casanare,Aguazul,"31,017",85010
+Casanare,Chameza,"1,701",85015
+Casanare,Hato Corozal,"5,608",85125
+Casanare,La Salina,633,85136
+Casanare,Maní,"7,543",85139
+Casanare,Monterrey,"12,877",85162
+Casanare,Nunchía,"2,165",85225
+Casanare,Orocué,"5,355",85230
+Casanare,Paz de Ariporo,"19,306",85250
+Casanare,Pore,"3,990",85263
+Casanare,Recetor,"1,623",85279
+Casanare,Sabanalarga,"1,480",85300
+Casanare,Sácama,"1,479",85315
+Casanare,San Luis de Palenque,"2,358",85325
+Casanare,Támara,"2,340",85400
+Casanare,Tauramena,"15,698",85410
+Casanare,Trinidad,"8,875",85430
+Casanare,Villanueva,"20,973",85440
+Putumayo,Mocoa,"36,052",86001
+Putumayo,Colón,"3,358",86219
+Putumayo,Orito,"25,170",86320
+Putumayo,Puerto Asís,"34,061",86568
+Putumayo,Puerto Caicedo,"5,337",86569
+Putumayo,Puerto Guzmán,"4,928",86571
+Putumayo,Leguízamo,"9,476",86573
+Putumayo,Sibundoy,"10,452",86749
+Putumayo,San Francisco,"4,230",86755
+Putumayo,San Miguel,"6,070",86757
+Putumayo,Santiago,"4,469",86760
+Putumayo,Valle del Guamuez,"20,771",86865
+Putumayo,Villagarzón,"11,232",86885
+Archipiélago de San Andrés,San Andrés,"53,691",88001
+Archipiélago de San Andrés,Providencia,"2,303",88564
+Amazonas,Leticia,"26,604",91001
+Amazonas,El Encanto (CD),0,91263
+Amazonas,La Chorrera (CD),0,91405
+Amazonas,La Pedrera (CD),0,91407
+Amazonas,La Victoria (CD),0,91430
+Amazonas,Miriti - Paraná (CD),0,91460
+Amazonas,Puerto Alegría (CD),0,91530
+Amazonas,Puerto Arica (CD),0,91536
+Amazonas,Puerto Nariño,"2,208",91540
+Amazonas,Puerto Santander (CD),0,91669
+Amazonas,Tarapacá (CD),0,91798
+Guainía,Inírida,"12,961",94001
+Guainía,Barranco Minas (CD),0,94343
+Guainía,Mapiripana (CD),0,94663
+Guainía,San Felipe (CD),0,94883
+Guainía,Puerto Colombia (CD),0,94884
+Guainía,La Guadalupe (CD),0,94885
+Guainía,Cacahual (CD),0,94886
+Guainía,Pana Pana (CD),0,94887
+Guainía,Morichal (CD),0,94888
+Guaviare,San José del Guaviare,"46,736",95001
+Guaviare,Calamar,"5,321",95015
+Guaviare,El Retorno,"12,463",95025
+Guaviare,Miraflores,"3,661",95200
+Vaupés,Mitú,"16,574",97001
+Vaupés,Caruru,687,97161
+Vaupés,Pacoa (CD),0,97511
+Vaupés,Taraira,142,97666
+Vaupés,Papunaua (CD),0,97777
+Vaupés,Yavaraté (CD),0,97889
+Vichada,Puerto Carreño,"13,735",99001
+Vichada,La Primavera,"9,319",99524
+Vichada,Santa Rosalía,"2,750",99624
+Vichada,Cumaribo,"7,384",99773
+Total Nacional,Total Nacional,"37,816,261",00
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
