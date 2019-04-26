@@ -1,8 +1,8 @@
 ---
-title: "AnÃ¡lisis de Violencia en Colombia"
+title: "Análisis de Violencia en Colombia"
 author: 
-- "J. SebastiÃ¡n M. BenÃ­tez"
-- "AndrÃ©s Paredes"
+- "J. Sebastián M. Benítez"
+- "Andrés Paredes"
 date: "April 17, 2019"
 output: html_document
 ---
@@ -15,16 +15,17 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 library(knitr)
 library(readxl)
 library(rmarkdown)
+library(ggplot2)
 ```
 
 ## Limpieza del Dataset ProyeccionMunicipios2005_2020
 
-<font size="3">Primero buscamos un dataset con la cantidad total proyectada de habitantes por municipio. La informaciÃ³n de este dataset serÃ¡ usada para calcular nuestro Ã­ndice de violencia.
+<font size="3">Primero buscamos un dataset con la cantidad total proyectada de habitantes por municipio. La información de este dataset será usada para calcular nuestro índice de violencia.
 
 El dataset se puede encontrar en la siguiente ruta:
 <https://www.dane.gov.co/files/investigaciones/poblacion/proyepobla06_20/ProyeccionMunicipios2005_2020.xls>
 
-Los datos se ven asÃ­:</font>
+Los datos se ven así:</font>
 
 ```{r Cargue de Datos Dataset 1,include=FALSE}
 dataProyMun<-readxl::read_xls("ProyeccionMunicipios2005_2020.xls")
@@ -33,7 +34,7 @@ dataProyMun<-readxl::read_xls("ProyeccionMunicipios2005_2020.xls")
 kable(dataProyMun[c(1:10),c(1:8)])
 ```
 
-<font size="3">Eliminamos la informaciÃ³n irrelevante del header y ajustamos el nombre de las columnas</font>
+<font size="3">Eliminamos la información irrelevante del header y ajustamos el nombre de las columnas</font>
 
 ```{r Primer ajuste Dataset 1}
 dataProyMun2<-dataProyMun[-c(1,2,3),]
@@ -44,7 +45,7 @@ dataProyMun2<-dataProyMun2[-1,]
 kable(head(dataProyMun2[,c(1:12)]))
 ```
 
-<font size="3">Eliminamos las columnas que no necesitamos. En este caso usaremos solo el aÃ±o 2017 debido a que la informaciÃ³n del dataset de hurtos solo estÃ¡ disponible para el 2017.</font>
+<font size="3">Eliminamos las columnas que no necesitamos. En este caso usaremos solo el año 2017 debido a que la información del dataset de hurtos solo está disponible para el 2017.</font>
 
 ```{r Segundo ajuste Dataset 1}
 dataProyMun3<-dataProyMun2[,-which(colnames(dataProyMun2) %in% c("DP","DPMP"))]
@@ -58,7 +59,7 @@ dataProyMunFinal<-dataProyMun3[,-c(4,5)]
 kable(head(dataProyMunFinal))
 ```
 
-<font size="3">Los Ãºltimos datos del dataset se ven asÃ­:</font>
+<font size="3">Los últimos datos del dataset se ven así:</font>
 
 ```{r Tail Dataset 1}
 kable(tail(dataProyMunFinal,n = 15))##1124
@@ -73,11 +74,11 @@ dataProyMunFinal<-dataProyMunFinal[-c(1123),]
 kable(tail(dataProyMunFinal))
 ```
 
-<font size="3"><ul><li>Eliminamos las tildes para estandarizar los nombres y no tener problemas de merge despuÃ©s.</li>
-<li>Eliminamos los espacios y la puntuaciÃ³n.</li>
-<li>Convertimos todo a mayÃºsculas.</li>
-<li>Convertimos BOGOTADC a CUNDINAMARCA puesto que el DANE toma a BogotÃ¡ como un departamento diferente y para el merge con otros datasets deben ser el mismo.</li>
-<li>Eliminamos abreviaturas dentro de parÃ©ntesis que salen al lado de los nombres. Ejemplo: (CD).</li></ul></font>
+<font size="3"><ul><li>Eliminamos las tildes para estandarizar los nombres y no tener problemas de merge después.</li>
+<li>Eliminamos los espacios y la puntuación.</li>
+<li>Convertimos todo a mayúsculas.</li>
+<li>Convertimos BOGOTADC a CUNDINAMARCA puesto que el DANE toma a Bogotá como un departamento diferente y para el merge con otros datasets deben ser el mismo.</li>
+<li>Eliminamos abreviaturas dentro de paréntesis que salen al lado de los nombres. Ejemplo: (CD).</li></ul></font>
 
 ```{r Estandarizar registros del Dataset 1}
 dataProyMunStand<-dataProyMunFinal
@@ -100,12 +101,12 @@ kable(tail(dataProyMunStand))
 
 ## Limpieza del Dataset HurtoANSI
 
-<font size="3">Obtenemos un dataset con la informaciÃ³n de hurtos del aÃ±o 2017 en Colombia.
+<font size="3">Obtenemos un dataset con la información de hurtos del año 2017 en Colombia.
 
 El dataset se puede encontrar en la siguiente ruta:
 <https://www.datos.gov.co/Seguridad-y-Defensa/Hurto-a-personas-2017/cwdd-8tiq>
 
-Los datos se ven asÃ­:</font>
+Los datos se ven así:</font>
 ```{r Cargue de Datos Dataset 2,include=FALSE}
 dataHurtoPersonas<-read.csv(file="HurtoANSI.csv",sep=",")
 ```
@@ -113,7 +114,7 @@ dataHurtoPersonas<-read.csv(file="HurtoANSI.csv",sep=",")
 kable(head(dataHurtoPersonas[,1:10],n = 3))
 ```
 
-<font size="3">Eliminamos los puntos y las tildes de los nombres de las columnas para que sea mÃ¡s fÃ¡cil trabajar con ellas</font>
+<font size="3">Eliminamos los puntos y las tildes de los nombres de las columnas para que sea más fácil trabajar con ellas</font>
 
 ```{r Primer ajuste Dataset 2}
 ##Esto quita puntos de los nombres de las columnas
@@ -123,10 +124,10 @@ colnames(dataHurtoPersonas) <- iconv(colnames(dataHurtoPersonas),to="ASCII//TRAN
 kable(head(dataHurtoPersonas[,1:10],n = 3))
 ```
 
-<font size="3"><ul><li>Eliminamos abreviaturas dentro de parÃ©ntesis que salen al lado de los nombres. Ejemplo: (CT).</li>
-<li>Unificamos nombres de municipios y departamentos que estÃ¡n diferentes entre los datasets.</li>
+<font size="3"><ul><li>Eliminamos abreviaturas dentro de paréntesis que salen al lado de los nombres. Ejemplo: (CT).</li>
+<li>Unificamos nombres de municipios y departamentos que están diferentes entre los datasets.</li>
 <li>Eliminamos las tildes.</li>
-<li>Eliminamos espacios y signos de puntuaciÃ³n.</li>
+<li>Eliminamos espacios y signos de puntuación.</li>
 </ul></font>
 
 ```{r Segundo ajuste Dataset 2}
@@ -154,19 +155,19 @@ dataHurtoPersonas$Departamento<-gsub("SANANDRES", 'ARCHIPIELAGODESANANDRES', dat
 kable(head(dataHurtoPersonas[,1:10],n = 3))
 ```
 
-## ConstrucciÃ³n de la tabla de datos generales
+## Construcción de la tabla de datos generales
 
 <font size="3">Obtenemos 3 datasets de la Encuesta de Convivencia y Seguridad Ciudadana realizada entre 2016 y 2017. Estos son:
 
 <ul><li>Datos de la vivienda</li>
-<li>PercepciÃ³n de seguridad en el hogar</li>
-<li>CaracterÃ­sticas generales de las personas</li></ul>
+<li>Percepción de seguridad en el hogar</li>
+<li>Características generales de las personas</li></ul>
 
-Hay que tener en cuenta que uno de los 3 datasets estÃ¡ separado por tabulaciÃ³n en vez de espacio.
+Hay que tener en cuenta que uno de los 3 datasets estÃ¡ separado por tabulación en vez de espacio.
 
-DespuÃ©s los unimos para que sean un solo dataset.</font>
+Después los unimos para que sean un solo dataset.</font>
 
-```{r CreaciÃ³n del Dataset 3}
+```{r Creación del Dataset 3}
 dataCaracGen <- read.delim("CaracteristicasGenerales.txt", sep = " ")
 #head(dataCaracGen)
 dataVivienda <- read.delim("DatosVivienda.txt",sep = " ")
@@ -197,7 +198,7 @@ kable(sapply(dataProyMunStand,class))
 <font size="3">En el Dataset 2:
 <ul><li>Convertimos la fecha de Factor a Date</li>
 <li>Convertimos el departamento y el municipio de Character a Factor</li>
-<li>Convertimos el CÃ³digo Dane de Numeric a Factor</li>
+<li>Convertimos el Código Dane de Numeric a Factor</li>
 <li>Convertimos la hora de formato "DD/MM/RRRR HH:mm:ss AM" a formato "HH:mm:ss AM"</li></ul></font>
 
 ```{r Arreglar formato Dataset 2}
@@ -236,25 +237,108 @@ kable(sapply(dataMerged2,class))
 
 ##Observaciones duplicadas
 
-<font size="3">Evaluando duplicados en el Dataset 1 pudimos observar que existen varios municipios con el mismo nombre en diferentes departamentos. Pero en general no hay duplicados de la combinaciÃ³n entre departamento y municipio.</font>
+<font size="3">Evaluando duplicados en el Dataset 1 pudimos observar que existen varios municipios con el mismo nombre en diferentes departamentos. Pero en general no hay duplicados de la combinación entre departamento y municipio.</font>
 
 ```{r Duplicados Dataset 1}
 dataSorted<-dataProyMunStand[which(duplicated(dataProyMunStand["MPIO"])==TRUE),]
 dataSorted<-dataSorted[order(dataSorted$MPIO,dataSorted$DPNOM),]
-kable(dataSorted)
+kable(dataSorted[2:5,])
 ##duplicated(dataProyMunStand["DPNOM","MPIO"])
 ```
 
-## Including Plots
+<font size="3">Evaluando el Dataset 2 con todas las columnas, no pudimos observar existencia de duplicados.</font>
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r Duplicados Dataset 2}
+##which(duplicated(dataHurtoPersonas2[colnames(dataHurtoPersonas2)]))
 ```
 
-BibliografÃ­a
-Proyecccion poblaciÃ³n Dane
+##Valores perdidos
+
+<font size="3">Evaluando el Dataset 1, no pudimos observar existencia de valores perdidos.</font>
+
+```{r Valores perdidos Dataset 1}
+##table(is.na(dataProyMunStand))
+```
+
+<font size="3">Evaluando el Dataset 2, podemos observar que hay 2195 valores perdidos.</font>
+
+```{r Valores perdidos Dataset 2}
+kable(table(is.na(dataHurtoPersonas2)))
+kable(summary(dataHurtoPersonas2$Estadocivil,7))
+kable(summary(dataHurtoPersonas2$Paisdenacimiento,7))
+#kable(summary(dataHurtoPersonas2$Clasedeempleado))
+kable(summary(dataHurtoPersonas2$Profesion,7))
+kable(summary(dataHurtoPersonas2$Escolaridad,7))
+```
+
+
+## Análisis Univariado
+
+<font size="3">Esto es para tener información general que pueda dar contexto a otras variables en el futuro</font>
+
+```{r Cantidad de Personas por Departamento}
+dataProyMunStand2<-dataProyMunStand
+ggplot(dataProyMunStand2, aes(x = reorder(dataProyMunStand2$DPNOM, dataProyMunStand2$`2017`), y = dataProyMunStand2$`2017`)) + 
+  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("Cantidad de habitantes")
+```
+
+<font size="3">Observamos el resumen de las variables para crear ideas para los gráficos.
+También se verifican para revisar posibles valores extremos, perdidos o inconsistentes.</font>
+
+```{r Información resumida de las variables}
+kable(summary(dataHurtoPersonas2[,2:7]))
+kable(summary(dataHurtoPersonas2[,8:14]))
+kable(summary(dataHurtoPersonas2[,15:18]))
+```
+
+<font size="3">La siguiente gráfica muestra la cantidad de hurtos por Departamento.
+Podemos observar que hay más hurtos en Cundinamarca, Antioquia y Valle, pero esto es debido a que tienen más habitantes como se puede ver en la gráfica anterior.</font>
+
+```{r Cantidad de Hurtos por Departamento}
+dataHurtoPersonas3 <- dataHurtoPersonas2
+
+dataHurtoPersonas3 <- within(dataHurtoPersonas3, 
+                             dataHurtoPersonas3$Departamento <- factor(dataHurtoPersonas3$Departamento, 
+                                                              levels=names(sort(table(dataHurtoPersonas3$Departamento), 
+                                                                                decreasing=FALSE))))
+
+ggplot(dataHurtoPersonas3,aes(x=dataHurtoPersonas3$Departamento))+
+  geom_bar()+coord_flip()+xlab("Departamento")+ylab("Cantidad de hurtos")
+```
+
+<font size="3">La siguiente gráfica muestra que no hay días más peligrosos que otros</font>
+
+```{r Cantidad de Hurtos por Día}
+ggplot(dataHurtoPersonas3,aes(x=dataHurtoPersonas3$Dia))+
+  geom_bar()+xlab("Día de la semana")+ylab("Cantidad de hurtos")
+```
+
+<font size="3">La siguiente tabla muestra que, según los datos, la hora más peligrosa es la media noche</font>
+
+```{r Cantidad de Hurtos por Hora}
+kable(summary(dataHurtoPersonas3$Hora,5))
+```
+
+<font size="3">La siguiente gráfica muestra que, a diferencia de lo que esperábamos, la mayor cantidad de hurtos son sin armas</font>
+
+```{r Cantidad de Hurtos por Arma empleada}
+ggplot(dataHurtoPersonas3,aes(x=dataHurtoPersonas3$Armaempleada))+
+  geom_bar()+coord_flip()+xlab("Arma empleada")+ylab("Cantidad de hurtos")
+```
+
+Las gráficas siguientes nos muestran que la mayor cantidad de hurtos son entre transeuntes
+
+```{r Cantidad de Hurtos por Movilidad}
+ggplot(dataHurtoPersonas3,aes(x=dataHurtoPersonas3$MovilAgresor))+
+  geom_bar()+coord_flip()+xlab("Movilidad del agresor")+ylab("Cantidad de hurtos")
+ggplot(dataHurtoPersonas3,aes(x=dataHurtoPersonas3$MovilVictima))+
+  geom_bar()+coord_flip()+xlab("Movilidad de la víctima")+ylab("Cantidad de hurtos")
+```
+
+
+
+Bibliografía
+Proyecccion población Dane
 https://www.dane.gov.co/files/investigaciones/poblacion/proyepobla06_20/ProyeccionMunicipios2005_2020.xls
 Encuesta violencia en colombia
 http://microdatos.dane.gov.co/index.php/catalog/451/datafile/F1
