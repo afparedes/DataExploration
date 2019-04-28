@@ -12,10 +12,15 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 #install.packages("knitr")
 #install.packages("readxl")
 #install.packages("rmarkdown")
+#install.packages("ggplot2")
+#install.packages("dplyr")
+#install.packages("stringr")
 library(knitr)
 library(readxl)
 library(rmarkdown)
 library(ggplot2)
+library(dplyr)
+library(stringr)
 ```
 
 ## Limpieza del Dataset ProyeccionMunicipios2005_2020
@@ -31,7 +36,7 @@ Los datos se ven así:</font>
 dataProyMun<-readxl::read_xls("ProyeccionMunicipios2005_2020.xls")
 ```
 ```{r Datos Dataset 1}
-kable(dataProyMun[c(1:10),c(1:8)])
+kable(dataProyMun[c(1:3),c(1:8)])
 ```
 
 <font size="3">Eliminamos la información irrelevante del header y ajustamos el nombre de las columnas</font>
@@ -42,27 +47,33 @@ dataProyMun2<-dataProyMun[-c(1,2,3),]
 colnames(dataProyMun2)<-dataProyMun2[1,]
 #head(dataProyMun2)
 dataProyMun2<-dataProyMun2[-1,]
-kable(head(dataProyMun2[,c(1:12)]))
+kable(head(dataProyMun2[,c(1:12)],3))
 ```
 
-<font size="3">Eliminamos las columnas que no necesitamos. En este caso usaremos solo el año 2017 debido a que la información del dataset de hurtos solo está disponible para el 2017.</font>
+<font size="3">Eliminamos las columnas que no necesitamos. En este caso usaremos solo el año 2017 debido a que la información del dataset de hurtos solo está disponible para el 2017.
+El dane adicionalmente divide la poblacion en cabecera y resto
+donde cabecera corresponde al area urbana segun el UMAIC y el resto a centros poblados o poblacion dispersa </font>
 
 ```{r Segundo ajuste Dataset 1}
-dataProyMun3<-dataProyMun2[,-which(colnames(dataProyMun2) %in% c("DP","DPMP"))]
+#dataProyMun3<-dataProyMun2
 #head(dataProyMun3)
 #which(as.numeric(colnames(dataProyMun3))<"2017")
-dataProyMun3<-dataProyMun3[,-which(as.numeric(colnames(dataProyMun3))<2017)]
+dataProyMun2<-dataProyMun2[,-which(as.numeric(colnames(dataProyMun2))<2017)]
 #head(dataProyMun3)
-dataProyMun3<-dataProyMun3[,-which(as.numeric(colnames(dataProyMun3))>2017)]
+dataProyMun2<-dataProyMun2[,-which(as.numeric(colnames(dataProyMun2))>2017)]
 #head(dataProyMun3)
-dataProyMunFinal<-dataProyMun3[,-c(4,5)]
-kable(head(dataProyMunFinal))
+#dataProyMunFinal<-dataProyMun3[,-c(5,6)]
+colnames(dataProyMun2)[5]<-'totalHabitantes'
+colnames(dataProyMun2)[6]<-'poblacionCabecera'
+colnames(dataProyMun2)[7]<-'poblacionResto'
+dataProyMunFinal<-dataProyMun2
+kable(head(dataProyMunFinal,3))
 ```
 
 <font size="3">Los últimos datos del dataset se ven así:</font>
 
 ```{r Tail Dataset 1}
-kable(tail(dataProyMunFinal,n = 15))##1124
+kable(tail(dataProyMunFinal,n = 3))##1124
 ```
 
 <font size="3">Eliminamos las filas innecesarias</font>
@@ -71,16 +82,20 @@ kable(tail(dataProyMunFinal,n = 15))##1124
 dataProyMunFinal<-dataProyMunFinal[-c(1124:1135),]
 #kable(tail(dataProyMunFinal))
 dataProyMunFinal<-dataProyMunFinal[-c(1123),]
-kable(tail(dataProyMunFinal))
+kable(tail(dataProyMunFinal,3))
 ```
 
 <font size="3"><ul><li>Eliminamos las tildes para estandarizar los nombres y no tener problemas de merge después.</li>
 <li>Eliminamos los espacios y la puntuación.</li>
 <li>Convertimos todo a mayúsculas.</li>
-<li>Convertimos BOGOTADC a CUNDINAMARCA puesto que el DANE toma a Bogotá como un departamento diferente y para el merge con otros datasets deben ser el mismo.</li>
+<li>El DANE toma a Bogotá con población de `r dataProyMunFinal  %>% filter(DPMP  == 11001)  %>% select(totalHabitantes)` un departamento difernete a cundinamarca con una población `r dataProyMunFinal  %>% filter(DP  == 25)  %>% summarise(totalHabitantes = sum(totalHabitantes))` dada que hay una aglomeración tan significattiva de ciudadanos decidimos mantener esa distinción.</li>
 <li>Eliminamos abreviaturas dentro de paréntesis que salen al lado de los nombres. Ejemplo: (CD).</li></ul></font>
 
 ```{r Estandarizar registros del Dataset 1}
+#dataProyMunFinal  %>% filter(DPMP  == 11001)  %>% select(totalHabitantes)8080734	
+#dataProyMunFinal  %>% filter(DP  == 25)  %>% summarise(totalHabitantes = sum(totalHabitantes))2762784
+tmpcnd<-dataProyMunFinal  %>% filter(DP  == 25)
+sum(tmpcnd$totalHabitantes)
 dataProyMunStand<-dataProyMunFinal
 #Eliminar tildes
 dataProyMunStand$DPNOM<-iconv(dataProyMunStand$DPNOM,from="UTF-8", to="ASCII//TRANSLIT")
@@ -92,11 +107,12 @@ dataProyMunStand$MPIO<-gsub("\\s|\\.|\\,", '', dataProyMunStand$MPIO)
 dataProyMunStand$DPNOM<-toupper(dataProyMunStand$DPNOM)
 dataProyMunStand$MPIO<-toupper(dataProyMunStand$MPIO)
 #El DANE toma a BogotÃ¡ como otro departamento diferente a Cundinamarca y para efectos de nuestro anÃ¡lisis y el merge con otros datasets deben ser el mismo.
-dataProyMunStand$DPNOM<-gsub("BOGOTADC", 'CUNDINAMARCA', dataProyMunStand$DPNOM)
-#Eliminar abreviaturas dentro de parÃ©ntesis que salen al lado de los nombres. Ejemplo: (CD)
+#dataProyMunStand$DP[dataProyMunStand$DP== 25] <- 11
+#dataProyMunStand$DPNOM<-gsub("BOGOTADC", 'CUNDINAMACA', dataProyMunStand$DPNOM)
+#Eliminar abreviaturas dentro de parÃ©ntesis11001 que salen al lado de los nombres. Ejemplo: (CD)
 dataProyMunStand$MPIO<-gsub("[:(:]CD[:):]|\\s|[:(:]1[:):]|[:(:]3[:):]|\\.|\\,|[:(:]2[:):]", '', dataProyMunStand$MPIO)
 
-kable(tail(dataProyMunStand))
+kable(tail(dataProyMunStand,3))
 ```
 
 ## Limpieza del Dataset HurtoANSI
@@ -108,7 +124,7 @@ El dataset se puede encontrar en la siguiente ruta:
 
 Los datos se ven así:</font>
 ```{r Cargue de Datos Dataset 2,include=FALSE}
-dataHurtoPersonas<-read.csv(file="HurtoANSI.csv",sep=",")
+dataHurtoPersonas<-read.csv(file="Hurto_a_personas_2017.csv",sep=",",encoding="UTF-8")
 ```
 ```{r Datos Dataset 2}
 kable(head(dataHurtoPersonas[,1:10],n = 3))
@@ -127,6 +143,9 @@ kable(head(dataHurtoPersonas[,1:10],n = 3))
 <font size="3"><ul><li>Eliminamos abreviaturas dentro de paréntesis que salen al lado de los nombres. Ejemplo: (CT).</li>
 <li>Unificamos nombres de municipios y departamentos que están diferentes entre los datasets.</li>
 <li>Eliminamos las tildes.</li>
+<li>Corregimos el codigo del municipio</li>
+<li>lamentablemente como el pierde los ceros iniciales arreglamos tambien el de municipios para que coincidan</li>
+<li>Ya que decidimos que bogota se tratara como un departamento (como indica el DANE) lo reflejamos tambien en este dataset</li>
 <li>Eliminamos espacios y signos de puntuación.</li>
 </ul></font>
 
@@ -139,7 +158,9 @@ dataHurtoPersonas$Departamento<-gsub("\\s|\\.|\\,", '', dataHurtoPersonas$Depart
 ##Esto unifica nombres de municipios
 dataHurtoPersonas$Municipio<-gsub("PUERTOLEGUIZAMO", 'LEGUIZAMO', dataHurtoPersonas$Municipio)
 dataHurtoPersonas$Municipio<-gsub("CHIBOLO", 'CHIVOLO', dataHurtoPersonas$Municipio)
-
+#Esto corrige el codigo adne
+dataHurtoPersonas$CodigoDANE= substr(dataHurtoPersonas$CodigoDANE,1,nchar(dataHurtoPersonas$CodigoDANE)-3)
+dataProyMunFinal$CODNUM<-as.numeric(dataProyMunFinal$DPMP)
 ##Esto quita las tildes
 dataHurtoPersonas$Municipio<-iconv(dataHurtoPersonas$Municipio,to="ASCII//TRANSLIT")
 dataHurtoPersonas$Departamento<-iconv(dataHurtoPersonas$Departamento,to="ASCII//TRANSLIT")
@@ -148,6 +169,12 @@ dataHurtoPersonas$Departamento<-iconv(dataHurtoPersonas$Departamento,to="ASCII//
 dataHurtoPersonas$Departamento<-toupper(dataHurtoPersonas$Departamento)
 dataHurtoPersonas$Municipio<-toupper(dataHurtoPersonas$Municipio)
 
+dataHurtoPersonas$Departamento[dataHurtoPersonas$Municipio== 'BOGOTADC'] <- 'BOGOTADC'
+
+# dataHurtoPersonas$Hora<-as.character(dataHurtoPersonas$Hora)
+# dataHurtoPersonas$Hora<-strptime(dataHurtoPersonas$Hora,format='%H:%M:%S')
+
+
 ##Esto unifica nombres de departamentos
 dataHurtoPersonas$Departamento<-gsub("VALLE", 'VALLEDELCAUCA', dataHurtoPersonas$Departamento)
 dataHurtoPersonas$Departamento<-gsub("GUAJIRA", 'LAGUAJIRA', dataHurtoPersonas$Departamento)
@@ -155,22 +182,21 @@ dataHurtoPersonas$Departamento<-gsub("SANANDRES", 'ARCHIPIELAGODESANANDRES', dat
 kable(head(dataHurtoPersonas[,1:10],n = 3))
 ```
 
-## Construcción de la tabla de datos generales
-
+## Analisis de la tabla de datos generales
 <font size="3">Obtenemos 3 datasets de la Encuesta de Convivencia y Seguridad Ciudadana realizada entre 2016 y 2017. Estos son:
+
+<http://microdatos.dane.gov.co/index.php/catalog/451/get_microdata<>
 
 <ul><li>Datos de la vivienda</li>
 <li>Percepción de seguridad en el hogar</li>
 <li>Características generales de las personas</li></ul>
-
-Hay que tener en cuenta que uno de los 3 datasets estÃ¡ separado por tabulación en vez de espacio.
 
 Después los unimos para que sean un solo dataset.</font>
 
 ```{r Creación del Dataset 3}
 dataCaracGen <- read.delim("CaracteristicasGenerales.txt", sep = " ")
 #head(dataCaracGen)
-dataVivienda <- read.delim("DatosVivienda.txt",sep = " ")
+dataVivienda <- read.delim("Datos de la vivienda.txt",sep = "\t")
 #head(dataVivienda)
 dataPercepSeg <- read.delim("PercepcionSeguridad.txt",sep = "\t")
 #El separador de este era \t en vez de espacio.
@@ -178,12 +204,10 @@ dataPercepSeg <- read.delim("PercepcionSeguridad.txt",sep = "\t")
 dataMerged1 = merge(dataCaracGen, dataVivienda, by.x=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"), 
                     by.y=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"))
 #head(dataMerged1)
-
 dataMerged2 = merge(dataMerged1,dataPercepSeg, by.x=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"),
                     by.y=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"))
 kable(head(dataMerged2[,1:10]))
 ```
-
 ##Formato de variables no coincide con el tipo de variable
 
 <font size="3">En el Dataset 1 convertimos los departamentos y municipios en tipo factor</font>
@@ -199,7 +223,8 @@ kable(sapply(dataProyMunStand,class))
 <ul><li>Convertimos la fecha de Factor a Date</li>
 <li>Convertimos el departamento y el municipio de Character a Factor</li>
 <li>Convertimos el Código Dane de Numeric a Factor</li>
-<li>Convertimos la hora de formato "DD/MM/RRRR HH:mm:ss AM" a formato "HH:mm:ss AM"</li></ul></font>
+<li>Convertimos la hora de formato "DD/MM/RRRR HH:mm:ss AM" a formato "HH:mm:ss AM"</li>
+<li>Generamos una segunda columna solo con "HH: AM"</li></ul></font>
 
 ```{r Arreglar formato Dataset 2}
 #head(dataHurtoPersonas)
@@ -214,26 +239,13 @@ dataHurtoPersonas2$Departamento <- as.factor(dataHurtoPersonas2$Departamento)
 dataHurtoPersonas2$Municipio<- as.factor(dataHurtoPersonas2$Municipio)
 dataHurtoPersonas2$CodigoDANE <- as.factor(dataHurtoPersonas2$CodigoDANE)
 dataHurtoPersonas2$Hora <- as.factor(substr(dataHurtoPersonas2$Hora,11,22))
+dataHurtoPersonas2$HoraSimple<-paste(substr(dataHurtoPersonas2$Hora,1,3),substr(dataHurtoPersonas2$Hora,10,12))
 kable(sapply(dataHurtoPersonas2,class))
 #summary(dataHurtoPersonas2)
 #View(dataHurtoPersonas2)
 ```
 
-<font size="3">En el Dataset 3:
-<ul><li>Convertimos de la columna 6 a la 44 en Factor</li>
-<li>Convertimos la columna P5785 (Edad) a Integer</li>
-</ul></font>
 
-```{r Arreglar formato Dataset 3}
-#head(dataMerged2)
-#View(dataMerged2)
-#str(dataMerged3)
-dataMerged3 <- dataMerged2
-dataMerged3[,6:44]<-lapply(dataMerged3[,6:44],as.factor)
-dataMerged3[,"P5785"]<-as.integer(dataMerged3[,"P5785"])
-kable(sapply(dataMerged2,class))
-
-```
 
 ##Observaciones duplicadas
 
@@ -278,21 +290,158 @@ kable(summary(dataHurtoPersonas2$Escolaridad,7))
 
 ```{r Cantidad de Personas por Departamento}
 dataProyMunStand2<-dataProyMunStand
-ggplot(dataProyMunStand2, aes(x = reorder(dataProyMunStand2$DPNOM, dataProyMunStand2$`2017`), y = dataProyMunStand2$`2017`)) + 
-  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("Cantidad de habitantes")
+ggplot(dataProyMunStand2, aes(x = reorder(dataProyMunStand2$DPNOM, dataProyMunStand2$totalHabitantes), y = dataProyMunStand2$totalHabitantes)) + 
+  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("Cantidad de habitantes")+ggtitle('habitantes por departamento')
+
+
+ggplot(dataProyMunStand2, aes(x = reorder(dataProyMunStand2$DPNOM, dataProyMunStand2$poblacionCabecera), y = dataProyMunStand2$poblacionCabecera)) + 
+  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("Cantidad de habitantes cabecera") +ggtitle('habitantes de cabecera por departamento')
+
+ggplot(dataProyMunStand2, aes(x = reorder(dataProyMunStand2$DPNOM, dataProyMunStand2$poblacionResto), y = dataProyMunStand2$poblacionResto)) + 
+  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("Cantidad de habitantes Resto") +ggtitle('habitantes de resto por departamento')
+
 ```
 
-<font size="3">Observamos el resumen de las variables para crear ideas para los gráficos.
-También se verifican para revisar posibles valores extremos, perdidos o inconsistentes.</font>
+<font size="3"> se verifican para revisar posibles valores extremos o inconsistentes.</font>
+<li>podemos ver algunos casos de edades imposibles `r  dataHurtoPersonas2$Edad[which.max(dataHurtoPersonas2$Edad)] `</li>
+<li>podemos ver algunos casos de cantidades inusuales `r  dataHurtoPersonas2$Cantidad[which.max(dataHurtoPersonas2$Cantidad)] `</li>
+finalmente decidimos no hacer nada al respecto
 
-```{r Información resumida de las variables}
-kable(summary(dataHurtoPersonas2[,2:7]))
-kable(summary(dataHurtoPersonas2[,8:14]))
-kable(summary(dataHurtoPersonas2[,15:18]))
+```{r datos inconsistentes}
+# print('estadisticas de edades')
+# summary(dataHurtoPersonas2$Edad)
+# print('estadisticas de cantidad')
+# summary(dataHurtoPersonas2$Cantidad)
+#kable(head(summary(dataHurtoPersonas2[,2:7]),3))
+#kable(head(summary(dataHurtoPersonas2[,8:14]),3))
+#kable(head(summary(dataHurtoPersonas2[,15:18]),3))
+# dataHurtoPersonas2$Cantidad[which.max(dataHurtoPersonas2$Cantidad)]
+
+```
+
+<font size="3">Observamos el resumen de las variables para crear ideas para los gráficos.</font>
+
+
+
+```{r Información resumida de hurto por variables}
+mytable <- table((dataHurtoPersonas2$Departamento))
+#summary(mytable)
+print('hurtos por departamento')
+# print('minimo')
+# unlist(mytable)[which.min(unlist(mytable))]
+# #ACHI Bolivar EXISTE
+# #obtenemos el departamento con más crimenes 
+# print('maximo')
+# unlist(mytable)[which.max(unlist(mytable))]
+#dataHurtoPersonas2$Edad[which.max(dataHurtoPersonas2$Edad)]
+#BOGOTADC
+#convertimos la tabla CON CODIGO DANE
+dataHurtoXMunicipio <- data.frame(unlist(mytable))
+colnames(dataHurtoXMunicipio)<-c('DEPARTAMENTO','HURTOS')
+ dataHurtoXMunicipio <- dataHurtoXMunicipio[order(dataHurtoXMunicipio$HURTOS),]
+#Verificamos que todo esta bien
+#sapply(dataHurtoXMunicipio, class)
+# head(dataHurtoXMunicipio)
+# tail(dataHurtoXMunicipio)
+#Aplicamos estadistica descriptiva al Hurto
+print('summary')
+summary(dataHurtoXMunicipio$HURTOS)
+print('desviacion estandar')
+sd(dataHurtoXMunicipio$HURTOS)
+
+mytable <- table((dataHurtoPersonas2$Edad))
+#summary(mytable)
+print('hurtos por edad')
+# print('minimo')
+# unlist(mytable)[which.min(unlist(mytable))]
+#ACHI Bolivar EXISTE
+#obtenemos el departamento con más crimenes 
+# print('maximo')
+# unlist(mytable)[which.max(unlist(mytable))]
+#BOGOTADC
+#convertimos la tabla CON CODIGO DANE
+dataHurtoXMunicipio <- data.frame(unlist(mytable))
+colnames(dataHurtoXMunicipio)<-c('Edad','HURTOS')
+ dataHurtoXMunicipio <- dataHurtoXMunicipio[order(dataHurtoXMunicipio$HURTOS),]
+#Verificamos que todo esta bien
+#sapply(dataHurtoXMunicipio, class)
+# head(dataHurtoXMunicipio)
+# tail(dataHurtoXMunicipio)
+#Aplicamos estadistica descriptiva al Hurto
+print('summary')
+summary(dataHurtoXMunicipio$HURTOS)
+print('desviacion estandar')
+sd(dataHurtoXMunicipio$HURTOS)
+
+mytable <- table((dataHurtoPersonas2$Cantidad))
+#summary(mytable)
+print('hurtos por Cantidad hurtada')
+# print('minimo')
+# unlist(mytable)[which.min(unlist(mytable))]
+# #ACHI Bolivar EXISTE
+# #obtenemos el departamento con más crimenes 
+# print('maximo')
+# unlist(mytable)[which.max(unlist(mytable))]
+#BOGOTADC
+#convertimos la tabla CON CODIGO DANE
+dataHurtoXMunicipio <- data.frame(unlist(mytable))
+colnames(dataHurtoXMunicipio)<-c('Cantidad','HURTOS')
+ dataHurtoXMunicipio <- dataHurtoXMunicipio[order(dataHurtoXMunicipio$HURTOS),]
+#Verificamos que todo esta bien
+#sapply(dataHurtoXMunicipio, class)
+# head(dataHurtoXMunicipio)
+# tail(dataHurtoXMunicipio)
+#Aplicamos estadistica descriptiva al Hurto
+print('summary')
+summary(dataHurtoXMunicipio$HURTOS)
+print('desviacion estandar')
+sd(dataHurtoXMunicipio$HURTOS)
+
+
+mytable <- table((dataHurtoPersonas2$Hora))
+#summary(mytable)
+print('hurtos por Hora')
+# print('minimo')
+# unlist(mytable)[which.min(unlist(mytable))]
+# #ACHI Bolivar EXISTE
+# #obtenemos el departamento con más crimenes 
+# print('maximo')
+# unlist(mytable)[which.max(unlist(mytable))]
+#BOGOTADC
+#convertimos la tabla CON CODIGO DANE
+dataHurtoXMunicipio <- data.frame(unlist(mytable))
+colnames(dataHurtoXMunicipio)<-c('Hora','HURTOS')
+ dataHurtoXMunicipio <- dataHurtoXMunicipio[order(dataHurtoXMunicipio$HURTOS),]
+#Verificamos que todo esta bien
+#sapply(dataHurtoXMunicipio, class)
+# head(dataHurtoXMunicipio)
+# tail(dataHurtoXMunicipio)
+#Aplicamos estadistica descriptiva al Hurto
+print('summary')
+summary(dataHurtoXMunicipio$HURTOS)
+print('desviacion estandar')
+sd(dataHurtoXMunicipio$HURTOS)
+```
+
+<font size="3">La siguiente tabla muestra que, según los datos, la hora más peligrosa es la media noche se cometen `r table(dataHurtoPersonas2$HoraSimple)[which.max(table(dataHurtoPersonas2$HoraSimple))] ` hurtos
+la hora más segura es las 4 de la mañana donde solo se ha registrado `r table(dataHurtoPersonas2$HoraSimple)[which.min(table(dataHurtoPersonas2$HoraSimple))] ` hurtos
+sin embargo no hay una diferencia tan significativa con las otras horas como la hay con las 12 AM</font>
+
+
+```{r Cantidad de Hurtos por Hora}
+#table(dataHurtoPersonas2$HoraSimple)[which.min(table(dataHurtoPersonas2$HoraSimple))]
+# 
+# strptime(hora,format='%H:%M:%S')
+# dataHurtoPersonas2$Hora <- as.factor(substr(dataHurtoPersonas2$Hora,1,2))
+# dataHurtoPersonas2$HoraSimple <-rev(dataHurtoPersonas2$Hora, start = 1, stop = 2)
+ggplot(dataHurtoPersonas2,aes(x=dataHurtoPersonas2$HoraSimple))+
+  geom_bar()+xlab("Hora del dia")+ylab("Cantidad de hurtos") +
+    theme(text = element_text(size=7))+ggtitle('hurtos por hora')
+
 ```
 
 <font size="3">La siguiente gráfica muestra la cantidad de hurtos por Departamento.
-Podemos observar que hay más hurtos en Cundinamarca, Antioquia y Valle, pero esto es debido a que tienen más habitantes como se puede ver en la gráfica anterior.</font>
+Podemos observar que hay más hurtos en Bogota, Antioquia y Valle, pero esto es debido a que tienen más habitantes como se puede ver en la gráfica anterior.</font>
 
 ```{r Cantidad de Hurtos por Departamento}
 dataHurtoPersonas3 <- dataHurtoPersonas2
@@ -303,8 +452,48 @@ dataHurtoPersonas3 <- within(dataHurtoPersonas3,
                                                                                 decreasing=FALSE))))
 
 ggplot(dataHurtoPersonas3,aes(x=dataHurtoPersonas3$Departamento))+
-  geom_bar()+coord_flip()+xlab("Departamento")+ylab("Cantidad de hurtos")
+  geom_bar()+coord_flip()+xlab("Departamento")+ylab("Cantidad de hurtos")+ggtitle('hurtos por departamento')
 ```
+
+<font size="3">Para contrastar este efecto calcularemos el indices de violencia por municpio
+el numero de hurtos por cada 100000 habitantes al ser tan popular podremos usarlo para contrastar con otros paises de ser necesario</font>
+<li> </li>
+
+
+```{r Calculando el indice de violencia}
+
+mytable <- table((dataHurtoPersonas3$CodigoDANE))
+dataHurtoXMunicipio <- data.frame(unlist(mytable))
+colnames(dataHurtoXMunicipio)<-c('CODIGO','HURTOS')
+#Verificamos que todo esta bien
+sapply(dataHurtoXMunicipio, class)
+# head(dataHurtoXMunicipio)
+# tail(dataHurtoXMunicipio)
+#Aplicamos estadistica descriptiva al Hurto
+summary(dataHurtoXMunicipio$HURTOS)
+sd(dataHurtoXMunicipio$HURTOS)
+#plot basico  demasiados municipios
+#plot(dataHurtoXMunicipio)
+#join con poblacion municipio
+
+datapoblacionhurto<-merge(dataHurtoXMunicipio,dataProyMunFinal,by.x = 'CODIGO',by.y = 'CODNUM')
+#sapply(datapoblacionhurto,class)
+#  datapoblacionhurto$CODIGO[duplicated(datapoblacionhurto$CODIGO)]
+# mapply(setdiff,datapoblacionhurto$CODIGO,dataHurtoXMunicipio$CODIGO)
+#  setdiff(datapoblacionhurto$CODIGO,dataHurtoXMunicipio$CODIGO)
+
+datapoblacionhurto$INDICE <- (datapoblacionhurto$HURTOS/ datapoblacionhurto$totalHabitantes)*100000
+  
+ggplot(datapoblacionhurto, aes(x = reorder(datapoblacionhurto$DPNOM, datapoblacionhurto$INDICE), y = datapoblacionhurto$INDICE)) +
+  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("hurtos por cada 100.000 habitantes")
++ggtitle('indice de hurtos por departamento')
+
+ggplot(datapoblacionhurto, aes( x=INDICE)) + geom_histogram()+xlab("hurtos por cada 100.000 habitantes")+ylab('aparicion por municipio')+ggtitle('histograma indice de hurtos')
+
+```
+
+
+
 
 <font size="3">La siguiente gráfica muestra que no hay días más peligrosos que otros</font>
 
@@ -313,11 +502,7 @@ ggplot(dataHurtoPersonas3,aes(x=dataHurtoPersonas3$Dia))+
   geom_bar()+xlab("Día de la semana")+ylab("Cantidad de hurtos")
 ```
 
-<font size="3">La siguiente tabla muestra que, según los datos, la hora más peligrosa es la media noche</font>
 
-```{r Cantidad de Hurtos por Hora}
-kable(summary(dataHurtoPersonas3$Hora,5))
-```
 
 <font size="3">La siguiente gráfica muestra que, a diferencia de lo que esperábamos, la mayor cantidad de hurtos son sin armas</font>
 
@@ -335,6 +520,120 @@ ggplot(dataHurtoPersonas3,aes(x=dataHurtoPersonas3$MovilVictima))+
   geom_bar()+coord_flip()+xlab("Movilidad de la víctima")+ylab("Cantidad de hurtos")
 ```
 
+A partir de estos analisis podemos determinar a ojo las siguiente hipotesis:
+<li>hay una relacion fuerte entre los robos e ir a pie tanto para el asaltante como el asaltado</li>
+<li>no hay una diferencia signficativa entre robos para los diferentes dias de la semana</li>
+<li>la hora más insegura es las 12</li>
+
+<h2>Analisis multivariado</h2>
+
+
+para empezar utilizando los datos del dane determinaremos si hay correlacion entre el estrato de la vivienda y el indice de hurtos 
+encontramos NA en el 
+```{r Cargando datos de la vivienda}
+
+
+mytable3 <- table(paste(dataVivienda$P5752S1,dataVivienda$DEPMUNI))
+table(is.na(dataVivienda))
+
+#testo<-data.frame(unlist(strsplit(as.character(dataviviendaMuni[,1]), " ")))
+
+#divido municipio de tipo de vivienda
+dataviviendaMuni <- data.frame(unlist(mytable3))
+dataviviendaMuni[,3] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,1]
+dataviviendaMuni[,4] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,2]
+colnames(dataviviendaMuni)<-c('vivxcod','CantidadViviendas','TipoVivienda','CodDane')
+#total de viviendas por municipio en el data frame
+#calculamos el total de viviendas dentro del dataset de data vivienda
+mytable4 <- table(dataVivienda$DEPMUNI)
+#mytable4
+datatemp <- data.frame(unlist(mytable4))
+colnames(datatemp)<-c('CodDane','total_viviendas')
+#se lo pengo al primer dataset
+dataviviendaMuni<-merge(dataviviendaMuni,datatemp,by.x = 'CodDane',by.y = 'CodDane')
+#dataviviendaMuni[ ,c('DPNOM', 'MPIO', 'X2017', 'MPXDP')] <- list(NULL)
+dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y ='DPMP')
+# summary(dataviviendaMuni$total_viviendas)
+# sd(dataviviendaMuni$total_viviendas)
+#calculo el maximo y el minimo de total de numero de viviendas
+datatemp<-setNames(as.list(dataviviendaMuni$total_viviendas), dataviviendaMuni$MPXDP)
+
+ggplot(dataviviendaMuni, aes(x = reorder(dataviviendaMuni$DPNOM, dataviviendaMuni$total_viviendas), y = dataviviendaMuni$total_viviendas)) + 
+  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("Cantidad de viviendas") +ggtitle('viviendas entrevistadas por departamento')
+
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Apartamento") %>%  select("CantidadViviendas","totalHabitantes")
+print('correlación entre cantidad de viviendas entrevistadas por el dane y total de habitantes del municipio')
+cor(tmpcor$CantidadViviendas,tmpcor$totalHabitantes)
+
+
+
+
+
+```
+
+revisacmos si hay correlacion entre el tipo de vivienda entrevistada por el dane en el municpio y el indice de hurtos
+solo se puede apreciar una correlación baja con el numero de cuartos alquilados del municipio entrevistado y el indice de hurtos de dicho municipio
+```{r correlacion vivienda}
+tradcTipoVivienda <- data.frame("cod" = 1:4, "tipo_vivienda" = c("Casa" ,"Apartamento", "Cuarto","Otravivienda"))
+dataVivienda= merge(dataVivienda,tradcTipoVivienda,by.x="P5747",by.y="cod")
+#dataVivienda[ ,c('P5747','cod')] <- list(NULL)  
+
+# #Calcula el total de tipos de viviendas
+# mytable3 <- table(dataVivienda$tipo_vivienda)
+# mytable3
+#Calcula el total de tipos de viviendas por municipio 
+mytable3 <- table(paste(dataVivienda$tipo_vivienda,dataVivienda$DEPMUNI))
+mytable3
+
+#testo<-data.frame(unlist(strsplit(as.character(dataviviendaMuni[,1]), " ")))
+
+#divido municipio de tipo de vivienda
+dataviviendaMuni <- data.frame(unlist(mytable3))
+dataviviendaMuni[,3] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,1]
+dataviviendaMuni[,4] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,2]
+colnames(dataviviendaMuni)<-c('vivxcod','CantidadViviendas','TipoVivienda','CodDane')
+#total de viviendas por municipio en el data frame
+#calculamos el total de viviendas dentro del dataset de data vivienda
+mytable4 <- table(dataVivienda$DEPMUNI)
+#mytable4
+datatemp <- data.frame(unlist(mytable4))
+colnames(datatemp)<-c('CodDane','total_viviendas')
+#se lo pengo al primer dataset
+dataviviendaMuni<-merge(dataviviendaMuni,datatemp,by.x = 'CodDane',by.y = 'CodDane')
+#dataviviendaMuni[ ,c('DPNOM', 'MPIO', 'X2017', 'MPXDP')] <- list(NULL)
+dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y ='DPMP')
+# summary(dataviviendaMuni$total_viviendas)
+# sd(dataviviendaMuni$total_viviendas)
+#calculo el maximo y el minimo de total de numero de viviendas
+datatemp<-setNames(as.list(dataviviendaMuni$total_viviendas), dataviviendaMuni$MPXDP)
+
+ggplot(dataviviendaMuni, aes(x = reorder(dataviviendaMuni$DPNOM, dataviviendaMuni$total_viviendas), y = dataviviendaMuni$total_viviendas)) + 
+  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("Cantidad de viviendas") +ggtitle('viviendas entrevistadas por departamento')
+
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Apartamento") %>%  select("CantidadViviendas","totalHabitantes")
+
+
+dataviviendaMuni<-merge(datapoblacionhurto,dataviviendaMuni,by.x = c( 'DPMP'),by.y = c('CodDane'))
+print('CORRELACION ENTRE EL NUMERO DE APARTAMENTOS Y EL INDICE DE HURTOS')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Apartamento") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION ENTRE EL NUMERO DE CASAS Y EL INDICE DE HURTOS')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Casa") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION ENTRE EL NUMERO DE CUARTOS Y EL INDICE DE HURTOS')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Cuarto") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION ENTRE EL NUMERO DE OTRAS VIVIENDAS Y EL INDICE DE HURTOS')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Otravivienda") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+
+```
+
+
+
+
+
+
 
 
 Bibliografía
@@ -342,3 +641,7 @@ Proyecccion población Dane
 https://www.dane.gov.co/files/investigaciones/poblacion/proyepobla06_20/ProyeccionMunicipios2005_2020.xls
 Encuesta violencia en colombia
 http://microdatos.dane.gov.co/index.php/catalog/451/datafile/F1
+codigos dane
+https://www.dane.gov.co/files/censo2005/provincias/subregiones.pdf
+Unidad de Manejo y Análisis de Información Colombia (UMAIC)
+https://wiki.umaic.org/wiki/Unidad_de_Manejo_y_An%C3%A1lisis_de_Informaci%C3%B3n_Colombia
