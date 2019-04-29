@@ -187,18 +187,31 @@ kable(head(dataHurtoPersonas[,1:10],n = 3))
 
 <http://microdatos.dane.gov.co/index.php/catalog/451/get_microdata<>
 
-<ul><li>Datos de la vivienda</li>
-<li>Percepción de seguridad en el hogar</li>
-<li>Características generales de las personas</li></ul>
+<ul><li>Datos de la vivienda<ul>
+      <li>Buscar corelacion entre el estrato de la vivienda y el indice de hurtos</li>
+      <li>Buscar corelacion entre el tipo de la vivienda y el indice de hurtos</li>
+    </ul></li>
+<li>Percepción de seguridad en el hogar<ul>
+      <li>Buscar corelacion entre reportes de narcotrafico y el indice de hurtos</li>
+      <li>Buscar corelacion entre reportes de vandalismo y el indice de hurtos</li>
+    </ul></li>
+<li>Características generales de las personas<ul>
+      <li>Buscar corelacion entre la educación del encuestado y el indice de hurtos</li>
+    </ul></li>
+    <li>Percepción del aporte a la seguridad en el hogar<ul>
+      <li>Buscar corelacion entre la confianza en la policia y el indice de hurtos</li>
+      <li>Buscar corelacion entre la confianza en la alcaldia y el indice de hurtos</li>
+    </ul></li></ul>
 
 Después los unimos para que sean un solo dataset.</font>
 
 ```{r Creación del Dataset 3}
-dataCaracGen <- read.delim("CaracteristicasGenerales.txt", sep = " ")
+dataCaracGen <- read.delim("Características generales de las personas.txt", sep = "\t")
 #head(dataCaracGen)
 dataVivienda <- read.delim("Datos de la vivienda.txt",sep = "\t")
 #head(dataVivienda)
-dataPercepSeg <- read.delim("PercepcionSeguridad.txt",sep = "\t")
+dataPercepSeg <- read.delim("Percepción de seguridad en el barrio y en el hogar.txt",sep = "\t")
+dataConf <- read.delim("Percepción del aporte a la seguridad.txt",sep = "\t")
 #El separador de este era \t en vez de espacio.
 #head(dataPercepSeg)
 dataMerged1 = merge(dataCaracGen, dataVivienda, by.x=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"), 
@@ -206,7 +219,22 @@ dataMerged1 = merge(dataCaracGen, dataVivienda, by.x=c("DIRECTORIO", "SECUENCIA_
 #head(dataMerged1)
 dataMerged2 = merge(dataMerged1,dataPercepSeg, by.x=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"),
                     by.y=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"))
-kable(head(dataMerged2[,1:10]))
+dataMerged2 = merge(dataMerged2,dataConf, by.x=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"),
+                    by.y=c("DIRECTORIO", "SECUENCIA_ENCUESTA","SECUENCIA_P","ORDEN","FEX_C"))
+
+dataviviendaMuni<-merge(dataVivienda,dataProyMunFinal,by.x = 'DEPMUNI',by.y ='CODNUM')
+
+mytable4 <- table(dataVivienda$DEPMUNI)
+#mytable4
+datatemp <- data.frame(unlist(mytable4))
+colnames(datatemp)<-c('CodDane','total_viviendas')
+#se lo pengo al primer dataset
+dataviviendaMuni<-merge(dataviviendaMuni,datatemp,by.x = 'DEPMUNI',by.y = 'CodDane')
+
+ggplot(dataviviendaMuni, aes(x = reorder(dataviviendaMuni$DPNOM, dataviviendaMuni$total_viviendas), y = dataviviendaMuni$total_viviendas)) + 
+  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("Cantidad de viviendas") +ggtitle('viviendas entrevistadas por departamento')
+
+kable(head(dataMerged2[,1:10],3))
 ```
 ##Formato de variables no coincide con el tipo de variable
 
@@ -245,6 +273,20 @@ kable(sapply(dataHurtoPersonas2,class))
 #View(dataHurtoPersonas2)
 ```
 
+<font size="3">En el Dataset 3:
+<ul><li>Convertimos de la columna 6 a la 44 en Factor</li>
+<li>Convertimos la columna P5785 (Edad) a Integer</li>
+</ul></font>
+
+```{r Arreglar formato Dataset 3}
+#head(dataMerged2)
+#View(dataMerged2)
+#str(dataMerged3)
+dataMerged3 <- dataMerged2
+dataMerged3[,6:44]<-lapply(dataMerged3[,6:44],as.factor)
+dataMerged3[,"P5785"]<-as.integer(dataMerged3[,"P5785"])
+#kable(sapply(dataMerged2,class))
+```
 
 
 ##Observaciones duplicadas
@@ -282,7 +324,12 @@ kable(summary(dataHurtoPersonas2$Paisdenacimiento,7))
 kable(summary(dataHurtoPersonas2$Profesion,7))
 kable(summary(dataHurtoPersonas2$Escolaridad,7))
 ```
+<font size="3">Evaluando el Dataset 2, podemos observar que hay 45288 valores perdidos.</font>
 
+```{r Valores perdidos Dataset 3}
+kable(table(is.na(dataMerged3)))
+
+```
 
 ## Análisis Univariado
 
@@ -302,12 +349,17 @@ ggplot(dataProyMunStand2, aes(x = reorder(dataProyMunStand2$DPNOM, dataProyMunSt
 
 ```
 
-<font size="3"> se verifican para revisar posibles valores extremos o inconsistentes.</font>
+<font size="3"> se verifican para revisar posibles valores extremos o inconsistentes.</font><ul>
 <li>podemos ver algunos casos de edades imposibles `r  dataHurtoPersonas2$Edad[which.max(dataHurtoPersonas2$Edad)] `</li>
 <li>podemos ver algunos casos de cantidades inusuales `r  dataHurtoPersonas2$Cantidad[which.max(dataHurtoPersonas2$Cantidad)] `</li>
-finalmente decidimos no hacer nada al respecto
+</ul>
+
 
 ```{r datos inconsistentes}
+# print('valores estratos')
+# mytable3<-table(dataVivienda$P5752S1)
+# mytable3
+
 # print('estadisticas de edades')
 # summary(dataHurtoPersonas2$Edad)
 # print('estadisticas de cantidad')
@@ -485,8 +537,7 @@ datapoblacionhurto<-merge(dataHurtoXMunicipio,dataProyMunFinal,by.x = 'CODIGO',b
 datapoblacionhurto$INDICE <- (datapoblacionhurto$HURTOS/ datapoblacionhurto$totalHabitantes)*100000
   
 ggplot(datapoblacionhurto, aes(x = reorder(datapoblacionhurto$DPNOM, datapoblacionhurto$INDICE), y = datapoblacionhurto$INDICE)) +
-  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("hurtos por cada 100.000 habitantes")
-+ggtitle('indice de hurtos por departamento')
+  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("hurtos por cada 100.000 habitantes")+ggtitle('indice de hurtos por departamento')
 
 ggplot(datapoblacionhurto, aes( x=INDICE)) + geom_histogram()+xlab("hurtos por cada 100.000 habitantes")+ylab('aparicion por municipio')+ggtitle('histograma indice de hurtos')
 
@@ -525,16 +576,17 @@ A partir de estos analisis podemos determinar a ojo las siguiente hipotesis:
 <li>no hay una diferencia signficativa entre robos para los diferentes dias de la semana</li>
 <li>la hora más insegura es las 12</li>
 
-<h2>Analisis multivariado</h2>
+##Analisis multivariado
 
 
-para empezar utilizando los datos del dane determinaremos si hay correlacion entre el estrato de la vivienda y el indice de hurtos 
-encontramos NA en el 
+para empezar utilizando los datos del dane determinaremos si hay correlacion entre el numero de habitantes de un estrato y el indice de hurtos
+<li>encontramos una correlación negativa baja ente indice de hurtos y total de que no utilizan servicios de energía en el municipio</li>
+<li>encontramos una correlación negativa baja ente indice de hurtos y total de habitantes de estrato no registrado en el municipio</li>
 ```{r Cargando datos de la vivienda}
 
-
 mytable3 <- table(paste(dataVivienda$P5752S1,dataVivienda$DEPMUNI))
-table(is.na(dataVivienda))
+#mytable3
+#table(is.na(dataVivienda))
 
 #testo<-data.frame(unlist(strsplit(as.character(dataviviendaMuni[,1]), " ")))
 
@@ -542,7 +594,7 @@ table(is.na(dataVivienda))
 dataviviendaMuni <- data.frame(unlist(mytable3))
 dataviviendaMuni[,3] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,1]
 dataviviendaMuni[,4] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,2]
-colnames(dataviviendaMuni)<-c('vivxcod','CantidadViviendas','TipoVivienda','CodDane')
+colnames(dataviviendaMuni)<-c('vivxcod','CantidadViviendas','estrato','CodDane')
 #total de viviendas por municipio en el data frame
 #calculamos el total de viviendas dentro del dataset de data vivienda
 mytable4 <- table(dataVivienda$DEPMUNI)
@@ -555,23 +607,36 @@ dataviviendaMuni<-merge(dataviviendaMuni,datatemp,by.x = 'CodDane',by.y = 'CodDa
 dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y ='DPMP')
 # summary(dataviviendaMuni$total_viviendas)
 # sd(dataviviendaMuni$total_viviendas)
-#calculo el maximo y el minimo de total de numero de viviendas
-datatemp<-setNames(as.list(dataviviendaMuni$total_viviendas), dataviviendaMuni$MPXDP)
 
-ggplot(dataviviendaMuni, aes(x = reorder(dataviviendaMuni$DPNOM, dataviviendaMuni$total_viviendas), y = dataviviendaMuni$total_viviendas)) + 
-  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("Cantidad de viviendas") +ggtitle('viviendas entrevistadas por departamento')
 
-tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Apartamento") %>%  select("CantidadViviendas","totalHabitantes")
-print('correlación entre cantidad de viviendas entrevistadas por el dane y total de habitantes del municipio')
+tmpcor <-dataviviendaMuni %>%  filter(estrato== "1") %>%  select("CantidadViviendas","totalHabitantes")
+print('correlación entre indice de hurtos y total de habitantes de estrato 1 en el municipio')
 cor(tmpcor$CantidadViviendas,tmpcor$totalHabitantes)
-
-
-
-
+tmpcor <-dataviviendaMuni %>%  filter(estrato== "2") %>%  select("CantidadViviendas","totalHabitantes")
+print('correlación entre indice de hurtos y total de habitantes de estrato 2 en el municipio')
+cor(tmpcor$CantidadViviendas,tmpcor$totalHabitantes)
+tmpcor <-dataviviendaMuni %>%  filter(estrato== "3") %>%  select("CantidadViviendas","totalHabitantes")
+print('correlación entre indice de hurtos y total de habitantes de estrato 3 en el municipio')
+cor(tmpcor$CantidadViviendas,tmpcor$totalHabitantes)
+tmpcor <-dataviviendaMuni %>%  filter(estrato== "4") %>%  select("CantidadViviendas","totalHabitantes")
+print('correlación entre indice de hurtos y total de habitantes de estrato 4 en el municipio')
+cor(tmpcor$CantidadViviendas,tmpcor$totalHabitantes)
+tmpcor <-dataviviendaMuni %>%  filter(estrato== "5") %>%  select("CantidadViviendas","totalHabitantes")
+print('correlación entre indice de hurtos y total de habitantes de estrato 5 en el municipio')
+cor(tmpcor$CantidadViviendas,tmpcor$totalHabitantes)
+tmpcor <-dataviviendaMuni %>%  filter(estrato== "6") %>%  select("CantidadViviendas","totalHabitantes")
+print('correlación entre indice de hurtos y total de habitantes de estrato 6 en el municipio')
+cor(tmpcor$CantidadViviendas,tmpcor$totalHabitantes)
+tmpcor <-dataviviendaMuni %>%  filter(estrato== "8") %>%  select("CantidadViviendas","totalHabitantes")
+print('correlación entre indice de hurtos y total de que no utilizan servicios de energía en el municipio')
+cor(tmpcor$CantidadViviendas,tmpcor$totalHabitantes)
+tmpcor <-dataviviendaMuni %>%  filter(estrato== "9") %>%  select("CantidadViviendas","totalHabitantes")
+print('correlación entre indice de hurtos y total de habitantes de estrato no registrado en el municipio')
+cor(tmpcor$CantidadViviendas,tmpcor$totalHabitantes)
 
 ```
 
-revisacmos si hay correlacion entre el tipo de vivienda entrevistada por el dane en el municpio y el indice de hurtos
+revisamos si hay correlacion entre el tipo de vivienda entrevistada por el dane en el municpio y el indice de hurtos
 solo se puede apreciar una correlación baja con el numero de cuartos alquilados del municipio entrevistado y el indice de hurtos de dicho municipio
 ```{r correlacion vivienda}
 tradcTipoVivienda <- data.frame("cod" = 1:4, "tipo_vivienda" = c("Casa" ,"Apartamento", "Cuarto","Otravivienda"))
@@ -583,7 +648,7 @@ dataVivienda= merge(dataVivienda,tradcTipoVivienda,by.x="P5747",by.y="cod")
 # mytable3
 #Calcula el total de tipos de viviendas por municipio 
 mytable3 <- table(paste(dataVivienda$tipo_vivienda,dataVivienda$DEPMUNI))
-mytable3
+#mytable3
 
 #testo<-data.frame(unlist(strsplit(as.character(dataviviendaMuni[,1]), " ")))
 
@@ -605,12 +670,11 @@ dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y 
 # summary(dataviviendaMuni$total_viviendas)
 # sd(dataviviendaMuni$total_viviendas)
 #calculo el maximo y el minimo de total de numero de viviendas
-datatemp<-setNames(as.list(dataviviendaMuni$total_viviendas), dataviviendaMuni$MPXDP)
+#datatemp<-setNames(as.list(dataviviendaMuni$total_viviendas), dataviviendaMuni$MPXDP)
 
-ggplot(dataviviendaMuni, aes(x = reorder(dataviviendaMuni$DPNOM, dataviviendaMuni$total_viviendas), y = dataviviendaMuni$total_viviendas)) + 
-  geom_bar(stat = "identity")+coord_flip()+xlab("Departamento")+ylab("Cantidad de viviendas") +ggtitle('viviendas entrevistadas por departamento')
 
-tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Apartamento") %>%  select("CantidadViviendas","totalHabitantes")
+
+# tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Apartamento") %>%  select("CantidadViviendas","totalHabitantes")
 
 
 dataviviendaMuni<-merge(datapoblacionhurto,dataviviendaMuni,by.x = c( 'DPMP'),by.y = c('CodDane'))
@@ -628,13 +692,220 @@ tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Otravivienda") %>%  select
 cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
 
 ```
+No encontramos una correlacion entre el numero de encuestados que dieron reportes de narcotrafico y el indice de hurtos
+```{r correlacion narcotrafico}
 
 
+# mytable3 <- table(dataPercepSeg$P1398S7)
+# mytable3
+
+mytable3 <- table(paste(dataMerged3$P1398S7,dataMerged3$DEPMUNI))
+#mytable3
+#setdiff(dataMerged3$P1398S7.x,dataMerged3$P1398S7.x)
+#testo<-data.frame(unlist(strsplit(as.character(dataviviendaMuni[,1]), " ")))
+
+#divido municipio de tipo de vivienda
+dataviviendaMuni <- data.frame(unlist(mytable3))
+dataviviendaMuni[,3] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,1]
+dataviviendaMuni[,4] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,2]
+colnames(dataviviendaMuni)<-c('vivxcod','CantidadViviendas','TipoVivienda','CodDane')
+#total de viviendas por municipio en el data frame
+#calculamos el total de viviendas dentro del dataset de data vivienda
+mytable4 <- table(dataVivienda$DEPMUNI)
+#mytable4
+datatemp <- data.frame(unlist(mytable4))
+colnames(datatemp)<-c('CodDane','total_viviendas')
+#se lo pengo al primer dataset
+dataviviendaMuni<-merge(dataviviendaMuni,datatemp,by.x = 'CodDane',by.y = 'CodDane')
+#dataviviendaMuni[ ,c('DPNOM', 'MPIO', 'X2017', 'MPXDP')] <- list(NULL)
+dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y ='DPMP')
 
 
+dataviviendaMuni<-merge(datapoblacionhurto,dataviviendaMuni,by.x = c( 'DPMP'),by.y = c('CodDane'))
+print('CORRELACION entre el indice de violencia y personas que indicaron que si habia narcotrafico en su municipio')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "1") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que no habia narcotrafico en su municipio')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "2") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+
+```
 
 
+No encontramos una correlacion entre el numero de encuestados que dieron reportes de vandalismo y el indice de hurtos
+```{r correlacion vandalismo}
 
+
+# mytable3 <- table(dataPercepSeg$P1398S7)
+# mytable3
+mytable3 <- table(paste(dataMerged3$P1398S9,dataMerged3$DEPMUNI))
+#mytable3
+#setdiff(dataMerged3$P1398S9.x,dataMerged3$P1398S9.x)
+#testo<-data.frame(unlist(strsplit(as.character(dataviviendaMuni[,1]), " ")))
+
+#divido municipio de tipo de vivienda
+dataviviendaMuni <- data.frame(unlist(mytable3))
+dataviviendaMuni[,3] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,1]
+dataviviendaMuni[,4] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,2]
+colnames(dataviviendaMuni)<-c('vivxcod','CantidadViviendas','TipoVivienda','CodDane')
+#total de viviendas por municipio en el data frame
+#calculamos el total de viviendas dentro del dataset de data vivienda
+mytable4 <- table(dataVivienda$DEPMUNI)
+#mytable4
+datatemp <- data.frame(unlist(mytable4))
+colnames(datatemp)<-c('CodDane','total_viviendas')
+#se lo pengo al primer dataset
+dataviviendaMuni<-merge(dataviviendaMuni,datatemp,by.x = 'CodDane',by.y = 'CodDane')
+#dataviviendaMuni[ ,c('DPNOM', 'MPIO', 'X2017', 'MPXDP')] <- list(NULL)
+dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y ='DPMP')
+
+
+dataviviendaMuni<-merge(datapoblacionhurto,dataviviendaMuni,by.x = c( 'DPMP'),by.y = c('CodDane'))
+print('CORRELACION entre el indice de violencia y personas que indicaron que si habia vandalismo en su municipio')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "1") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que no habia vandalismo en su municipio')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "2") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+
+```
+
+
+No encontramos una correlacion entre el numero de encuestados que reportaron diferentes niveles de educacion y el indice de hurtos
+```{r correlacion nivel educativo}
+
+
+# mytable3 <- table(dataCaracGen$P6210)
+# mytable3
+mytable3 <- table(paste(dataMerged3$P6210,dataMerged3$DEPMUNI))
+#mytable3
+
+#testo<-data.frame(unlist(strsplit(as.character(dataviviendaMuni[,1]), " ")))
+
+#divido municipio de tipo de vivienda
+dataviviendaMuni <- data.frame(unlist(mytable3))
+dataviviendaMuni[,3] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,1]
+dataviviendaMuni[,4] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,2]
+colnames(dataviviendaMuni)<-c('vivxcod','CantidadViviendas','TipoVivienda','CodDane')
+#total de viviendas por municipio en el data frame
+#calculamos el total de viviendas dentro del dataset de data vivienda
+mytable4 <- table(dataVivienda$DEPMUNI)
+#mytable4
+datatemp <- data.frame(unlist(mytable4))
+colnames(datatemp)<-c('CodDane','total_viviendas')
+#se lo pengo al primer dataset
+dataviviendaMuni<-merge(dataviviendaMuni,datatemp,by.x = 'CodDane',by.y = 'CodDane')
+#dataviviendaMuni[ ,c('DPNOM', 'MPIO', 'X2017', 'MPXDP')] <- list(NULL)
+dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y ='DPMP')
+
+
+dataviviendaMuni<-merge(datapoblacionhurto,dataviviendaMuni,by.x = c( 'DPMP'),by.y = c('CodDane'))
+print('CORRELACION entre el indice de violencia y personas que indicaron que no tenian educacion formal')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "1") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que tenian educacion preescolar')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "2") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que tenian educacion basica primaria')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "3") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que tenian educacion basica secundaria')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "4") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que tenian educacion media')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "5") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que tenian educacion universitaria')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "6") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+
+```
+No encontramos una correlacion entre el numero de encuestados que reportaron diferentes niveles de confianza en la policia y el indice de hurtos
+```{r correlacion confianza en la policia}
+
+
+# mytable3 <- table(dataCaracGen$P6210)
+# mytable3
+mytable3 <- table(paste(dataMerged3$P1181S1,dataMerged3$DEPMUNI))
+#mytable3
+
+#testo<-data.frame(unlist(strsplit(as.character(dataviviendaMuni[,1]), " ")))
+
+#divido municipio de tipo de vivienda
+dataviviendaMuni <- data.frame(unlist(mytable3))
+dataviviendaMuni[,3] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,1]
+dataviviendaMuni[,4] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,2]
+colnames(dataviviendaMuni)<-c('vivxcod','CantidadViviendas','TipoVivienda','CodDane')
+#total de viviendas por municipio en el data frame
+#calculamos el total de viviendas dentro del dataset de data vivienda
+mytable4 <- table(dataVivienda$DEPMUNI)
+#mytable4
+datatemp <- data.frame(unlist(mytable4))
+colnames(datatemp)<-c('CodDane','total_viviendas')
+#se lo pengo al primer dataset
+dataviviendaMuni<-merge(dataviviendaMuni,datatemp,by.x = 'CodDane',by.y = 'CodDane')
+#dataviviendaMuni[ ,c('DPNOM', 'MPIO', 'X2017', 'MPXDP')] <- list(NULL)
+dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y ='DPMP')
+
+
+dataviviendaMuni<-merge(datapoblacionhurto,dataviviendaMuni,by.x = c( 'DPMP'),by.y = c('CodDane'))
+print('CORRELACION entre el indice de violencia y personas que indicaron que se sentian muy protegidas por la policia')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "1") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que se sentian protegidas por la policia')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "2") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que se sentian poco protegidas por la policia')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "3") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que no se sentian protegidas por la policia')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "4") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+
+```
+No encontramos una correlacion entre el numero de encuestados que reportaron diferentes niveles de confianza en la alcaldia y el indice de hurtos
+```{r correlacion confianza en la alcaldia}
+
+
+# mytable3 <- table(dataCaracGen$P6210)
+# mytable3
+mytable3 <- table(paste(dataMerged3$P1182S3,dataMerged3$DEPMUNI))
+#mytable3
+
+#testo<-data.frame(unlist(strsplit(as.character(dataviviendaMuni[,1]), " ")))
+
+#divido municipio de tipo de vivienda
+dataviviendaMuni <- data.frame(unlist(mytable3))
+dataviviendaMuni[,3] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,1]
+dataviviendaMuni[,4] <-str_split_fixed(as.character(dataviviendaMuni[,1]), " ", 2)[,2]
+colnames(dataviviendaMuni)<-c('vivxcod','CantidadViviendas','TipoVivienda','CodDane')
+#total de viviendas por municipio en el data frame
+#calculamos el total de viviendas dentro del dataset de data vivienda
+mytable4 <- table(dataVivienda$DEPMUNI)
+#mytable4
+datatemp <- data.frame(unlist(mytable4))
+colnames(datatemp)<-c('CodDane','total_viviendas')
+#se lo pengo al primer dataset
+dataviviendaMuni<-merge(dataviviendaMuni,datatemp,by.x = 'CodDane',by.y = 'CodDane')
+#dataviviendaMuni[ ,c('DPNOM', 'MPIO', 'X2017', 'MPXDP')] <- list(NULL)
+dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y ='DPMP')
+
+
+dataviviendaMuni<-merge(datapoblacionhurto,dataviviendaMuni,by.x = c( 'DPMP'),by.y = c('CodDane'))
+print('CORRELACION entre el indice de violencia y personas que indicaron que se sentian muy protegidas por la alcaldia')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "1") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que se sentian protegidas por la alcaldia')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "2") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que se sentian poco protegidas por la alcaldia')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "3") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+print('CORRELACION entre el indice de violencia y personas que indicaron que no se sentian protegidas por la alcaldia')
+tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "4") %>%  select("CantidadViviendas","INDICE")
+cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
+
+```
 
 Bibliografía
 Proyecccion población Dane
@@ -645,3 +916,4 @@ codigos dane
 https://www.dane.gov.co/files/censo2005/provincias/subregiones.pdf
 Unidad de Manejo y Análisis de Información Colombia (UMAIC)
 https://wiki.umaic.org/wiki/Unidad_de_Manejo_y_An%C3%A1lisis_de_Informaci%C3%B3n_Colombia
+http://www.cali.gov.co/planeacion/publicaciones/107322/estratificacion-socioeconomica-de-santiago-de-cali/
