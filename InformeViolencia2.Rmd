@@ -115,7 +115,7 @@ dataProyMunStand$MPIO<-gsub("[:(:]CD[:):]|\\s|[:(:]1[:):]|[:(:]3[:):]|\\.|\\,|[:
 kable(tail(dataProyMunStand,3))
 ```
 
-## Limpieza del Dataset HurtoANSI
+## Limpieza del Dataset Hurto
 
 <font size="3">Obtenemos un dataset con la información de hurtos del año 2017 en Colombia.
 
@@ -323,11 +323,13 @@ kable(summary(dataHurtoPersonas2$Paisdenacimiento,7))
 #kable(summary(dataHurtoPersonas2$Clasedeempleado))
 kable(summary(dataHurtoPersonas2$Profesion,7))
 kable(summary(dataHurtoPersonas2$Escolaridad,7))
+
 ```
-<font size="3">Evaluando el Dataset 2, podemos observar que hay 45288 valores perdidos.</font>
+<font size="3">Evaluando el Dataset 2, podemos observar que hay 67232 valores perdidos.</font>
 
 ```{r Valores perdidos Dataset 3}
 kable(table(is.na(dataMerged3)))
+dataMerged3 <- dataMerged3[!apply(is.na(dataMerged3) | dataMerged3 == "", 1, all),]
 
 ```
 
@@ -579,6 +581,20 @@ A partir de estos analisis podemos determinar a ojo las siguiente hipotesis:
 ##Analisis multivariado
 
 
+Numero de hurtos por población de cabecera y resto
+no hay una corelacion fuerte entre la poblacion de cabecera y el indice de hurtos
+
+```{r Cantidad de Hurtos por cabecera}
+ggplot(datapoblacionhurto,aes(x=datapoblacionhurto$poblacionCabecera, y=datapoblacionhurto$INDICE))+
+  geom_point()+coord_flip()+xlab("poblacion resto")+ylab("Cantidad de hurtos")
+ggplot(datapoblacionhurto,aes(x=datapoblacionhurto$poblacionResto, y=datapoblacionhurto$INDICE))+
+  geom_point()+coord_flip()+xlab("población cabecera")+ylab("Cantidad de hurtos")
+print("correlacion cabecera y hurtos")
+cor(datapoblacionhurto$poblacionCabecera,datapoblacionhurto$INDICE)
+print("correlacion resto y hurtos")
+cor(datapoblacionhurto$poblacionResto,datapoblacionhurto$INDICE)
+```
+
 para empezar utilizando los datos del dane determinaremos si hay correlacion entre el numero de habitantes de un estrato y el indice de hurtos
 <li>encontramos una correlación negativa baja ente indice de hurtos y total de que no utilizan servicios de energía en el municipio</li>
 <li>encontramos una correlación negativa baja ente indice de hurtos y total de habitantes de estrato no registrado en el municipio</li>
@@ -607,7 +623,7 @@ dataviviendaMuni<-merge(dataviviendaMuni,datatemp,by.x = 'CodDane',by.y = 'CodDa
 dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y ='DPMP')
 # summary(dataviviendaMuni$total_viviendas)
 # sd(dataviviendaMuni$total_viviendas)
-
+#ggplot(dataviviendaMuni, aes(x=estrato, y=DPNOM)) + geom_point()
 
 tmpcor <-dataviviendaMuni %>%  filter(estrato== "1") %>%  select("CantidadViviendas","totalHabitantes")
 print('correlación entre indice de hurtos y total de habitantes de estrato 1 en el municipio')
@@ -636,8 +652,9 @@ cor(tmpcor$CantidadViviendas,tmpcor$totalHabitantes)
 
 ```
 
-revisamos si hay correlacion entre el tipo de vivienda entrevistada por el dane en el municpio y el indice de hurtos
-solo se puede apreciar una correlación baja con el numero de cuartos alquilados del municipio entrevistado y el indice de hurtos de dicho municipio
+<font size="3">revisamos si hay correlacion entre el tipo de vivienda entrevistada por el dane en el municpio y el indice de hurtos
+solo se puede apreciar una correlación baja con el numero de cuartos alquilados del municipio entrevistado y el indice de hurtos de dicho municipio</font>
+<br>
 ```{r correlacion vivienda}
 tradcTipoVivienda <- data.frame("cod" = 1:4, "tipo_vivienda" = c("Casa" ,"Apartamento", "Cuarto","Otravivienda"))
 dataVivienda= merge(dataVivienda,tradcTipoVivienda,by.x="P5747",by.y="cod")
@@ -678,6 +695,9 @@ dataviviendaMuni<-merge(dataviviendaMuni,dataProyMunFinal,by.x = 'CodDane',by.y 
 
 
 dataviviendaMuni<-merge(datapoblacionhurto,dataviviendaMuni,by.x = c( 'DPMP'),by.y = c('CodDane'))
+
+ggplot(dataviviendaMuni, aes(x=TipoVivienda, y=INDICE)) + 
+  geom_boxplot()+xlab("Indice de violencia")+ylab("Tipo de vivienda")+ggtitle('hurtos por tipo de vivienda')
 print('CORRELACION ENTRE EL NUMERO DE APARTAMENTOS Y EL INDICE DE HURTOS')
 tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "Apartamento") %>%  select("CantidadViviendas","INDICE")
 cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
