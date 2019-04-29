@@ -187,21 +187,10 @@ kable(head(dataHurtoPersonas[,1:10],n = 3))
 
 <http://microdatos.dane.gov.co/index.php/catalog/451/get_microdata<>
 
-<ul><li>Datos de la vivienda<ul>
-      <li>Buscar corelacion entre el estrato de la vivienda y el indice de hurtos</li>
-      <li>Buscar corelacion entre el tipo de la vivienda y el indice de hurtos</li>
-    </ul></li>
-<li>Percepción de seguridad en el hogar<ul>
-      <li>Buscar corelacion entre reportes de narcotrafico y el indice de hurtos</li>
-      <li>Buscar corelacion entre reportes de vandalismo y el indice de hurtos</li>
-    </ul></li>
-<li>Características generales de las personas<ul>
-      <li>Buscar corelacion entre la educación del encuestado y el indice de hurtos</li>
-    </ul></li>
-    <li>Percepción del aporte a la seguridad en el hogar<ul>
-      <li>Buscar corelacion entre la confianza en la policia y el indice de hurtos</li>
-      <li>Buscar corelacion entre la confianza en la alcaldia y el indice de hurtos</li>
-    </ul></li></ul>
+<ul><li>Datos de la vivienda</li>
+<li>Percepción de seguridad en el hogar</li>
+<li>Características generales de las personas</li>
+<li>Percepción del aporte a la seguridad en el hogar</li></ul>
 
 Después los unimos para que sean un solo dataset.</font>
 
@@ -926,6 +915,8 @@ tmpcor <-dataviviendaMuni %>%  filter(TipoVivienda== "4") %>%  select("CantidadV
 cor(tmpcor$CantidadViviendas,tmpcor$INDICE)
 
 ```
+
+de todo esto lo unico que podemos concluir con cierto grado de certeza es que hay una correlacion del indice de hurtos con el numero de cuartos lo que nos parece sumamente extraño
 
 Bibliografía
 Proyecccion población Dane
