@@ -17,16 +17,20 @@ library(rmarkdown)
 library(ggplot2)
 library(dplyr)
 library(stringr)
-setwd("D:/Descargas/datasets/dataset")
+
 ```
 
 ## Carga y limpieza de  datasets
 
 ```{r cargar dataset hubway }
+setwd("D:/Descargas/datasets/dataset")
 dataTrips<-read.csv(file="hubway_tripsCorrecto.csv",sep=",")
+dataStations<-read.csv(file="hubway_stations.csv",sep=",")
+dataCrimes<-read.csv(file="crimeEx.csv",sep=";")
 summary(dataTrips)
 head(dataTrips)
-table(is.na(dataTrips))
+table(is.na(dataTrips$birth_date))
+dataTrips$birth_date <- dataTrips$birth_date[!apply(is.na(dataTrips$birth_date) | dataTrips$birth_date == "", 1, all),]
 ```
 
 ## Including Plots
