@@ -1,0 +1,40 @@
+---
+title: "Taller Individual-HubwayChallenge"
+author: "AndresParedes"
+date: "May 7, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#install.packages("knitr")
+#install.packages("rmarkdown")
+#install.packages("ggplot2")
+#install.packages("dplyr")
+#install.packages("stringr")
+library(knitr)
+library(rmarkdown)
+library(ggplot2)
+library(dplyr)
+library(stringr)
+setwd("D:/Descargas/datasets/dataset")
+```
+
+## Carga y limpieza de  datasets
+
+```{r cargar dataset hubway }
+dataTrips<-read.csv(file="hubway_tripsCorrecto.csv",sep=",")
+summary(dataTrips)
+head(dataTrips)
+table(is.na(dataTrips))
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
