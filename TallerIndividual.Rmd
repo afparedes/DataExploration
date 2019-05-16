@@ -19,19 +19,90 @@ library(dplyr)
 library(stringr)
 
 ```
+##Intrdocción 
+
+Este es un trabajo para la clase de Analisis exploratorio de datos sobre el uso de un sistema de prestamo gratuito de bicicletas en la ciudad de Boston llamado Boston Hubway, e intentare resolver las siguiente preguntas a lo largo de este documento:
+
+¿Quién ha utilizado más el servicio de bicicletas?
+¿Mujeres o hombres?
+¿Personas mayores o jóvenes?
+¿Suscritos o solo usuarios que han utilizado el servicio una sola vez?
+
+
+¿Dónde se ha solicitado más el servicio de bicicletas?
+¿Más en Boston que en Cambridge?
+¿Cuáles son las tres estaciones donde han llegado más viajes en estas bicicletas?
+¿Cuáles son las cinco estaciones desde donde han salido la mayor cantidad de viajes en estas bicicletas?
+¿Cuáles son los cinco recorridos que tuvieron la mayor duración (de mayor a menor)?
+¿Cuáles son los cinco recorridos que tuvieron la menor duración (de menor a mayor)?
+
+
+¿Cuándo se ha solicitado más el servicio de bicicletas?
+¿Más durante el fin de semana que durante los días de semana?
+¿Más durante las horas pico?
+¿Más durante la temporada de verano que la de otoño?
+¿Cuáles son las horas de mayor demanda de bicicletas
+
+
+¿Cuales son los crímenes más reportados?
+¿Cuáles son los tres barrios más seguros y los tres barrios menos seguros de Boston?
+¿Se ha utilizado menos el servicio de bicicletas en los barrios con mayor reporte de incidentes de criminalidad?
+¿Se ha utilizado más el servicio de bicicletas en los barrios con menor reporte de incidentes de criminalidad?
+
+
+
 
 ## Carga y limpieza de  datasets
 
-```{r cargar dataset hubway }
+```{r cargamos todos los datasets }
 setwd("D:/Descargas/datasets/dataset")
+#Data viajes
+#http://hubwaydatachallenge.org/
 dataTrips<-read.csv(file="hubway_tripsCorrecto.csv",sep=",")
+#Data estaciones
+#http://hubwaydatachallenge.org/
 dataStations<-read.csv(file="hubway_stations.csv",sep=",")
+#Data Crimen
+#https://www.kaggle.com/ankkur13/boston-crime-data
 dataCrimes<-read.csv(file="crimeEx.csv",sep=";")
+#data barrios
+#https://data.boston.gov/dataset/boston-neighborhoods
+dataBarrios<-read.csv(file="Boston_Neighborhoods.csv",sep=";")
+#dataTripsSinNA<- dataTrips[!dataTrips,]
+```
+
+
+
+```{r analizamos y limpiamos el dataset de viajes}
 summary(dataTrips)
 head(dataTrips)
-table(is.na(dataTrips$birth_date))
-dataTrips$birth_date <- dataTrips$birth_date[!apply(is.na(dataTrips$birth_date) | dataTrips$birth_date == "", 1, all),]
+table(is.na(dataTrips))
+colnames(dataTrips)
+
+row.has.na <- apply(dataTrips, 1, function(x){any(is.na(x))})
+sum(row.has.na)
+dataTripsSinNA <- dataTrips[!row.has.na,]
+table(is.na(dataTripsSinNA))
+
+sum(is.na(dataTrips$strt_statn))
+sum(is.na(dataTrips$strt_statn))
+sapply(dataTrips, class)
+
 ```
+
+```{r analizamos y limpiamos el dataset de crimenes}
+summary(dataCrimes)
+head(dataCrimes)
+table(is.na(dataCrimes))
+```
+
+
+```{r analizamos y limpiamos el dataset de estaciones}
+summary(dataStations)
+head(dataStations)
+table(is.na(dataStations))
+```
+
 
 ## Including Plots
 
