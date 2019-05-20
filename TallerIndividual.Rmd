@@ -12,12 +12,15 @@ knitr::opts_chunk$set(echo = TRUE)
 #install.packages("ggplot2")
 #install.packages("dplyr")
 #install.packages("stringr")
+#install.packages("rgdal")
+#install.packages("raster")
 library(knitr)
 library(rmarkdown)
 library(ggplot2)
 library(dplyr)
 library(stringr)
-
+library(rgdal)
+library(raster)
 ```
 ##Intrdocción 
 
@@ -67,10 +70,13 @@ dataStations<-read.csv(file="hubway_stations.csv",sep=",")
 dataCrimes<-read.csv(file="crimeEx.csv",sep=";")
 #data barrios
 #https://data.boston.gov/dataset/boston-neighborhoods
-dataBarrios<-read.csv(file="Boston_Neighborhoods.csv",sep=";")
+dataBarrios<-read.csv(file="Boston_Neighborhoods.csv",sep=",")
 #dataTripsSinNA<- dataTrips[!dataTrips,]
-```
 
+#geoJsonBarrios <- readOGR(dsn = "Boston_Neighborhoods.geojSON")
+gas <- readOGR(dsn = "Boston_Neighborhoods.geojson")
+```
+Vemos que al eliminar todas las columnas con NA se pierde demasiada información por lo que iremos eliminando los na en el camino
 
 
 ```{r analizamos y limpiamos el dataset de viajes}
@@ -102,14 +108,74 @@ summary(dataStations)
 head(dataStations)
 table(is.na(dataStations))
 ```
+respondemos 
+#¿Quién ha utilizado más el servicio de bicicletas?
+para esto podemos utilizar la funcion table sobre el dataset trips 
+
+#¿Mujeres o hombres? 
+se han reportado más viajes de hombres `r data.frame(unlist(table(dataTrips$gender)))[3,2] ` que de mujeres `r data.frame(unlist(table(dataTrips$gender)))[2,2] `
+
+#¿Personas mayores o jóvenes?
+vamos a definir jovenes hasta los 30 años y la data es del 2012 por lo que la edad minima de nacimiento de los jovenes es de 1982
+hay mas usuarios mayores 204317 que usuarios jovenes en el sistema 146327
+
+#¿Suscritos o solo usuarios que han utilizado el servicio una sola vez? 
+hay más registrados `r data.frame(unlist(table(dataTrips$subsc_type)))[2,2] ` que casuales `r data.frame(unlist(table(dataTrips$subsc_type)))[1,2] `
 
 
-## Including Plots
+```{r Quién ha utilizado}
+table(dataTrips$gender)
+generoLimpio<- dataTrips$gender[!dataTrips$gender=='']
+table(generoLimpio)
 
-You can also embed plots, for example:
+table(dataTrips$birth_date)
+tmp<-data.frame(unlist(table(dataTrips$birth_date)))
+tmp$Var1<-as.numeric(as.character(tmp$Var1))
+tmpjovenes <- tmp[which(tmp$Var1>=1982),]
+sum(tmpjovenes$Freq)
+tmpmayores <- tmp[which(tmp$Var1<1982),]
+sum(tmpmayores$Freq)
+table(dataTrips$subsc_type)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+#¿Dónde se ha solicitado más el servicio de bicicletas?
+
+#¿Más en Boston que en Cambridge? 
+se han solicitado mas bicicletas desde Boston hay 1221956 viajes saliendo de boston Boston hay 296778 saliendo de cambridge
+
+#¿Cuáles son las tres estaciones donde han llegado más viajes en estas bicicletas?
+South Station - 700 Atlantic Ave. con 56280 llegadas, Boston Public Library - 700 Boylston St. con 43387 llegadas y Charles Circle - Charles St. at Cambridge St. con 35361 llegadas
+
+#¿Cuáles son las cinco estaciones desde donde han salido la mayor cantidad de viajes en estas bicicletas?
+South Station - 700 Atlantic Ave.	con 56442	salidas, Boston Public Library - 700 Boylston St. con 42568 salidas, Charles Circle - Charles St. at Cambridge St. con 36201 salidas, Beacon St / Mass Ave con 35438 salidas y 
+MIT at Mass Ave / Amherst St con 33685 salidas
+
+#¿Cuáles son los cinco recorridos que tuvieron la mayor duración (de mayor a menor)?
+
+#¿Cuáles son los cinco recorridos que tuvieron la menor duración (de menor a mayor)?
+```{r Dónde se ha solicitado}
+tmpsalida<-dataStations
+colnames(tmpsalida) <- paste("sal", colnames(tmpsalida), sep = "_")
+dataTrips2<-merge(dataTrips,tmpsalida,by.x = 'strt_statn',by.y = 'sal_id')
+table(dataTrips2$sal_municipal)
+tmpllegada<-dataStations
+colnames(tmpllegada) <- paste("lle", colnames(tmpllegada), sep = "_")
+dataTrips3<-merge(dataTrips2,tmpllegada,by.x = 'end_statn',by.y = 'lle_id')
+tmpestaciones<-data.frame(unlist(table(dataTrips3$lle_station)))
+tmpestaciones <- tmpestaciones[order(-tmpestaciones$Freq),]
+tmpestaciones[1,]
+tmpestaciones[2,]
+tmpestaciones[3,]
+tmpestaciones<-data.frame(unlist(table(dataTrips3$sal_station)))
+tmpestaciones <- tmpestaciones[order(-tmpestaciones$Freq),]
+tmpestaciones[1,]
+tmpestaciones[2,]
+tmpestaciones[3,]
+tmpestaciones[4,]
+tmpestaciones[5,]
+```
+
+
+
