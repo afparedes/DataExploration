@@ -153,8 +153,25 @@ South Station - 700 Atlantic Ave.	con 56442	salidas, Boston Public Library - 700
 MIT at Mass Ave / Amherst St con 33685 salidas
 
 #¿Cuáles son los cinco recorridos que tuvieron la mayor duración (de mayor a menor)?
+"Fan Pier-Christian Science Plaza"
+"Congress / Sleeper-Faneuil Hall - Union St. at North St."
+"Dorchester Ave. at Gillette Park-HMS / HSPH - Ave. Louis Pasteur at Longwood Ave."
+"Rowes Wharf - Atlantic Ave-Post Office Square"
+"TD Garden - Legends Way-South Station - 700 Atlantic Ave."
 
 #¿Cuáles son los cinco recorridos que tuvieron la menor duración (de menor a mayor)?
+
+"Tremont St. at Berkeley St.-Tremont St. at Berkeley St."
+
+"South Station - 700 Atlantic Ave.-South Station - 700 Atlantic Ave."
+
+"South Station - 700 Atlantic Ave.-South Station - 700 Atlantic Ave."
+
+"Washington St. at Waltham St.-Washington St. at Waltham St."
+
+"Seaport Hotel-Seaport Hotel"
+
+
 ```{r Dónde se ha solicitado}
 tmpsalida<-dataStations
 colnames(tmpsalida) <- paste("sal", colnames(tmpsalida), sep = "_")
@@ -175,7 +192,32 @@ tmpestaciones[2,]
 tmpestaciones[3,]
 tmpestaciones[4,]
 tmpestaciones[5,]
+table(dataTrips3$duration)
+dataTrips4<-dataTrips3[order(-dataTrips3$duration),]
+dataTrips4 <- dataTrips4[which(dataTrips4$duration>0),]
+table(dataTrips4$duration)
+dataTrips4 <-dataTrips4[!is.na(dataTrips4$lle_station),]
+dataTrips4 <-dataTrips4[!is.na(dataTrips4$sal_station),]
+dataTrips4 <-dataTrips4[!(dataTrips4$lle_station==''),]
+dataTrips4 <-dataTrips4[!(dataTrips4$sal_station==''),]
+paste(dataTrips4[1,"lle_station"],dataTrips4[1,"sal_station"],sep='-')
+paste(dataTrips4[2,"lle_station"],dataTrips4[2,"sal_station"],sep='-')
+paste(dataTrips4[3,"lle_station"],dataTrips4[3,"sal_station"],sep='-')
+paste(dataTrips4[4,"lle_station"],dataTrips4[4,"sal_station"],sep='-')
+paste(dataTrips4[5,"lle_station"],dataTrips4[5,"sal_station"],sep='-')
+dataTrips4<-dataTrips4[order(dataTrips4$duration),]
+paste(dataTrips4[1,"lle_station"],dataTrips4[1,"sal_station"],sep='-')
+paste(dataTrips4[2,"lle_station"],dataTrips4[2,"sal_station"],sep='-')
+paste(dataTrips4[3,"lle_station"],dataTrips4[3,"sal_station"],sep='-')
+paste(dataTrips4[4,"lle_station"],dataTrips4[4,"sal_station"],sep='-')
+paste(dataTrips4[5,"lle_station"],dataTrips4[5,"sal_station"],sep='-')
 ```
+¿Cuándo se ha solicitado más el servicio de bicicletas?
+¿Más durante el fin de semana que durante los días de semana?
+¿Más durante las horas pico?
+¿Más durante la temporada de verano que la de otoño?
+¿Cuáles son las horas de mayor demanda de bicicletas
+```{r Cuándo se ha solicitado}
 
 
-
+```
