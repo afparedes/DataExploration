@@ -212,12 +212,52 @@ paste(dataTrips4[3,"lle_station"],dataTrips4[3,"sal_station"],sep='-')
 paste(dataTrips4[4,"lle_station"],dataTrips4[4,"sal_station"],sep='-')
 paste(dataTrips4[5,"lle_station"],dataTrips4[5,"sal_station"],sep='-')
 ```
-¿Cuándo se ha solicitado más el servicio de bicicletas?
-¿Más durante el fin de semana que durante los días de semana?
-¿Más durante las horas pico?
-¿Más durante la temporada de verano que la de otoño?
-¿Cuáles son las horas de mayor demanda de bicicletas
-```{r Cuándo se ha solicitado}
+#¿Cuándo se ha solicitado más el servicio de bicicletas?
+#¿Más durante el fin de semana que durante los días de semana?
+más durante semana en total han habido 1167173 viajes mientras que en fin de semana solo 411800 viajes
 
+#¿Más durante las horas pico?
+primero es definir horas pico para lo cual esta el siguiente link (https://www.astro.umd.edu/~avondale/extra/Travel/yearly.html ) que analiza 3 rutas para las cuales se pueden aproximar 2 franjas de horas pico  7 am a 10 am y 4pm a 7pm.
+
+podemos ver que el maximo numero de viajes esta a las 5 pm con 176238 viajes  y los 3 siguientes también con 4 pm 
+130759 viajes, 6 pm 129880 viajes y 8 am 128047 viajes.
+
+por lo que si hay más viajes durante las horas pico
+
+#¿Más durante la temporada de verano que la de otoño?
+
+
+
+#¿Cuáles son las horas de mayor demanda de bicicletas
+
+el maximo numero de viajes esta a las 5 pm con 176238 viajes, lo sigue 4 pm 130759 viajes, 6 pm 129880 viajes y finalmente 8 am 128047 viajes.
+
+```{r Cuándo se ha solicitado}
+table(is.na(dataTrips3$start_date))
+table(is.na(dataTrips3$end_date))
+as.character(dataTrips[1,"start_date"])
+
+
+datet <- as.POSIXct(as.character(dataTrips[1,"start_date"]), format = "%m/%d/%Y %H:%M:%S", tz = "UTC")
+weekdays(datet, abbreviate = F)
+
+diasSemana <-weekdays(as.POSIXct(as.character(dataTrips3[,"start_date"]), format = "%m/%d/%Y %H:%M:%S", tz = "UTC"), abbreviate = F)
+table(diasSemana)
+length(diasSemana[diasSemana=='Saturday'|  diasSemana=='Sunday'])
+length(diasSemana[!diasSemana=='Saturday'&  !diasSemana=='Sunday'])
+
+format(as.POSIXct(as.character(dataTrips[1,"start_date"]), format = "%m/%d/%Y %H:%M:%S"),"%H")
+horas <-format(as.POSIXct(as.character(dataTrips3[,"start_date"]), format = "%m/%d/%Y %H:%M:%S"),"%H")
+table(horas)
+plot(table(horas))
+```
+
+
+¿Cuales son los crímenes más reportados?
+¿Cuáles son los tres barrios más seguros y los tres barrios menos seguros de Boston?
+¿Se ha utilizado menos el servicio de bicicletas en los barrios con mayor reporte de incidentes de criminalidad?
+¿Se ha utilizado más el servicio de bicicletas en los barrios con menor reporte de incidentes de criminalidad?
+
+```{r Cuales son los crímenes}
 
 ```
